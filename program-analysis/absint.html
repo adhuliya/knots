@@ -1,0 +1,973 @@
+<html> <head> <title>Abstract Interpretation</title>
+</head>
+
+<a href="http://pages.cs.wisc.edu/~horwitz/CS704-NOTES/10.ABSTRACT-INTERPRETATION.html">Source</a>
+
+<A NAME=top><H1>Abstract Interpretation</H1></A>
+
+<HR>
+<H2>Contents</H2>
+<UL>
+  <LI> <a href="#mot">Motivation and Overview</a>
+  <LI> <a href="#signEx">Example 1: Rule of Sign</a>
+  <LI> <a href="#rel">The Relationship between Standard and Abstract Semantics</a>
+    <UL>
+    <LI> <a href="#youtry1">Test Yourself #1</a>
+    <LI> <a href="#youtry2">Test Yourself #2</a>
+    </UL>
+  <LI> <a href="#sem">Standard and Collecting Semantics for CFGs</a>
+    <UL>
+      <LI> <a href="#stnd">Standard Semantics</a>
+      <LI> <a href="#coll">Collecting Semantics</a>
+        <UL>
+          <LI> <a href="#youtry3">Test Yourself #3</a>
+          <LI> <a href="#youtry4">Test Yourself #4</a>
+        </UL>
+    </UL>
+  <LI> <a href="#abs">Abstract Interpretation</a>
+    <UL>
+      <LI> <a href="#const">Example: Constant Propagation</a>
+        <UL>
+          <LI> <a href="#youtry5">Test Yourself #5</a>
+        </UL>
+      <LI> <a href="#701">Comparison with CS 701-style Dataflow Analysis</a>
+    </UL>
+</UL>
+
+<P>
+<A name="mot">
+<H2>Motivation and Overview</H2>
+<P>
+Static Analysis involves finding properties of programs without
+actually running them.
+There are many reasons why people want to do static analysis,
+including the following:
+<UL>
+  <LI> to find opportunities for applying transformations
+        to speed up execution;
+  <LI> to know whether the code is vulnerable to attack;
+  <LI> to know whether a program's runtime will always be acceptably fast;
+  <LI> to find (potential) bugs.
+</UL>
+<P>
+Most interesting properties of programs are undecidable, and even those
+that are not may be very expensive to compute.
+Therefore, static analysis usually involves some kind of <i>abstraction</i>.
+For example, instead of keeping track of all of the values that
+a variable may have at each point in a program, we might only keep track
+of whether a variable's value is positive, negative, zero, or unknown.
+Abstraction makes it possible to discover interesting properties of programs,
+but the results of static analysis are usually incomplete:
+for example, an analysis may say that a variable's value is unknown
+at a point when in fact the value will always be positive at that point.
+<P>
+In CS 701 we studied
+<a href="dataflow.html">
+Dataflow Analysis</a>.
+That is a commonly used framework for static analysis.
+However, one problem with standard dataflow analysis is that it
+provides no guarantees that the results are consistent with the
+program's semantics.
+In contrast, abstract interpretation is a static-analysis framework
+that <b>does</b> guarantee that the information gathered about a
+program is a safe approximation to the program's semantics.
+This property is achieved by establishing key relationships between the
+static analysis and the formal semantics.
+<P>
+<A name="signEx">
+<H2>Example 1: Rule of Sign</H2>
+<P>
+Let's start with a very simple example: We'll define an abstract
+interpretation of a language of integer expressions
+including only literals, addition, and multiplication.
+The goal of the abstract interpretation will be to determine
+whether each (sub)-expression is negative, zero, or positive.
+For example, if we know that xxx is negative, while both yyy and zzz
+are positive. we can determine that the expression
+<UL>xxx * (yyy + zzz)</UL>
+is negative without actually knowing the values of xxx, yyy, and zzz:
+Adding two positive integers yields a positive integer, and multiplying
+a negative integer times a positive one yields a negative integer.
+<P>
+Now let's formalize these ideas.
+<P>
+<b>Syntax.</b>
+Expressions involve literals, addition, and multiplication.
+<UL>
+<TABLE>
+<TR><TD>exp
+    <TD>&rarr; n
+    <TD>// literals
+<TR><TD>
+    <TD>&rarr; exp + exp
+    <TD>// addition
+<TR><TD>
+    <TD>&rarr; exp * exp
+    <TD>// multiplication
+</TABLE>
+</UL>
+<P>
+<b>Standard Interpretation.</b>
+We define the standard interpretation of expressions using
+denotational semantics;
+i.e., we add the definitions of the valuation functions below.
+Note that the (standard) meaning of an integer expression
+is an Int.
+
+<UL>
+  <LI> <b><b>E</b></b>: Exp &rarr; Int
+  <P><b>E</b>[[n]] = n
+  <BR><b>E</b>[[E1 + E2]] = <b>E</b>[[E1]] + <b>E</b>[[E2]]
+  <BR><b>E</b>[[E1 * E2]] = <b>E</b>[[E1]] * <b>E</b>[[E2]]
+</UL>
+<P>
+<b>Abstract Interpretation.</b>
+We want our abstract interpretation to tell us whether an expression
+is negative, zero, or positive.
+However, we can't always do that.
+For example, a negative plus a positive can be either negative or
+positive.
+Therefore, our abstract domain, which we'll call Sign,
+must include a "don't know" value, <i>num</i>.
+<UL>
+Sign = { zero, neg, pos, num }
+</UL>
+We'll define the valuation functions for the abstract interpretation
+in terms of the two tables below, which define abstract addition and
+multiplication operations.
+<P>
+<TABLE border="1">
+<TR>
+ <TH>&oplus;
+ <TH>neg
+ <TH>zero
+ <TH>pos
+ <TH>num
+<TR>
+ <TH>neg
+  <TD>neg
+  <TD>neg
+  <TD>num
+  <TD>num
+<TR>
+ <TH>zero
+  <TD>neg
+  <TD>zero
+  <TD>pos
+  <TD>num
+<TR>
+ <TH>pos
+  <TD>num
+  <TD>pos
+  <TD>pos
+  <TD>num
+<TR>
+ <TH>num
+  <TD>num
+  <TD>num
+  <TD>num
+  <TD>num
+</TABLE>
+
+<P>
+<TABLE border="1">
+<TR>
+ <TH>&otimes;
+ <TH>neg
+ <TH>zero
+ <TH>pos
+ <TH>num
+<TR>
+ <TH>neg
+  <TD>pos
+  <TD>zero
+  <TD>neg
+  <TD>num
+<TR>
+ <TH>zero
+  <TD>zero
+  <TD>zero
+  <TD>zero
+  <TD>zero
+<TR>
+ <TH>pos
+  <TD>neg
+  <TD>zero
+  <TD>pos
+  <TD>num
+<TR>
+ <TH>num
+  <TD>num
+  <TD>zero
+  <TD>num
+  <TD>num
+</TABLE>
+
+<P>
+Here are the abstract valuation functions;
+note that the abstract meaning of an integer expression is a Sign.
+<UL>
+  <LI> <b><b>E<sub>abs</sub></b></b>: Exp &rarr; Sign
+  <P><b>E<sub>abs</sub></b>[[n]] = if (n<0) then neg else if (n=0) then zero else pos
+  <BR><b>E<sub>abs</sub></b>[[E1 + E2]] = <b>E<sub>abs</sub></b>[[E1]] <b>&oplus;</b> <b>E<sub>abs</sub></b>[[E2]]
+  <BR><b>E<sub>abs</sub></b>[[E1 * E2]] = <b>E<sub>abs</sub></b>[[E1]] <b>&otimes;</b> <b>E<sub>abs</sub></b>[[E2]]
+</UL>
+<P>
+And here is an example of applying the abstract interpretation to
+an expression:
+<UL>
+<b>E<sub>abs</sub></b>[[ -22 * (14 + 7) ]] =               <br>
+<b>E<sub>abs</sub></b>[[-22]] <b>&otimes;</b> <b>E<sub>abs</sub></b>[[14 + 7]] =               <br>
+neg <b>&otimes;</b> (<b>E<sub>abs</sub></b>[[14]] <b>&oplus;</b> <b>E<sub>abs</sub></b>[[7]] =               <br>
+neg <b>&otimes;</b> (pos <b>&oplus;</b> pos) =               <br>
+neg <b>&otimes;</b> pos =               <br>
+neg
+</UL>
+<P>
+<A name="rel">
+<H2>Relationship between standard and abstract interpretations.</H2>
+<P>
+The abstract interpretation defined above for the "rule-of-signs"
+example was very simple and intuitive.
+Assuming that I didn't make any typographical errors when typing in the
+two tables, it shouldn't be hard to convince yourself that the abstract
+semantics is consistent with the standard (concrete) semantics.
+However, to be sure that this consistency holds, we must do the
+following:
+<OL>
+  <LI> Define two partially-ordered sets (posets) C and A.
+       The elements of C are all non-empty sets of values from the
+       concrete domain (i.e., sets of integers).
+       The elements of A are the values from the abstract domain
+       (i.e., neg, zero, pos, and num).
+  <LI> Define an <i>abstraction function</i> <font size="4">&alpha;</font> that maps
+       non-empty sets of integer values to Sign values
+       (i.e., <font size="4">&alpha;</font> is of type C &rarr; A).
+
+  <LI> Define a <i>concretization function</i> <font size="4">&gamma;</font> that maps
+       Sign values to non-empty sets of integer values
+       (i.e., <font size="4">&gamma;</font> is of type A &rarr; C).
+
+  <LI> Show that <font size="4">&alpha;</font> and <font size="4">&gamma;</font> form a <i>Galois connection</i>
+       (defined below).
+
+  <P><LI> For each possible form of expression <i>exp</i>, show that
+     <UL>{ <b>E</b>[[exp]] } &sube; <font size="4">&gamma;</font>(<b>E<sub>abs</sub></b>[[exp]])</UL>
+      where &sube; is the ordering of poset C, i.e., the subset ordering.
+</OL>
+<P>
+<b>1. Abstraction function <font size="4">&alpha;</font>.</b>
+<P>
+For the rule-of-signs example, the abstraction function is defined as follows:
+<UL>
+<TABLE>
+<tr><td> <font size="4">&alpha;</font>({0}) = 
+    <td>zero       
+<tr><td><font size="4">&alpha;</font>(S) =
+    <td>if all values in S are greater than 0 then pos       
+<tr><td><td>else if all values in S are less than 0 then neg
+<tr><td><td>else num
+</TABLE>
+</UL>
+<P>
+<b>2. Concretization function <font size="4">&gamma;</font>.</b>
+<P>
+And the concretization function is defined as follows:
+<UL>
+<TABLE>
+<tr><td> <font size="4">&gamma;</font>(zero) = {0}
+<tr><td><font size="4">&gamma;</font>(pos) = {all positive ints}
+<tr><td><font size="4">&gamma;</font>(neg) = {all negative ints}
+<tr><td><font size="4">&gamma;</font>(num) = Int (i.e., all ints)
+</TABLE>
+</UL>
+<P>
+<b>3. Galois Connection.</b>
+<P>
+A <i>Galois connection</i> is a pair of
+functions, <font size="4">&alpha;</font>
+and <font size="4">&gamma;</font> between two partially ordered sets
+(C, &sube;) and (A, &le;), such that both of the following hold.
+<OL>
+  <LI>
+&forall; a &isin; A, c &isin; C: <font size="4">&alpha;</font>(c) &le; a iff c &sube; <font size="4">&gamma;</font>(a)
+  <LI> &forall; a &isin; A:
+       <font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a)) &le; a
+</OL>
+<P>
+Here are the two relationships we need, presented pictorially:
+  <UL><IMG SRC="10.galois.gif" height = 240></UL>
+<P>
+For our example, poset A is the set containing the four elements of Sign
+(with num as the top element, and no ordering relationship among the
+other three elements),
+and poset C is the set of all sets of integers, ordered by subset.
+Here is a picture with all of A and some of C.
+Some of the alpha mapping (the abstraction function) is shown using
+red arrows, and some of the gamma mapping (the concretization function)
+is shown using blue arrows.
+  <UL><IMG SRC="10.exPosets.gif" height = 250></UL>
+<P>
+<a name="youtry1">
+<hr>
+<center>
+<u><b>TEST YOURSELF #1</b></u>
+</center></a>
+<P>
+Question 1: Fill in the remaining alpha and gamma edges in the figure above.
+<P>
+Question 2: Show that alpha and gamma do form a Galois connection.
+<P>
+<p><a href="absint-sol.html#ans1">solution</a></p>
+<hr>
+<P>
+<b>4. Safety.</b>
+Our final obligation in proving that our rule-of-signs abstract
+interpretation is consistent with the standard semantics is
+to prove that, for every expression <i>exp</i>,
+   <UL>{ <b>E</b>[[exp]] } &sube; <font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[exp]])</UL>
+This can be done using structural induction.
+<P>
+<b>Base case:</b> <i>exp</i> is literal k.
+This case has three parts (based on the definition of <b>E<sub>abs</sub></b>):
+<OL>
+  <LI> k &lt; 0: In this case,
+    <UL>
+      <TABLE>
+       <tr><td width="300"><b>E</b>[[k]] = k
+           <td>// def of <b>E</b>
+       <tr><td><b>E<sub>abs</sub></b>[[k]] = neg
+           <td>// def of <b>E<sub>abs</sub></b>
+       <tr><td><font size="4".>&gamma;</font>(neg) = {all negative ints}
+           <td>// def of <font size="4".>&gamma;</font>
+       </TABLE>
+    </UL>
+    and {k} is a subset of {all negative ints} (case proved).
+           
+  <P><LI> k = 0: In this case,
+    <UL>
+      <TABLE>
+      <tr><td width = "300"><b>E</b>[[k]] = 0
+          <td>// def of <b>E</b>
+      <tr><td><b>E<sub>abs</sub></b>[[k]] = zero
+          <td>// def of <b>E<sub>abs</sub></b>
+      <tr><td><font size="4".>&gamma;</font>(zero) = {0}
+          <td>// def of <font size="4".>&gamma;</font>
+      </TABLE>
+    </UL>
+    and {0} is a subset of {0} (case proved).
+
+  <P><LI> k &gt; 0: In this case,
+    <UL>
+      <TABLE>
+      <tr><td width="300"><b>E</b>[[k]] = k
+          <td>// def of <b>E</b>
+      <tr><td><b>E<sub>abs</sub></b>[[k]] = pos
+          <td>// def of <b>E<sub>abs</sub></b>
+      <tr><td><font size="4".>&gamma;</font>(pos) = {all positive ints}
+          <td>// def of <font size="4".>&gamma;</font>
+      </TABLE>
+    </UL>
+    and {k} is a subset of {all positive ints} (case proved).
+      
+</OL>
+
+<P>
+<b>Inductive Step</b>
+<P>
+The inductive step is quite tedious.
+There are two cases (one for addition and one for multiplication), and
+each has 16 sub-cases (for all possible combinations of
+the signs of the two sub-expressions).
+Here is one example to show the flavor of the proof.
+<P>
+<b>Inductive case 1:</b> <i>exp</i> is <i>e1</i> + <i>e2</i>.
+<UL>
+<TABLE>
+<tr><td width="200">RHS:
+    <td width ="300"><font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[e1 + e2]])
+<tr><td><td>= <font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[e1]] <b>&oplus;</b> <b>E<sub>abs</sub></b>[[e2]])
+        <td>// def of <b>E<sub>abs</sub></b>
+</TABLE>
+<P>
+<b>sub-case 1:</b>
+ both <b>E<sub>abs</sub></b>[[e1]] and <b>E<sub>abs</sub></b>[[e2]] are neg.
+<TABLE>
+<tr><td width="200">
+    <td width="300">= <font size="4".>&gamma;</font>(neg <b>&oplus;</b> neg)
+<tr><td>
+    <td>= <font size="4".>&gamma;</font>(neg)
+    <td>// def of <b>&oplus;</b>
+<tr><td>
+    <td>= { all negative ints }
+    <td>// def of <font size="4".>&gamma;</font>
+<tr>
+<tr><td width="200">LHS:
+    <td width="300"><b>E</b>[[e1 + e2]]
+<tr><td><td>= <b>E</b>[[e1]] + <b>E</b>[[e2]]
+        <td>// def of <b>E</b>
+</TABLE>
+<P>
+By the induction hypothesis, <b>E</b>[[e1]] is a subset of
+<font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[e1]]),
+which is <font size="4".>&gamma;</font>(neg), which is
+the set of all negative ints.
+The same applies to <b>E</b>[[e1]].
+Thus, the LHS is the sum of two negative ints, which is a negative
+int, which is certainly a subset of { all negative ints } (the final
+value for the RHS).
+</UL>
+<P>
+<a name="youtry2">
+<hr>
+<center>
+<u><b>TEST YOURSELF #2</b></u>
+</center></a>
+<P>
+In what way does proving that
+<UL>{ <b>E</b>[[exp]] } &sube; <font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[exp]])</UL>
+show that our rule-of-signs abstract interpretation is consistent with
+the standard semantics?
+<P>
+<p><a href="absint-sol.html#ans2">solution</a></p>
+<hr>
+
+<A name="sem">
+<H2>Standard and Collecting Semantics for CFGs</H2>
+<P>
+For the simple rule-of-signs example, we were able to define
+an abstract interpretation as a variation on the standard
+denotational semantics.
+For more realistic static-analysis problems, however, the
+standard denotational semantics is usually not a good place to start.
+This is because we usually want the results of static analysis to
+tell us what holds at each point in the program, and program
+points are usually defined to be the nodes of the program's
+control-flow graph (CFG).
+For example, for constant propagation we want to know, for each
+CFG node, which variables are guaranteed to have constant
+values when execution reaches that node.
+Therefore, it is better to start with a (standard) semantics
+defined in terms of a CFG.
+<P>
+<a name="stnd">
+<H3>Standard Semantics</H3>
+<P>
+There are various ways to define a CFG semantics.
+The most straightforward is to define what is called an
+<i>operational</i> semantics;
+think of it as an interpreter whose input is the entry node of a CFG
+plus an initial state (a mapping from variables to values),
+and whose output is the program's final state.
+We'll define the standard sementics in terms of
+<i>transfer functions</i>, one for each CFG node.
+These are (semantic) functions whose inputs are states and whose
+outputs are pairs that include both an output state and
+the CFG node that is the appropriate successor.
+A node's transfer function captures the execution semantics
+of that node and specifies the next node to be executed.
+<P>
+For example, consider the CFG shown below (with labels on the nodes).
+<a name="exCFG">
+<P><UL><pre>
+          +----------+
+          | 1: start |
+          +----------+
+                |
+                v
+          +----------+
+          | 2: a = 1 |
+          +----------+
+                |
+                v
+          +----------+
+          | 3: b = 1 |
+          +----------+
+                |
+                v
+          +----------+  F  +------------+     +---------+
+    +---> | 4: a < 3 |---->| 6: c = a+b |---->| 7: exit |
+    |     +----------+     +------------+     +---------+
+    |           |
+    |         T | 
+    |           v       
+    |     +------------+
+    |     | 5: a = a+b |
+    |     +------------+
+    |           |
+    |           | 
+    +-----------+
+</pre></UL>
+<P>
+For this example, the transfer function for node 2 would be defined
+as follows:
+<UL>&lambda;s.(s[a &larr; 1], 3)</UL>
+where s[a &larr; 1] means "a new state that is the same as s except that
+it maps variable a to 1."
+For node 4, the transfer function would be
+<UL>&lambda;s.(if lookup(s, a) < 3 then (s, 5) else (s, 6))</UL>
+In this case, the output state is the same as the input state;
+the successor node depends on whether variable a is less than 3
+in the current (input) state.
+<P>
+Here's a (recursive) definition of the interpreter (the operational
+semantics).
+We use f<sub>n</sub> to mean the transfer function defined for
+CFG node n.
+<UL><TABLE>
+<tr><td>interp = &lambda;s.&lambda;n.
+    <td>if isExitNode(n) then s
+<tr><td><td>else let (s', n') = f<sub>n</sub>(s) in interp s' n'
+</TABLE> </UL>
+<P>
+Because this definition is recursive, we need to use the usual trick of
+abstracting on the function and defining the operational semantics
+as the least fixed point of that abstraction:
+<UL><TABLE>
+<tr><td>semantics = fix(&lambda;F.&lambda;s.&lambda;n.
+    <td>if isExitNode(n) then s
+<tr><td><td>else let (s', n') = f<sub>n</sub>(s) in F s' n')
+</TABLE> </UL>
+<P>
+<a name="coll">
+<H3>Collecting Semantics</H3>
+<P>
+While the operational semantics discussed above is defined in terms of
+the program's CFG, it has two properties that are undesirable
+as the basis for an abstract interpretation:
+<OL>
+  <LI> It is still just a function from a program's input state to its
+       final state; the result of applying the operational semantics tells
+       us nothing about the intermediate states that arise at each
+       CFG node.
+  <LI> It maps a <i>particular</i> initial state to the corresponding
+       final state.  We want a semantics that tells us what can happen
+       for every possible initial state.
+</OL>
+The advantage of abstract interpretation compared to the kind
+of dataflow analysis we studied in CS 701 is that it provides a
+guarantee about the relationship between the program's semantics
+and the analysis results.
+To obtain that advantage, we need a semantics that includes information
+about the set of states that can arise at each CFG node given any possible
+initial state.
+That kind of semantics is called a <i>collecting</i> semantics.
+<P>
+We will define a collecting semantics that maps CFG nodes to sets
+of states;
+i.e., for each CFG node n, the collecting semantics tells us what
+states can arise just before n is executed.
+The "approximate semantics" that we define using abstract interpretation
+will compute, for each CFG node, (a finite representation of) a superset of
+the set of states computed for that node by the collecting semantics.
+By showing that our abstract interpretation really does compute
+a superset of the possible states that can arise at each CFG node,
+we show that it is consistent with the program's actual semantics.
+<P>
+Because the collecting semantics involves sets of states, we need to
+define transfer functions whose inputs and outputs are sets of states.
+We'll define one function f<sub>n&rarr;m</sub> for each CFG <i>edge</i>
+n&rarr;m.
+That transfer function will be defined in terms of the (original) transfer
+function f<sub>n</sub> defined for the CFG node n:
+<UL>f<sub>n&rarr;m</sub> = &lambda;S.{s' | s&isin;S and f<sub>n</sub>(s) = (s', m)}</UL>
+<P>
+For example, the transfer function for edge 2&rarr;3 of the example CFG
+given <a href="#exCFG">above</a> would be defined as follows:
+<UL>&lambda;S.{s[a &larr; 1] | s &isin; S}</UL>.
+<P>
+<a name="youtry3">
+<hr>
+<center>
+<u><b>TEST YOURSELF #3</b></u>
+</center></a>
+<P>
+What is the transfer function (for the collecting semantics)
+for edge 4&rarr;5 of the example CFG?
+<p><a href="absint-sol.html#ans3">solution</a></p>
+<hr>
+<P>
+Our collecting semantics will be of type
+<i>CFG-node</i> &rarr; <i>set-of-states</i>.
+The (recursive) definition is given below.
+It defines the set of states that holds just before node n to be
+the union of the sets of states produced by applying
+the transfer functions of all of <i>n</i>'s in-edges
+to the sets of states that hold just before the sources of those
+in-edges execute.
+<UL>
+<TABLE>
+<tr><td>recColl = &lambda;n. 
+    <td colspan="2">if isEnterNode(n) then { all states }
+<tr><td><td>else <td>let P = preds(n) in &cup;<sub>p &isin; P</sub> f<sub>p&rarr;n</sub>(recColl(p))
+</TABLE></UL>
+
+<P>
+And here's the non-recursive definition:
+<UL>
+<TABLE>
+<tr><td>coll = fix(&lambda;F.&lambda;n. 
+    <td colspan="2">if isEnterNode(n) then { all states }
+<tr><td><td>else <td>let P = preds(n) in &cup;<sub>p &isin; P</sub> f<sub>p&rarr;n</sub>(F(p))
+</TABLE></UL>
+
+For our example program, we can actually find <i>coll</i>
+by iterating up from bottom.
+The elements of concrete poset C are sets of states (each with a value
+for variables a, b, and c) and the ordering is subset.
+This means that the bottom element of the poset is the empty set,
+and the bottom function is the one that ignores its input and returns
+the empty set.
+Below is a table that shows the computation of <i>coll</i>.
+We use the notation [<i> v1 v2 v3 </i>]
+to mean a state in which <i>a=v1</i>, <i>b=v2</i>, and <i>c=v3</i>.
+A tuple with a star, e.g., [<i>1 * *</i>], represents an infinite
+set of states, including all possible values in place of the star
+(so [ * * * ] represents all states, and [<i>1 * *</i>] represents all
+states in which the only constraint is that <i>a=1</i>).
+<P>
+The values computed for iterations 9 and 10 are the same, so line 9
+of the table defines function <i>coll</i>.
+<P>
+<TABLE border = "1">
+<tr><th><b>Iteration #</b>
+    <th><b>Node 1</b>
+    <th><b>Node 2</b>
+    <th><b>Node 3</b>
+    <th><b>Node 4</b>
+    <th><b>Node 5</b>
+    <th><b>Node 6</b>
+    <th><b>Node 7</b>
+<tr><td align="center">0
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">1
+    <td align="center">[ * * * ]
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">2
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">3
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">4
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ]
+    <th>&empty;
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">5
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ]
+    <td align="center">[ 1 1 * ]
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">6
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <td align="center">[ 1 1 * ]
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">7
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">8
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ] [ 3 1 * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <th>&empty;
+    <th>&empty;
+<tr><td align="center">9
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ] [ 3 1 * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <td align="center">[ 3 1 * ]
+    <th>&empty;
+<tr><td align="center">10
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ] [ 3 1 * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <td align="center">[ 3 1 * ]
+    <td align="center">[ 3 1 4 ]
+<tr><td align="center">11
+    <td align="center">[ * * * ]
+    <td align="center">[ * * * ]
+    <td align="center">[ 1 * * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ] [ 3 1 * ]
+    <td align="center">[ 1 1 * ] [ 2 1 * ]
+    <td align="center">[ 3 1 * ]
+    <td align="center">[ 3 1 4 ]
+</TABLE>
+<P>
+<a name="youtry4">
+<hr>
+<center>
+<u><b>TEST YOURSELF #4</b></u>
+</center></a>
+<P>
+What property of the example program allows us to compute <i>coll</i>?
+What modification to the program would cause the fixed-point iteration
+to be infinite (and thus not computable)?
+
+<p><a href="absint-sol.html#ans4">solution</a></p>
+<hr>
+<P>
+
+<P>
+<a name="abs">
+<H2>Abstract Interpretation</H2>
+<P>
+To define an abstract interpretation we need to do the following:
+<UL>
+  <LI> Define the abstract domain A, the <i>abstraction function</i>
+        <font size="4">&alpha;</font>,
+        and the <i>concretization function</i>
+        <font size="4">&gamma;</font>.
+  <LI> Show that <font size="4">&alpha;</font> and
+       <font size="4">&gamma;</font> form a <i>Galois connection</i>.
+  <LI> For each CFG edge n&rarr;m, define an abstract transfer function
+       f#<sub>n&rarr;m</sub>.
+  <LI> Show that the abstract transfer functions are consistent with
+       the concrete ones;
+       i.e., for each abstract <i>f#</i> and corresponding concrete
+       <i>f</i>:
+       <OL>
+         <LI> start with an arbitrary concrete-domain item <i>c</i>
+         <LI> let <i>c'</i> = <i>f</i>(<i>c</i>)
+         <LI> let <i>a</i> = <font size="4">&alpha;</font>(<i>c</i>)
+         <LI> let <i>a'</i> = <i>f#</i>(<i>a</i>)
+         <LI> let <i>c''</i> =  <font size="4">&gamma;</font>(<i>a'</i>)
+         <LI> show that <i>c'</i> &sube;<i>c''</i>
+       </OL>
+       <P>This proof obligation is illustrated in the diagram below;
+       the &sube; relationship that must be proved (step 6)
+       is shown using a purple line in the concrete domain.
+  <UL><IMG SRC="10.mustShow.gif" height = 210></UL>
+
+</UL>
+<P>
+Given an abstract interpretation, we can define the abstract semantics
+recursively or non-recursively, as we did for the collecting semantics.
+The definitions given below define the abstract semantics as a mapping
+<i>CFG-node &rarr; abstract state</i>.
+The abstract state that holds at CFG node <i>n</i> (a safe approximation
+to the set of concrete states that hold just before <i>n</i> executes)
+is the join
+of the abstract states produced by applying the abstract transfer
+functions of all of node <i>n</i>'s incoming CFG edges to the abstract
+states that hold before those edges' source nodes.
+<UL>
+<TABLE>
+<tr><td>recAbs = &lambda;n. 
+    <td colspan="2">if isEnterNode(n) then <font size="4">&alpha;</font>({all states})
+<tr><td><td>else <td>let P = preds(n) in
+<tr><td><td>     <td>&cup;<sub>p &isin; P</sub> f#<sub>p&rarr;n</sub>(recAbs(p))
+</TABLE></UL>
+
+<P>
+And here's the non-recursive definition:
+<UL>
+<TABLE>
+<tr><td>abs = fix(&lambda;F.&lambda;n. 
+    <td colspan="2">if isEnterNode(n) then <font size="4">&alpha;</font>({all states})
+<tr><td><td>else <td>let P = preds(n) in
+<tr><td><td>     <td>&cup;<sub>p &isin; P</sub> f#<sub>p&rarr;n</sub>(F(p))
+</TABLE></UL>
+
+
+<P>
+<a name="const">
+<H2>Example: Constant Propagation</H2>
+<P>
+Here is a definition of constant propagation:
+<UL>
+  <LI> The elements of the abstract domain A are abstract states
+       that map variables to values, including the special value
+       ? (which means that the corresponding set of concrete
+       states includes states that map the variable to different
+       values).
+       The abstract domain also includes a special bottom element &perp;.
+  <P> The ordering of the abstract domain is based on the underlying
+       flat ordering of individual values in which ? is the top element, and
+       all other values are incomparable.
+       Given two abstract states, <i>a1</i> and <i>a2</i>,
+       <i>a1</i> &le; <i>a2</i> iff
+       <UL>
+         <LI> <i>a1</i> is &perp;, or
+         <LI> every variable <i>x</i> mapped to a non-? value in <i>a2</i>
+              is mapped to the same value in <i>a1</i>.
+       </UL>
+  <P><LI> The concrete domain is the one defined earlier, whose elements
+       are sets of states (each with a value for every variable), and
+       whose ordering is subset (i.e., S1 &sube; S2 iff S1 is a subset
+       of S2).
+  <P><LI> The abstraction function maps the empty set to  &perp;;
+       it maps every non-empty set S of concrete states to
+       a single abstract state:
+       For each variable <i>x</i>, if <i>x</i> has the <i>same</i>
+       value <i>v</i> in every concrete state in S, then it is mapped
+       to <i>v</i> in the abstract state.
+       Otherwise, it is mapped to the special value ?.
+  <P><LI> The concretization function is the obvious dual of the
+       abstraction function:
+       It maps  &perp; to the empty set.
+       Given an abstract state <i>a</i>,
+       if no variable is mapped to ? in <i>a</i>, then the concrete set
+       of states <i>S</i> contains just one state <i>a</i>.
+       Otherwise, <i>S</i> is an infinite set.
+       For every variable <i>x</i> that is mapped to a non-?
+       value <i>v</i> in <i>a</i>, every state <i>s</i> in <i>S</i>
+       maps <i>x</i> to <i>v</i>;
+       all other variables are mapped to all possible combinations of
+       values.
+  <P><LI> It should be clear that, as defined, <font size="4">&alpha;</font>
+       and <font size="4">&gamma;</font> form a <i>Galois connection</i>.
+  <P><LI> The abstract transfer functions are essentially the ones we used when
+       defining constant propagation in CS 701.
+       All abstract transfer functions are strict: if their input is bottom,
+       then their output is also bottom.
+       Otherwise, transfer function f#<sub>n&rarr;m</sub> is defined
+       as follows:
+       <UL>
+         <LI> If node n doesn't modify any variables, then
+              f<sub>n&rarr;m</sub> is the identity function
+         <LI> If node n represents <i>x = y + z</i>, then
+              f<sub>n&rarr;m</sub> is defined as follows:
+           <UL>&lambda;s.s[x &larr; lookup(s, <i>y</i>) &oplus; lookup(s, <i>z</i>)]</UL>
+           where <i>s</i> is an abstract state, and  &oplus; returns ?
+           if either of its arguments is ? (and otherwise is the same as
+           regular +).
+        </UL>
+</UL>
+<P>
+<a name="youtry5">
+<hr>
+<center>
+<u><b>TEST YOURSELF #5</b></u>
+</center></a>
+<P>
+A <i>Galois insertion</i> is a stronger relationship than a
+Galois connection.
+Functions <font size="4">&alpha;</font>
+and <font size="4">&gamma;</font> form a <i>Galois insertion</i>
+iff
+<OL>
+  <LI> <font size="4">&alpha;</font>
+and <font size="4">&gamma;</font> form a Galois connection, and
+  <LI> for all <i>a</i> in the abstract domain:
+<font size="4">&alpha;</font>(<font size="4">&gamma;</font>(<i>a</i>))
+= <i>a</i>
+</OL>
+<P>
+Show that functions <font size="4">&alpha;</font>
+and <font size="4">&gamma;</font> defined above for constant propagation
+form a Galois insertion (by proving point 2 above).
+
+<p><a href="absint-sol.html#ans5">solution</a></p>
+<hr>
+<P>
+<a name="701">
+<H2>Comparison with CS 701-style Dataflow Analysis</H2>
+<P>
+How does abstract interpretation compare with the kind of dataflow
+analysis studied in CS 701?
+One thing that may look like a significant difference but in fact is not,
+is the way the analyses are actually carried out.
+In 701, we did the following:
+<UL>
+  <LI> Define a complete lattice L with no infinite descending chains.
+       The elements of L are the dataflow facts.
+  <LI> Specify one lattice element as the special "initial" value.
+  <LI> For each CFG edge n&rarr;m, define a monotonic function
+       f<sub>n&rarr;m</sub> of type L &rarr; L.
+       The function for the edge out of the enter node ignores its input
+       and produces the special initial value as its output.
+       (Note: We sometimes defined the functions on CFG nodes rather
+       than on CFG edges.  There are examples where putting the
+       functions on the nodes is more convenient, and other examples
+       where putting the functions on the edges is more convenient.
+       In both cases, the functions capture the same semantics, so
+       there is not really a significant difference.)
+  <LI> Define a cross-product lattice LX whose tuples have as many items
+       as there are CFG nodes.
+       Also define a (monotonic) function F of type LX &rarr; LX, that
+       uses functions f<sub>m&rarr;n</sub> to define the
+       n<sup>th</sup> "slot" of a tuple.
+  <LI> To solve a dataflow problem, <i><b>iterate down from top</b></i>;
+       i.e., start with the top element of lattice LX, then apply function
+       F repeatedly until there is no change.
+</UL>  
+<P>
+Abstract interpretation is similar: To ensure termination of an iterative
+algorithm, the abstract domain must be a complete
+lattice with no infinite <i>ascending</i> chains, and the abstract transfer
+functions must still be monotonic.
+The solution is computed by iterating up from bottom, instead of down from
+top, but since a complete lattice is "symmetric", this is just a cosmetic
+difference.
+<P>
+The real difference between the two approaches is that for 701-style
+dataflow analysis, we define the lattice elements and the CFG-node
+dataflow functions based only on intuition.
+Therefore, there is no guarantee that the solution to a dataflow problem
+has any relationship to the program's semantics.
+In contrast, since part of abstract interpretation involves showing
+relationships between the concrete and abstract semantics, we do
+have such guarantees.
+<P>
+The price we pay is that it is not always clear how to define dataflow
+problems of interest using abstract interpretation.
+For example, problems like reaching definitions require knowing
+more than just the sets of states that can arise at each CFG node:
+we also need to know which other CFG nodes assigned the values to
+the variables.
+This is usually done by defining an <i>instrumented</i> collecting
+semantics, which keeps additional information (like the label of
+the CFG node that most recently assigned to a variable) in a state.
+While this allows reaching definitions to be defined, it may seem
+rather ad hoc.
+<P>
+A similar issue arises with backward problems like live variable analysis.
+One interesting approach to defining the live-variables problem using
+abstract interpretation and continuation semantics is given in a set of
+lecture notes called <a href="../PAPERS/abstractInterp.Rosendahl.pdf">
+Introduction to Abstract Interpretation</a> by Mads Rosendahl.
+
+

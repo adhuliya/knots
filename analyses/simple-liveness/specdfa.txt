@@ -1,0 +1,47 @@
+%lattices
+lvL::lattice;
+lvL.set := setof(Vars); 
+lvL.po  := superset_order;
+
+%data_flow_variables
+lv::dfv;
+lv.lattice::lvL;
+lv.boundary_value := lvL.top ;
+
+%data_flow_equations
+
+lv.Out(n::Nodes)::lvL 
+{
+        stmt(n) @= endNode => lv.boundary_value;  
+        otherwise          => lvL.meet ({ lv.In(s) | s in succ(n) });  
+}
+ 
+
+lv.In(n::Nodes,p::procs,bi::lvL)::lvL
+{         
+        (lv.Out(n)- kill(n)) + gen(n) ;
+} 
+
+%flow_functions
+gen(n::Nodes)::lvL
+{                        
+        stmt(n) @= e::Exprs             => {v::Vars | v in opds(e)};
+        stmt(n) @= v::Vars = e::Exprs    => {v1::Vars | v1 in opds(e)};
+        stmt(n) @= v::Vars = v1::Vars    => {v1};
+        stmt(n) @= v::Vars = c::Ints => {};
+        stmt(n) @= return v::Vars       => {v};
+        otherwise                      => {};
+}
+
+
+kill(n::Nodes)::lvL
+{                
+        stmt(n) @= e::Exprs             => {};
+        stmt(n) @= v::Vars = e::Exprs    => {v};
+        stmt(n) @= v::Vars = v1::Vars    => {v};
+        stmt(n) @= v::Vars = c::Ints => {v};
+        stmt(n) @= return v::Vars       => {};
+        otherwise                      => {};
+}
+
+

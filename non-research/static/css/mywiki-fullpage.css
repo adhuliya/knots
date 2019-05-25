@@ -1,0 +1,50 @@
+html,
+body {
+  height: 100%;
+  margin: 0
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.box .row {
+  border: 0px dotted grey;
+}
+
+.box .row.header {
+  flex: 0 1 auto;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+  background-color:rgba(0,0,255,0.1);
+  border-radius:4px;
+}
+
+.box .row.content {
+  flex: 1 1 auto;
+}
+
+.box .row.footer {
+  flex: 0 1 40px;
+}
+
+.hbox {
+  margin: 0px;
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+}
+
+.hbox .col {
+  max-width: 50%;
+  margin: 0px;
+  flex: 1 1 auto;
+  border: 0px dotted grey;
+}
+

@@ -1,0 +1,193 @@
+
+<title>Abstract Interpretation Answers</title>
+
+<body>
+<a href="http://pages.cs.wisc.edu/~horwitz/CS704-NOTES/SOLUTIONS/10.answers.html">Source</a>
+
+<h2 id="answers">Answers to Self-Study Questions</h2>
+
+<h3 id="ans1">Test Yourself #1</h3>
+<P>
+<b>Question 1</b>
+  <UL><IMG SRC="10.exPosetsComplete.gif" height = 250></UL>
+<P>
+<b>Question 2</b>: Show that alpha and gamma form a Galois connection.
+<P>
+First, we will show that Relationship 1 holds:
+given an arbitrary concrete element c
+(a set of int values), for every abstract element a such that
+a &gt; <font size="4">&alpha;</font>(c),
+c &sube; <font size="4">&gamma;</font>(a).
+We will do this using cases on concrete element c.
+<P>
+Case 1: c contains only positive ints.
+<UL><TABLE>
+<tr><td><font size="4">&alpha;</font>(c) = pos  <td>// def of alpha
+<tr><td>the elements of A that are &ge; pos are {pos, num}
+    <td>// def of the ordering of A
+<tr><td><font size="4">&gamma;</font>(pos) = { all positive ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all positive ints }
+    <td>// def of the (subset) ordering of C
+<tr><td><font size="4">&gamma;</font>(num) = { all ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all ints }
+    <td>// def of the (subset) ordering of C
+</TABLE></UL>
+
+<P>
+Case 2: c contains only negative ints.
+<UL><TABLE>
+<tr><td><font size="4">&alpha;</font>(c) = neg  <td>// def of alpha
+<tr><td>the elements of A that are &ge; neg are {pos, num}
+    <td>// def of the ordering of A
+<tr><td><font size="4">&gamma;</font>(neg) = { all negative ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all negative ints }
+    <td>// def of the (subset) ordering of C
+<tr><td><font size="4">&gamma;</font>(num) = { all ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all ints }
+    <td>// def of the (subset) ordering of C
+</TABLE></UL>
+
+<P>
+Case 3: c contains only 0.
+<UL><TABLE>
+<tr><td><font size="4">&alpha;</font>(c) = zero  <td>// def of alpha
+<tr><td>the elements of A that are &ge; zero are {zero, num}
+    <td>// def of the ordering of A
+<tr><td><font size="4">&gamma;</font>(zero) = { 0 }
+    <td>// def of gamma
+<tr><td>c = { 0 }
+    <td>// def of c
+<tr><td><font size="4">&gamma;</font>(num) = { all ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all ints }
+    <td>// def of the (subset) ordering of C
+</TABLE></UL>
+
+<P>
+Case 4: c is some other subset of int vaues.
+<UL><TABLE>
+<tr><td><font size="4">&alpha;</font>(c) = num  <td>// def of alpha
+<tr><td>the only element of A that is &ge; num is num
+    <td>// def of the ordering of A
+<tr><td><font size="4">&gamma;</font>(num) = { all ints }
+    <td>// def of gamma
+<tr><td>c &sube; { all ints }
+    <td>// def of the (subset) ordering of C
+</TABLE></UL>
+<P>
+Now we will show that Relationship 2 holds:
+given an arbitrary abstract element a,
+<font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a)) &le; a.
+We will do this using cases on abstract element a.
+Here is the first case:
+<P>
+Case 1: a is num.
+<UL>
+In this case, <font size="4">&gamma;</font>(a) = { set of all ints }
+(by definition of gamma), and
+<font size="4">&alpha;</font>(a) i<font size="4">&gamma;</font>(a) = num
+(by definition of alpha), which is the same as a.
+</UL>
+The other three cases (a is zero, neg, pos) are just as trivial:
+in all cases, 
+<font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a)) = a.
+We will not provide every excrutiating detail here...
+<P>
+<hr>
+<P>
+<h3 id="ans2">Test Yourself #2</h3>
+<P>
+The rule-of-signs abstract interpretation of an expression exp is
+the result of applying the abstract valuation function to exp:
+<b>E<sub>abs</sub></b>[[exp]].
+This gives us some abstract value <i>a</i>.
+Applying gamma to <i>a</i> gives us some concrete value, <i>S</i>,
+a set of (integer) values.
+<P>
+The actual meaning of the expression is the result of applying the
+standard evaluation function to exp:
+<b>E[[exp]]</b>.
+This produces a single (integer) value c -- the value of the expression.
+<P>
+What might be the relationship between c and S, and which of these possible
+relationships would we consider to be OK, i.e., in which cases would we
+say that our abstract interpretation is sound, though possibly imprecise?
+<OL>
+  <LI> S = { c }
+    <UL>
+     In this case, the abstract interpretation is sound and precise.
+    </UL>
+  <LI>  c &isin; S
+    <UL>
+     In this case, the abstract interpretation is sound, but not precise.
+    </UL>
+  <LI>  not (c &isin; S)
+    <UL>
+     In this case, the abstract interpretation is not sound.
+    </UL>
+</OL>
+{ <b>E</b>[[exp]] } &sube; <font size="4".>&gamma;</font>(<b>E<sub>abs</sub></b>[[exp]])
+only for cases 1 and 2.
+Therefore, if we can show that this relationship holds, we have shown
+that our abstract interpretation is consistent with the standard semantics.
+<P>
+<hr>
+
+<P>
+<h3 id="ans3">Test Yourself #3</h3>
+<P>
+<UL>&lambda;S.{s | s &isin; S <b>and</b> lookup(s, a) < 3}</UL>.
+
+
+<hr>
+<h3 id="ans4">Test Yourself #4</h3>
+<P>
+In the example, there were a finite number of possible execution paths
+for the given CFG. If we changed the while condition to <tt>while (1)</tt>
+or if we added a node <tt>read(n)</tt> between nodes 3 and 4 and changed
+node 4 to <tt>while (a < n)</tt>, the number of possible execution
+paths would either be infinite or could not be determined.
+This would cause the fixed-point iteration to be infinite (and thus,
+not computable).
+<hr>
+
+<h3 id="ans5">Test Yourself #5</h3>
+<P>
+We need to show that, forall a in the abstract domain A:
+<UL><font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a)) = a</UL>
+<P>
+We will prove this by cases on a.
+All cases simply use the definitions of <font size="4">&alpha;</font> and
+<font size="4">&gamma;</font>.
+<P>
+Case (1) a = &perp;
+<UL>
+<font size="4">&gamma;</font>(&perp;) = &empty;            <br>
+<font size="4">&alpha;</font>(&empty;) = &perp;
+</UL>
+So, a = <font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a))
+
+<P>
+Now, without loss of generality, we will assume that there is only one
+variable v in the program.
+<P>
+Case (2): a maps v to a constant value c.
+<UL>
+<font size="4">&gamma;</font>(a) = a set S containing a single (concrete) state that maps v to c.   <br>
+<font size="4">&alpha;</font>(S) = a single abstract state that maps v to c.
+</UL>
+So, a = <font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a))
+
+<P>
+Case (3): a maps v to ?
+<UL>
+<font size="4">&gamma;</font>(a) an infinite set S of (concrete) states
+that map v to all possible values.   <br>
+<font size="4">&alpha;</font>(S) = a single abstract state that maps v to ?.
+</UL>
+So, a = <font size="4">&alpha;</font>(<font size="4">&gamma;</font>(a))
+<hr>

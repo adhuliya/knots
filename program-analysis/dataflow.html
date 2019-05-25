@@ -1,0 +1,1286 @@
+<HTML><HEAD><TITLE>DATAFLOW ANALYSIS</TITLE></HEAD>
+
+<A NAME=top><H1>Dataflow Analysis</H1></A>
+<a href="http://pages.cs.wisc.edu/~horwitz/CS704-NOTES/2.DATAFLOW.htmlhttp://pages.cs.wisc.edu/~horwitz/CS704-NOTES/SOLUTIONS/10.answers.html">Source</a>
+
+<HR>
+<H2>Contents</H2>
+  <UL>
+  <LI> <A HREF="#motivation">Motivation</A>
+  <LI> <A HREF="#examples"> Examples of constant propagation and
+       live-variable analysis</A>
+       <UL>
+       <LI><A HREF="#youtry1"> Test Yourself #1</A>
+       </UL>
+  <LI> <A HREF="#dataflow-problem"> Defining a dataflow problem</A>
+       <UL>
+       <LI><A HREF="#youtry2"> Test Yourself #2</A>
+       </UL>
+  <LI> <A HREF="#solutions"> Solving a dataflow problem</A>
+       <UL>
+       <LI><A HREF="#MOP">MOP Solution</A>
+       <LI><A HREF="#equations">Solving a set of equations</A>
+           <UL>
+           <LI><A HREF="#youtry3"> Test Yourself #3</A>
+           </UL>
+       <LI><A HREF="#iterative"> Iterative algorithms</A>
+           <UL>
+           <LI><A HREF="#youtry4"> Test Yourself #4</A>
+           </UL>
+       <LI> <A HREF="#latticeModel"> The Lattice Model of DataflowAnalysis</A>
+            <UL>
+            <LI><A HREF="#latticeMotivation">Motivation</A>
+            <LI><A HREF="#background">Background</A>
+                <UL>
+                <LI><A HREF="#poset">Partially ordered sets</A>
+                <LI><A HREF="#lattice">Lattices</A>
+                <LI><A HREF="#monotonic">Monotonic and distributive functions</A>
+                <LI><A HREF="#fixedpoint">Fixed points</A>
+                <LI><A HREF="#newlattices">Creating new lattices from old ones</A>
+                <LI><A HREF="#latticeSummary">Summary of lattice theory</A>
+                </UL>
+            <LI><A HREF="#kildall">Kildall's Lattice Framework for Dataflow Analysis</A>
+            </UL>
+  <LI> <A HREF="#summary">Summary</A>
+  </UL>
+<HR>
+
+<P>
+<A name="motivation">
+<H1>Motivation for Dataflow Analysis</H1></A>
+<P>
+<P>
+A compiler can perform some optimizations based only on local
+information.  For example, consider the following code:
+<pre>
+x = a + b;
+x = 5 * 2;
+</pre>
+It is easy for an optimizer to recognize that:
+<UL><LI> The first assignment to x is a "useless" assignment, since
+         the value computed for x is never used (and thus the first statement
+         can be eliminated from the program).
+    <LI> The expression <em>5 * 2</em> can be computed at compile time,
+         simplifying the second assignment statement to <em>x = 10;</em>
+</UL>
+<P>
+Some optimizations, however, require more "global" information.
+For example, consider the following code:
+<pre>
+a = 1;
+b = 2;
+c = 3;
+if (...) x = a + 5;
+else x = b + 4;
+c = x + 1;
+</pre>
+In this example, the initial assignment to c (at line 3) is useless,
+and the expression <em>x + 1</em> can be simplified to 7, but it is
+less obvious how a compiler can discover these facts since they cannot
+be discovered by looking only at one or two consecutive statements.
+A more <em>global</em> analysis is needed so that the compiler knows at each
+point in the program:
+<UL><LI> which variables are guaranteed to have constant values, and
+    <LI> which variables will be used before being redefined.
+</UL>
+To discover these kinds of properties, we use <em>dataflow
+analysis</em>.
+Dataflow analysis is usually performed on the program's control-flow
+graph (CFG);
+the goal is to associate with each program component (each node of the
+CFG) information that is guaranteed to hold at that point on all
+executions.
+
+<A name="examples">
+<H1>Examples of constant propagation and live-variable
+analysis</H1></A>
+
+Below are examples illustrating two dataflow-analysis problems:
+<em>constant propagation</em> and <em>live-variable analysis</em>.
+Both examples use the following program:
+<pre>
+1.   k = 2;
+2.   if (...) {
+3.     a = k + 2;
+4.     x = 5;
+5.   } else {
+6.     a = k * 2;
+7.     x = 8;
+8.   }
+9.   k = a;
+10.  while (...) {
+11.     b = 2;
+12.     x = a + k;
+13.     y = a * b;
+14.     k++;
+15.  }
+16.  print(a+x);
+</pre>
+
+<P>
+<em><U>Constant Propagation</U></em>
+<P>
+The goal of constant propagation is to determine where in the program
+variables are guaranteed to have constant values.
+More specifically, the information computed for each CFG node n is a
+set of pairs, each of the form (variable, value).
+If we have the pair (x, v) at node n, that means that
+x is guaranteed to have value v whenever n is reached during
+program execution.
+<P>
+Below is the CFG for the example program, annotated with
+constant-propagation information.
+<P>
+<IMG SRC="DATAFLOW-AUX/CP.gif">
+<P>
+<em><U>Live-Variable Analysis</U></em>
+<P>
+The goal of live-variable analysis is to determine which variables are
+"live" at each point in the program; a variable is live if its current
+value might be used before being overwritten.  The information
+computed for each CFG node is the set of variables that are live
+immediately after that node.  Below is the CFG for the example
+program, annotated with live variable information.
+<P>
+<IMG SRC="DATAFLOW-AUX/LV.gif">
+<P>
+<hr>
+<a name=youtry1>
+<P>
+<center>
+<u><b>TEST YOURSELF #1</b></u> </center></a>
+<P>
+Draw the CFG for the following program, and annotate it with
+the constant-propagation and live-variable information that
+holds before each node.
+<pre>
+N = 10;
+k = 1;
+prod = 1;
+MAX = 9999;
+while (k &lt;= N) {
+   read(num);
+   if (MAX/num &lt; prod) { 
+      print("cannot compute prod");
+      break;
+   }
+   prod = prod * num;
+   k++;
+}
+print(prod);
+</pre>
+
+<p><a href="DATAFLOW-AUX/DATAFLOW-ANSWERS.html#ans1">solution</a></p>
+<hr>
+
+<a name="dataflow-problem">
+<H1>Defining a Dataflow Problem</H1></a>
+<P>
+Before thinking about how to define a dataflow problem, note that
+there are <em>two</em> kinds of problems:
+<UL>
+  <LI> Forward problems (like constant propagation) where the
+       information at a node n summarizes what can happen on paths from
+       "enter" to n.
+  <LI> Backward problems (like live-variable analysis), where the
+       information at a node n summarizes what can happen on paths from n
+       to "exit".
+</UL>
+
+In what follows, we will assume that we're thinking about a forward
+problem unless otherwise specified.
+<P>
+Another way that many common dataflow problems can be categorized is
+as <em>may</em> problems or <em>must</em> problems.  The solution to a
+"may" problem provides information about what <em>may</em> be true at
+each program point (e.g., for live-variables analysis, a variable is
+considered live after node n if its value <em>may</em> be used before
+being overwritten, while for constant propagation, the pair (x, v)
+holds before node n if x <em>must</em> have the value v at
+that point).
+<P>
+Now let's think about how to define a dataflow problem so that it's
+clear what the (best) solution should be.  When we do dataflow
+analysis "by hand", we look at the CFG and think about:
+<UL>
+  <LI> What information holds at the start of the program.
+  <LI> When a node n has more than one incoming edge in the CFG,
+       how to combine the incoming information (i.e., given the
+       information that holds after each predecessor of n, how to
+       combine that information to determine what holds before n).
+  <LI> How the execution of each node changes the information.
+</UL>
+<P>
+This intuition leads to the following definition.  An <em>instance of
+a dataflow problem</em> includes:
+<UL>
+  <LI> a CFG,
+  <LI> a domain D of "dataflow facts",
+  <LI> a dataflow fact "init" (the information true at the start of
+       the program for forward problems, or at the end of the program
+       for backward problems),
+  <LI> an operator &lceil;&rceil; (used to combine incoming information
+       from multiple predecessors), <LI> for each CFG node n, a dataflow
+       function <em>f<sub>n</sub> : D &rarr; D</em> (that defines the
+       effect of executing n).
+</UL>
+<P>
+For constant propagation, an individual dataflow fact is a set of
+pairs of the form (var, val), so the domain of dataflow facts is the set of
+all such sets of pairs (the power set).
+For live-variable analysis, it is the power set of the set of
+variables in the program.
+<P>
+For both constant propagation and live-variable analysis,
+the "init" fact is the empty set
+(no variable starts with a constant value, and no
+variables are live at the end of the program).
+<P>
+For constant propagation, the combining operation &lceil;&rceil; is
+set intersection.
+This is because if a node n has two predecessors, p1 and p2,
+then variable x has value v before node n iff it has value v after
+both p1 and p2.
+For live-variable analysis, &lceil;&rceil; is set
+union: if a node n has two successors, s1 and s2, then the value of x
+after n may be used before being overwritten iff that holds either
+before s1 or before s2.  In general, for "may" dataflow problems,
+&lceil;&rceil; will be some union-like operator, while it will be an
+intersection-like operator for "must" problems.
+<P>
+For constant propagation, the dataflow function associated with a CFG
+node that does not assign to any variable (e.g., a predicate) is the
+identity function.
+For a node n that assigns to a variable x, there are two possibilities:
+<OL>
+  <LI> The right-hand side has a variable that is not constant.
+       In this case, the function result is the same as its input
+       except that if variable x was constant the before n,
+       it is not constant after n.
+  <LI> All right-hand-side variables have constant values.
+       In this case, the right-hand side of the assignment is evaluated
+       producing consant-value c, and the dataflow-function result is
+       the same as its input except that it includes the pair (x, c) for
+       variable x (and excludes the pair for x, if any, that was in
+       the input).
+</OL>
+<p>
+For live-variable analysis, the dataflow function for each node n
+has the form:
+<em>f<sub>n</sub>(S) = (S - KILL<sub>n</sub>) union GEN<sub>n</sub></em>,
+where <em>KILL<sub>n</sub></em> is the set of variables defined at node n, and
+<em>GEN<sub>n</sub></em> is the set of variables used at node n.  In other
+words, for a node that does not assign to any variable, the variables
+that are live before n are those that are live after n plus those that
+are used at n; for a node that assigns to variable x, the variables
+that are live before n are those that are live after n <em>except</em>
+x, plus those that are used at n (including x if it is used at n as
+well as being defined there).
+<P>
+An equivalent way of formulating the dataflow functions for
+live-variable analysis is: <em>f<sub>n</sub>(S) = (S intersect
+NOT-KILL<sub>n</sub>) union GEN<sub>n</sub></em>, where
+<em>NOT-KILL<sub>n</sub></em> is the set
+of variables <em>not</em> defined at node n.  The advantage of this
+formulation is that it permits the dataflow facts to be represented
+using bit vectors, and the dataflow functions to be implemented using
+simple bit-vector operations (<b>and</b>
+<b>or</b>).
+<P>
+It turns out that a number of interesting dataflow problems have
+dataflow functions of this same form, where GEN<sub>n</sub> and
+KILL<sub>n</sub> are sets whose definition depends only on n, and
+the combining operator &lceil;&rceil; is either union or intersection.
+These problems are called <em>GEN/KILL</em> problems, or
+<em>bit-vector</em> problems.
+<P>
+<hr>
+<a name=youtry2>
+<P>
+<center>
+<u><b>TEST YOURSELF #2</b></u> </center></a>
+<P>
+Consider using dataflow analysis to determine which variables might be
+used before being initialized; i.e., to determine, for each point in
+the program, for which variables there is a path to that point on which
+the variable was never defined.
+Define the "may-be-uninitialized" dataflow problem by specifying:
+<UL> <LI> the domain D of "dataflow facts",
+     <LI> the operator &lceil;&rceil;,
+     <LI> the "init" dataflow fact,
+     <LI> a dataflow function for each CFG node n.
+</UL>
+Annotate the CFG for the example program from TEST YOURSELF #1 with
+the solution to the problem (the information that holds before each
+node).
+<P>
+If you did not define the may-be-uninitialized problem as a GEN/KILL
+problem, go back and do that now (i.e., say what the GEN and KILL sets
+should be for each kind of CFG node, and whether &lceil;&rceil; should
+be union or intersection).
+
+<p><a href="DATAFLOW-AUX/DATAFLOW-ANSWERS.html#ans2">solution</a></p>
+<hr>
+
+<A name="solutions">
+<H1>Solving a Dataflow Problem</H1></A>
+<P>
+A solution to an instance of a dataflow problem is a dataflow fact for
+each node of the given CFG.  But what does it mean for a solution to
+be correct, and if there is more than one correct solution, how can we
+judge whether one is better than another?
+<P>
+Ideally, we would like the information at a node to reflect what might
+happen on all possible paths to that node.  This ideal solution is
+called the <em>meet over all paths (MOP)</em> solution, and is
+discussed below.  Unfortunately, it is not always possible to compute
+the MOP solution; we must sometimes settle for a solution that
+provides less precise information.
+
+<a name="MOP">
+<H2>The "Meet Over All Paths" Solution</H2>
+<P>
+The MOP solution (for a forward problem) for each CFG node n is
+defined as follows: <UL> <LI> For every path "enter &rarr; ... &rarr;
+n", compute the dataflow fact induced by that path (by applying the
+dataflow functions associated with the nodes on the path to the
+initial dataflow fact).  <LI> Combine the computed facts (using the
+combining operator, &lceil;&rceil; ).  <LI> The result is the MOP
+solution for node n.  </UL>
+<P>
+For instance, in our running example program there are two paths from
+the start of the program to line 9 (the assignment <em>k = a</em>):
+
+<BR>&nbsp; <CENTER><TABLE BORDER=1 WIDTH=50%> <TR>
+<TH><CENTER><em>Path</em></CENTER></TH> <TH><CENTER><em>Constants
+associated w/ that path</em></CENTER></TH> </TR>
+
+<TR>
+<TH><CENTER>1 &rarr; 2 &rarr; 3 &rarr; 4 &rarr; 9</CENTER></TH>
+<TH><CENTER>k=2, a=4, x=5</CENTER></TH> </TR>
+
+<TR>
+<TH><CENTER>1 &rarr; 2 &rarr; 6 &rarr; 7 &rarr; 9</CENTER></TH>
+<TH><CENTER>k=2, a=4, x=8</CENTER></TH> </TR> </TABLE></CENTER>
+<P>
+Combining the information from both paths, we see that the MOP
+solution for node 9 is: k=2 and a=4.
+
+<P>
+It is worth noting that even the MOP solution can be overly
+conservative (i.e., may include too much information for a "may"
+problem, and too little information for a "must" problem), because not
+all paths in the CFG are executable.  For example, a program may
+include a predicate that always evaluates to <em>false</em> (e.g., a
+programmer may include a test as a debugging device -- if the program
+is correct, then the test will always fail, but if the program
+contains an error then the test might succeed, reporting that error).
+Another way that non-executable paths can arise is when two predicates
+on the path are not independent (e.g., whenever the first evaluates to
+<em>true</em> then so does the second).  These situations are
+illustrated below.
+<UL>
+  <BR><IMG SRC="DATAFLOW-AUX/UnexecutablePath.gif">
+</UL>
+<P>
+Unfortunately, since most programs include loops, they also have
+infinitely many paths, and thus it is not possible to compute the MOP
+solution to a dataflow problem by computing information for every path
+and combining that information.  Fortunately, there are other ways to
+solve dataflow problems (given certain reasonable assumptions about
+the dataflow functions associated with the CFG nodes).  As we shall
+see, if those functions are <em>distributive</em>, then the solution
+that we compute is identical to the MOP solution.  If the functions
+are <em>monotonic</em>, then the solution may not be identical to the
+MOP solution, but is a conservative approximation.
+
+<a name="equations">
+<H2>Solving a Dataflow Problem by Solving a Set of Equations</H2>
+<P>
+The alternative to computing the MOP solution directly, is to solve a
+system of equations that essentially specify that local information
+must be consistent with the dataflow functions.  In particular, we
+associate two dataflow facts with each node n:
+<OL>
+  <LI> <em>n.before</em>: the information that holds before n executes, and
+  <LI> <em>n.after</em>: the information that holds after n executes.
+</OL>
+These n.befores and n.afters are the variables of our equations,
+which are defined as follows (two equations for each node n):
+<OL>
+  <LI> n.before = &lceil;&rceil;(p1.after, p2.after, ...)<BR> where p1,
+       p2, etc are n's predecessors in the CFG (and &lceil;&rceil; is the
+       combining operator for this dataflow problem).
+  <LI> n.after = <em>f<sub>n</sub></em> ( n.before )
+</OL>
+In addition, we have one equation for the enter node:
+<UL>
+  <LI> enter.after = init (recall that "init" is part of the specification
+       of a dataflow problem)
+</UL> These equations make intuitive sense: the dataflow
+information that holds before node n executes is the combination of
+the information that holds after each of n's predecessors executes,
+and the information that holds after n executes is the result of
+applying n's dataflow function to the information that holds before n
+executes.
+<P>
+One question is whether, in general, our system of equations will have
+a unique solution.  The answer is that, in the presence of loops,
+there may be multiple solutions.  For example, consider the simple
+program whose CFG is given below:
+<P>
+<CENTER>
+<BR><IMG SRC = "DATAFLOW-AUX/mult-solution.gif"> </CENTER>
+<P>
+The equations for constant propagation are as follows (where
+&lceil;&rceil; is the intersection combining operator):
+<UL>
+  enter.after = empty set <BR>
+  1.before = enter.after <BR>
+  1.after = 1.before - (x, *) union (x, 2) <BR>
+  2.before = 1.after <BR>
+  2.after = if (x, c) is in 2.before then 2.before - (y, *) union (y, c), else 2.before - (y, *)<BR>
+  3.before = &lceil;&rceil;(2.after, 4.after ) <BR>
+  3.after = 3.before <BR>
+  4.before = 3.after <BR>
+  4.after = 4.before
+</UL>
+Because of the cycle in the example CFG, the equations for
+<em>3.before</em>, <em>3.after</em>, <em>4.before</em>, and
+<em>4.after</em> are mutually recursive, which leads to the
+four solutions shown below (differing on those four values).
+<P>
+<CENTER><TABLE BORDER WIDTH=50%>
+<TR>
+ <TD><CENTER><em>Variable</em></CENTER></TD>
+ <TD><CENTER><em>Solution 1</em></CENTER></TD>
+ <TD><CENTER><em>Solution 2</em></CENTER></TD>
+ <TD><CENTER><em>Solution 3</em></CENTER></TD>
+ <TD><CENTER><em>Solution 4</em></CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>1.before</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>1.after</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>2.before</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>2.after</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>3.before</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>3.after</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>4.before</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+</TR>
+
+<TR>
+ <TD><CENTER>4.after</CENTER></TD>
+ <TD><CENTER>{ }</CENTER></TD>
+ <TD><CENTER>{(x, 2)}</CENTER></TD>
+ <TD><CENTER>{(y, 2)}</CENTER></TD>
+ <TD><CENTER>{(x, 2) (y, 2)}</CENTER></TD>
+</TR>
+</TABLE></CENTER>
+<P>
+The solution we want is solution 4, which includes the most constant
+information.  In general, for a "must" problem the desired solution
+will be the largest one, while for a "may" problem the desired
+solution will be the smallest one.
+<P>
+<hr>
+<a name=youtry3>
+<P>
+<center>
+<u><b>TEST YOURSELF #3</b></u> </center></a>
+<P>
+Using the simple CFG given above, write the equations for
+live-variable analysis, as well as the greatest and least solutions.
+Which is the desired solution, and why?
+
+<p><a href="DATAFLOW-AUX/DATAFLOW-ANSWERS.html#ans3">solution</a></p>
+
+<hr>
+<P>
+Many different algorithms have been designed for solving a dataflow
+problem's system of equations.  Most can be classified as either
+<em>iterative algorithms</em> or <em>elimination</em> algorithms.
+These two classes of algorithms are discussed in the next two
+sections.
+
+<a name="iterative">
+<H2>Iterative Algorithms</H2>
+<P>
+Most of the iterative algorithms are variations on the following
+algorithm (this version is for forward problems).
+It uses a new value T (called "top").  T has the property
+that, for all dataflow facts d, T &lceil;&rceil; d = d.
+Also, for all dataflow functions, <em>f</em><sub>n</sub>(T) = T.
+(When we consider the lattice model for dataflow analysis we will see
+that this initial value is the top element of the lattice.)
+
+<UL>
+  <LI> <em>Step 1 (initialize n.afters)</em>: <BR>
+       Set enter.after = init.  Set all other n.after to T.
+  <LI> <em>Step 2 (initialize worklist)</em>: <BR>
+       Initialize a worklist to contain all CFG nodes except enter
+       and exit.
+  <LI> <em>Step 3 (iterate)</em>: <BR>
+       While the worklist is not empty:
+       <UL> Remove a node n from the worklist.  <BR>
+            Compute n.before by combining all p.after such that p
+	    is a predecessor of n in the CFG.  <BR> Compute
+	    tmp = <em>f<sub>n</sub></em> ( n.before ) <BR>
+	    If (tmp != n.after) then
+	    <UL> Set n.after = tmp <BR>
+	         Put all of n's successors on the worklist
+	    </UL>
+       </UL>
+</UL>
+<P>
+<hr>
+<a name=youtry4>
+<P>
+<center>
+<u><b>TEST YOURSELF #4</b></u> </center></a>
+<P>
+Run this iterative algorithm on the simple CFG given above (the one with
+a loop) to solve the constant propagation problem.
+Run the algorithm again on the example CFG from the
+<A HREF="#examples">examples</A> section of the notes.
+<hr>
+<P>
+This algorithm works regardless of the order in which nodes are
+removed from the worklist.  However, that order can affect the
+efficiency of the algorithm.  A number of variations have been
+developed that involve different ways of choosing that order.
+When we consider the lattice model, we will revisit the question of
+complexity.
+
+<a name="latticeModel">
+<H2>The Lattice Model of Dataflow Analysis</H2></A>
+
+<A name="latticeMotivation">
+<H3>Motivation</H3></A>
+Recall that while we would like to compute the meet-over-all-paths (MOP)
+solution to a dataflow problem, direct computation of that solution
+(by computing and combining solution for every path) is usually not
+possible.
+Therefore, dataflow problems are usually solved by finding a solution
+to a set of equations that define two dataflow facts (n.before and n.after)
+for each CFG node n.
+<P>
+Three important questions are:
+<OL>
+  <LI> How do we know that a solution to the equations exists?
+  <LI> If there is more than one solution, which one do we want?
+  <LI> How does the equation solution relate to MOP solution?
+</OL>
+<P>
+The answers are provided by the framework first defined by Kildall.
+The next section provides background on lattices;
+the section after that presents Kildall's framework.
+
+<A name="background">
+<H3>Background</H3></A>
+
+<A name="poset">
+<H4><u>Partially ordered sets</u></H4></A>
+<P>
+<b>Definition:</b>
+<UL>
+  A <b>partially ordered set </b> (poset) is a set S that has a
+  partial ordering &sube; , such that the ordering is:
+    <OL>
+  	<LI> <u>Reflexive:</u> for all x in S, x &sube; x
+  	<LI> <u>Anti-Symmetric:</u> for all x,y in S, x &sube; y and 
+  	     y &sube; x implies x = y
+  	<LI> <u>Transitive:</u> for all x,y,z in S, x &sube; y and y &sube; z
+  	     implies x &sube; z
+    </OL>
+  <P>
+  Note: "partial" means it is <em>not</em> necessary that for all x,y in S,
+  either x &sube; y or y &sube; x.
+  It is OK for a pair of set elements to be incomparable.
+</UL>
+
+Below are some examples of sets with orderings;
+some are partially ordered sets and some are not.
+<P>
+<b>Example 1:</b>
+The set S is the set of English words, and the ordering &sube; is
+substring (i.e., w1 &sube; w2 iff w1 is a substring of w2).
+Here is a picture of some words and their ordering (having an
+edge w1 &rarr; w2 means w1 > w2).
+
+<pre>
+                         candy                  then
+                         /    \                /    \
+                         v     v              v      v
+                annual  and   can            the   hen
+                     \   |    /                \   /
+                      \  |   /                  v v
+                       v v  v                    he
+                         an
+                         |
+                         v
+                         a
+
+</pre>
+Note that the "substring" ordering does have the three properties
+required of a partial order:
+<OL>
+  <LI> It is reflexive (since every word is a substring of itself).
+  <LI> It is anti-symmetric (since if two words are substrings
+       of each other, then they must be the same).
+  <LI> It is transitive (since a substring of a substring of a word
+       is also a substring of the word).
+</OL>
+<P>
+<b>Example 2</b>:
+S is the set of English words, and the ordering &sube; is
+"is shorter than or equal to in length".
+<pre>
+                candy
+                  |
+                  v
+           ____ then
+          /    /  |  \
+          v   v   v   v
+         can and the hen
+           \  \   /   /
+            \  \ /   /
+             v v v   v
+               an
+                |
+                v
+                a
+</pre>
+Does this ordering have the three properties?
+<OL>
+  <LI> Reflexive: yes.
+  <LI> Anti-Symmetric: NO
+       (Counter-example: "and" and "the" have the same length, but
+       are <em>not</em> the same word.)
+  <LI> Transitive: yes.
+</OL>
+Two out of three isn't good enough -- this is <b>not</b> a poset.
+<P>
+
+<b>Example 3</b>:
+S is the set of integers, and the ordering &sube; is "less than or equal to".
+This <b>is</b> a poset (try verifying each of the three properties).
+<P>
+
+<b>Example 4</b>:
+S is the set of integers and the ordering &sube; is "strictly less than".
+This is <b>not</b> a poset, because the ordering is not reflexive.
+<P>
+
+<b>Example 5</b>:
+S is the set of all sets of letters and the ordering is subset.
+This <b>is</b> a poset.
+<P>
+
+<A name="lattice">
+<H4><u>Lattices</u></H4></A>
+<P>
+<b>Definition:</b>
+<UL>
+  A <b>lattice </b> is a poset in which every pair of elements has:
+  <OL>
+    <LI> a <u>Least Upper Bound</u> (the <em>join</em> of the
+         two elements), and
+    <LI> a <u>Greatest Lower Bound </u> (the <em>meet</em> of the two
+         elements).
+  </OL>
+</UL>
+
+The join of two elements x and y is defined to be the element z such that:
+<OL>
+  <LI> x &sube; z, and
+  <LI> y &sube; z, and
+  <LI> for all w such that x &sube; w and y &sube; w, w &supe; z.
+</OL>
+The first two rules say that z actually is an upper bound for
+x and y, while the third rule says that z is the <em>least</em>
+upper bound.
+Pictorially:
+<pre>
+        z
+       / \              z is the least upper bound of x and y
+      v   v
+      y   x 
+
+       z  w
+       |\/|
+       |/\|             z is NOT the least upper bound of x and y
+       vv vv            (they have NO least upper bound)
+       y  z     
+</pre>
+
+The idea for the meet operation is similar, with the reverse orderings.
+
+<H5>Examples:</H5>
+<UL>
+  <LI> Example 1 above (English words, ordered by "substring")
+       is <b>not</b> a lattice.
+       (For instance, "a" and "he" have no meet.)
+  <LI> Example 3 above (integers, ordered by "less than or equal to")
+       <b>is</b> a lattice.  The meet operator is  "min"
+       and the join operator is "max".
+  <LI> Example 5 above (sets of letters, ordered by subset)
+       <b>is</b> a lattice.  The meet operator is intersection
+       and the join operator is union.
+</UL>
+
+<A name="complete lattice">
+<H4><u>Complete lattices</u></H4></A>
+<b>Definition: </tt></b>
+<UL>
+  A <B>complete lattice </b> is a lattice in which all <em>subsets</em> have
+  a greatest lower bound and a least upper bound (the bounds must be in
+  the lattice, but not necessarily in the subsets themselves).
+</UL>
+<P>
+Note: Every finite lattice (i.e., S is finite) is complete.
+<P>
+<h4> Examples:</h4>
+<UL>
+  <LI> Example 3 above (integers, ordered by "less than or equal to")
+       is <b>not</b> a complete lattice.
+       The set of all positive numbers is a subset of S;
+       it has a lower bound but no upper bound.
+       <BR>
+       The set of all even numbers is a subset of S;
+       it has neither an upper nor a lower bound.
+  <LI> The set: {1, 1/2, 1/4, 1/8, ... 0} with the usual numeric ordering
+       is an example of an <em>infinite</em> complete lattice.
+</UL>
+<P>
+Note: Every complete lattice has a greatest element, "Top" (written
+as a capital T) and a least
+element "Bottom" (written as an upside-down capital T).
+They are the least-upper and the
+greatest-lower bounds of the entire underlying set S.
+
+<A name="monotonic">
+<H4><u>Monotonic and distributive functions</u></H4></A>
+<b>Definition:</b>
+<UL> 
+  A function f: L &rarr; L (where L is a lattice)
+  is <B>monotonic</B> iff for all x,y in L:
+  x &sube; y implies f(x) &sube; f(y).
+</UL>
+
+<b>Definition:</b>
+<UL> 
+  A function f: L &rarr; L (where L is a lattice)
+  is <B>distributive</B> iff for all x,y in L:
+  f(x meet y) = f(x) meet f(y).
+</UL>
+
+<P>
+Every distributive function is also monotonic (proving that could
+be good practice!) but not vice versa.
+For the GEN/KILL dataflow problems, all dataflow functions are
+distributive.
+For constant propagation, all functions are monotonic, but not
+all functions are distributive.
+For example, the dataflow function f associated with this assignment
+<UL>
+x = a + b
+</UL>
+is not distributive.
+To see this, first recall that function f is defined as follows:
+<UL>
+<table>
+<tr><td>f(S) = <td>if S == T then T
+<tr><td>       <td>else if (a, v1) in S and (b, v2) in S then S - (x,*) + (x, v1+v2)
+<tr><td>       <td>else S - (x,*)
+</table>   
+</UL>
+i.e., if f is applied to the special "top" value, then the result is T;
+otherwise, if both a and b are constant, then x is set to have the
+value of a+b (and its old value, if any, is removed from the
+set of pairs);
+otherwise, x's old value, if any, is removed from the
+set of pairs.
+</UL>
+Now consider the following two sets:
+<UL>
+S1 = { (a,1) (b,2) }
+S2 = { (a,2) (b,1) }
+</UL>
+The meet of S1 and S2 is { }
+So f(S1 meet S1) is { }.
+However, if we apply f to S1 and S2 and <emph>then</emph> take the meet
+we get this:
+<UL>
+f(S1) = {(a,1)(b,2)(x,3)} <BR>
+f(S1) = {(a,2)(b,1)(x,3)} <BR>
+f(S1) meet f(S2) = {(x,3)}
+</UL>
+<A name="fixedpoint">
+<H4><u>Fixed points</u></H4>
+<b>Definition:</b>
+<UL> 
+  x is a <B>fixed point </b> of function f iff f(x) = x.
+</UL>
+<P>
+
+<h4>Examples:</h4>
+Let L be the lattice whose elements are sets of letters (as above).
+Here are the fixed points for the functions we considered above:
+<OL>
+  <LI> f(S) = S union {a}
+       <br>
+       This function has many fixed points: all sets that contain 'a'.
+  <LI> f(S) = if sizeof(S) &le; 3 then S else empty-set
+       <br>
+       The fixed points for this function are all
+       sets of size less than or equal to 3
+  <LI> f(S) = S - {a}
+       <br>
+       The fixed points for this function are all
+       sets that do <em>not</em> contain 'a'.
+</OL>
+As an example of a function that has no fixed point, consider
+the lattice of integers with the usual "less than or equal to"
+ordering.
+The function: f(x) = x+1 has no fixed point.
+
+<P>
+Here is an important theorem about lattices and monotonic functions:
+<P>
+<b>Theorem:</b>
+<UL> 
+  If L is a complete lattice and f: L &rarr; L is monotonic, then:
+  <UL>
+    <LI> f has at least one fixed point.
+    <LI> f's fixed points themselves form a (complete) lattice. (i.e.
+         there exist greatest and least fixed points).
+    <LI> If L has no infinite descending chains, then the greatest
+         fixed point of f can be found by iterating:
+         <UL>
+            f(T), f(f(T)), f(f(f(T))), ... 
+         </UL>
+         until a fixed point is found (i.e., two successive values are
+         the same).  (Note that "T" means L's top element.)
+    <LI> Similarly, if L has no infinite ascending chains, then the least
+         fixed point of f can be found by iterating
+	 <UL>
+	   f(bottom), f(f(bottom)) ...
+	 </UL>
+	 until a fixed point is found.
+  </UL>
+</UL>
+
+<h4>Examples</H4>
+L is our usual lattice of sets of letters, with set union for the join.
+<OL>
+  <LI> f(S) = S U {a}
+       <br>
+       Recall that f <em>is</em> monotonic.
+       The greatest fixed point of f is the set of all letters: {a, b, ..., z}.
+       That is also the top element of the lattice, so we find the
+       greatest fixed point in just one iteration:
+       <UL>
+         f(T) = T
+       </UL>
+       The bottom element is the empty set.
+       If we apply f to that we get the set {a}.
+       f({a}) = {a}, and we've found the least fixed point.
+       Other fixed points are any set of letters that contains a.
+  <P>
+  <LI> f(S) = if size(S) &le; 3 then S else {}
+       <br>
+        Recall that this function f is <em>not</em> monotonic.
+        It has no greatest fixed point.
+        It does have a least fixed point (the empty set).
+        Other fixed points are sets of letters with size &le; 3.
+</OL>
+
+<A name="newlattices">
+<H4><u>Creating new lattices from old ones</u></H4></A>
+<P>
+We can create new lattices from old ones using <em>cross-product</em>:
+if L1, L2, ..., Ln are lattices, then so is the cross-product
+of L1, L2, ..., Ln (which we can write as: L1 x L2 x ... x Ln).
+The elements of the cross-product are tuples of the form:
+   <UL>
+       &lt;e<sub>1</sub>, e<sub>2</sub>, ... , e<sub>n</sub>>
+   </UL>
+   such that value e<sub>k</sub> belongs to lattice Lk
+   <P>
+   The ordering is element-wise:
+     &lt;e<sub>1</sub>, e<sub>2</sub>, ..., e<sub>n</sub>> &sube;
+     &lt;e<sub>1</sub>', e<sub>2</sub>', ..., e<sub>n</sub>'> iff:
+     <UL>
+            e<sub>1</sub> &sube; e<sub>1</sub>' and
+       <br> e<sub>2</sub> &sube; e<sub>2</sub>', and
+       <br> ..., and
+       <br> e<sub>n</sub> &sube; e<sub>n</sub>'
+     </UL>
+<P>
+If L1, L2, ..., Ln are <em>complete</em> lattices, then so is their
+cross-product.
+The top element is the tuple that contains the top elements
+of the individual lattices:
+&lt;top of L1, top of L2, ... , top of Ln>, and the
+bottom element is the tuple that contains the bottom elements of
+the individual lattices:
+&lt;bottom of L1, bottom of L2, ... , bottom of Ln>.
+
+<A name="latticeSummary">
+<H4><u>Summary of lattice theory</u></H4>
+<UL>
+<LI><b>poset</b>: a partially ordered set, includes a set of elements S and a
+	   partial ordering &sube;
+<LI><b>lattice</b>: a poset with meet and join for every pair of elements
+<LI><b>complete lattice</b>:
+	a lattice with meet and join for all subsets of S
+<LI><b>monotonic functions</b>: x &sube; y implies f(x) &sube; f(y)
+<LI><b>fixed points</b>:
+        x is a fixed point of function f (of type L&rarr;L) iff x = f(x). <br>
+	If L is a complete lattice and f is monotonic,
+	then f has a greatest and a least fixed point. <br>
+	If L has no infinite descending chains then we can compute the
+	greatest fixed point of f via iteration ( f(T), f(f(T)) etc.)
+</UL>
+
+<A name="kildall">
+<H3>Kildall's Lattice Framework for Dataflow Analysis</H3>
+<P>
+Recall that our informal definition of a dataflow problem included:
+<UL>
+  <LI> a domain D of "dataflow facts",
+  <LI> a dataflow fact "init" (the information true at the
+       start of the program),
+  <LI> an operator &lceil;&rceil;  (used to combine incoming information from
+       multiple predecessors),
+  <LI> for each CFG node n, a dataflow function
+       <em>f<sub>n</sub> : D &rarr; D</em>
+       (that defines the effect of executing n)
+</UL>
+and that our goal is to solve a given instance of the problem
+by computing "before" and "after" sets for each node of the control-flow
+graph.
+A problem is that, with no additional information about the domain D, the
+operator &lceil;&rceil; , and the dataflow functions f<sub>n</sub>, we can't say, in
+general, whether a particular algorithm for computing the before and
+after sets works correctly (e.g., does the algorithm always halt?
+does it compute the MOP solution?  if not, how does the computed solution
+relate to the MOP solution?).
+<P>
+Kildall addressed this issue by putting some additional requirements
+on D, &lceil;&rceil; , and f<sub>n</sub>.
+In particular he required that:
+<OL>
+  <LI> D be a <em>complete lattice</em> L such that for any
+       <em>instance</em> of the dataflow problem, L has no
+       infinite descending chains.
+  <LI> &lceil;&rceil;  be the lattice's meet operator.
+  <LI> All f<sub>n</sub> be <em>distributive</em>.
+</OL>
+He also required (essentially) that the iterative algorithm initialize
+n.after (for all nodes n other than the enter node) to the lattice's
+"top" value.
+(Kildall's algorithm is slightly different from the iterative algorithm
+presented here, but computes the same result.)
+<P>
+Given these properties, Kildall showed that:
+<UL>
+  <LI> The iterative algorithm always terminates.
+  <LI> The computed solution is the MOP solution.
+</UL>
+It is interesting to note that, while his theorems are correct,
+the example dataflow problem that he uses (constant propagation)
+does <em>not</em> satisfy his requirements;
+in particular, the dataflow functions for constant propagation
+are not distributive (though they are monotonic).
+This means that the solution computed by the iterative algorithm
+for constant propagation will not, in general be the MOP solution.
+Below is an example to illustrate this:
+<pre>
+         1: enter
+           |
+	   v
+	 2: if (...)
+	/        \
+       v          v
+   3: a = 2     4: a = 3
+       |          |
+       v          v
+   5: b = 3     6: b = 2
+         \     /
+	  v   v
+        7: x = a + b
+            |
+	    v
+	8: print(x)
+</pre>
+The MOP solution for the final print statement includes the pair (x,5),
+since x is assigned the value 5 on both paths to that statement.
+However, the greatest solution to the set of equations for this program
+(the result computed using the iterative algorithm) finds that
+x is not constant at the print statement.
+This is because the equations require that n.before be the
+meet of m.after for all predecessors m;
+in particular, they require that the
+"before" set for node 7 (x = a + b) has empty, since
+the "after" sets of the two predecessors have (a,2), (b,3),
+and (a,3), (b,2), respectively, and the intersection of
+those two sets is empty.
+Given that value for 7.before, the equations require that
+7.after (and 8.before) say that x is not constant.
+We can only discover that x is constant after node 7 if both a and b
+are constant before node 7.
+<P>
+In 1977, a paper by Kam and Ullman (Acta Informatica 7, 1977)
+extended Kildall's results to show that,
+given monotonic dataflow functions:
+<UL>
+  <LI> The solutions to the set of equations form a lattice.
+  <LI> The solution computed by the iterative algorithm
+       is the <em>greatest</em> solution
+       (using the lattice ordering).
+  <LI> If the functions are monotonic but not distributive, then the
+       solution computed by the iterative algorithm may
+       be less than the MOP solution (using the lattice ordering).
+</UL>
+<P>
+To show that the iterative algorithm computes the greatest
+solution to the set of equations, we can "transform" the
+set of equations into a single, monotonic function L &rarr; L
+(for a complete lattice L) as follows:
+<P>
+Consider the right-hand side of each equation to be a "mini-function".
+For example, for the two equations:
+<UL>
+  n<sub>3</sub>.before = n<sub>1</sub>.after meet n<sub>2</sub>.after
+  <br>n<sub>3</sub>.after = f<sub>3</sub>( n<sub>3</sub>.before )
+</UL>
+The two mini-functions, g<sub>11</sub> and g<sub>12</sub> are:
+<UL>
+  g<sub>11</sub>(a, b) = a meet b
+  <br>g<sub>12</sub>(a) = f<sub>3</sub>( a )
+</UL>
+<P>
+Define the function that corresponds to all of the equations to be:
+<UL>
+  f( &lt;n<sub>1</sub>.before,n<sub>1</sub>.after,n<sub>2</sub>.before,n<sub>2</sub>.after ...> ) =
+  &lt;g<sub>11</sub>(..),g<sub>12</sub>(...),g<sub>21</sub>(..), g<sub>22</sub>(...),...>
+</UL>
+Where the (...)s are replaced with the appropriate arguments to those
+mini-functions.  In other words, function f takes one argument that is
+a tuple of values.  It returns a tuple of values, too.  The returned
+tuple is computed by applying the mini-functions associated with each
+of the dataflow equations to the appropriate inputs (which are part
+of the tuple of values that is the argument to function f).
+<P>
+Note that every <I>fixed point</I> of f is a solution to the set of
+equations!
+We want the greatest solution. (i.e., the greatest fixed point)
+To guarantee that this solution exists we need to know that:
+<OL>
+  <LI> the type of f is L&rarr;L, where L is a complete lattice
+  <LI> f is monotonic
+</OL>
+<P>
+To show (1), note that the each individual value in the tuple
+is an element of a complete lattice. (That is required by Kildall's
+framework.)
+So since cross product (tupling) preserves completeness,
+the tuple itself is an element of a complete lattice.
+<P>
+To show (2), note that the mini-functions that define each
+n.after value are monotonic (since those are the dataflow
+functions, and we've required that they be monotonic).
+It is easy to show that the
+mini-functions that define each n.before value are monotonic, too.
+<P>
+For a node n with k predecessors, the equation is:
+<UL>
+  n.before = m<sub><font size=-2>1</font></sub>.after meet m<sub><font size=-2>2</font></sub>.after meet ... meet m<sub><font size=-2>k</font></sub>.after
+</UL>
+and the corresponding mini-function is:
+<UL>
+  f(a<sub><font size=-2>1</font></sub>, a<sub><font size=-2>2</font></sub>, ..., a<sub><font size=-2>k</font></sub>) = a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub> meet ... meet a<sub><font size=-2>k</font></sub>
+</UL>
+We can prove that these mini-functions are monotonic by induction on k.
+<P>
+<U>base case k=1</U>
+<UL>
+  f(a<sub><font size=-2>1</font></sub>) = a<sub><font size=-2>1</font></sub>
+  <P>
+  We must show that given: a &sube; a', f(a) &sube; f(a').
+  <P>
+  For this f, f(a) = a, and f(a') = a', so this f is monotonic.
+</UL>
+
+<P>
+<U>base case k=2</U>
+<UL>
+  f(a<sub><font size=-2>1</font></sub>, a<sub><font size=-2>2</font></sub>) = a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>
+  <P>
+  We must show that given: a<sub><font size=-2>1</font></sub> &sube; a<sub><font size=-2>1</font></sub>' and a<sub><font size=-2>2</font></sub> &sube; a<sub><font size=-2>2</font></sub>',
+f(a<sub><font size=-2>1</font></sub>, a<sub><font size=-2>2</font></sub>) &sube; f(a<sub><font size=-2>1</font></sub>', a<sub><font size=-2>2</font></sub>').
+  <UL>
+    <LI> by the definition of meet we know that:
+      <UL> (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>1</font></sub> , and
+      </UL>
+      <UL> (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>2</font></sub> 
+      </UL>
+    <LI> by the transitivity of &sube; we know that:
+      <UL> (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>1</font></sub> &sube; a<sub><font size=-2>1</font></sub>' implies (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>1</font></sub>', and
+      </UL>
+      <UL>(a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>2</font></sub> &sube; a<sub><font size=-2>2</font></sub>' implies (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) &sube; a<sub><font size=-2>2</font></sub>'
+      </UL>
+    <LI>so (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) is a lower bound for both a<sub><font size=-2>1</font></sub>' and for a<sub><font size=-2>2</font></sub>'
+    <LI>since (a<sub><font size=-2>1</font></sub>' meet a<sub><font size=-2>2</font></sub>') is (by definition) the <em>greatest</em>
+        lower bound of a<sub><font size=-2>1</font></sub>' and a<sub><font size=-2>2</font></sub>', it must be that all other lower bounds
+        are less; in particular: (a<sub><font size=-2>1</font></sub> meet a<sub><font size=-2>2</font></sub>) must be &sube; (a<sub><font size=-2>1</font></sub>' meet a<sub><font size=-2>2</font></sub>').
+  </UL>
+</UL>
+
+<P>
+<U>Induction Step</U></LI>
+<P>
+Assume that for all k &lt; n
+<UL>
+  a<sub>1</sub> &sube; a<sub>1</sub>'
+  and a<sub>2</sub> &sube; a<sub>2</sub>'
+  and ... and a<sub>n-1</sub> &sube; a'<sub>n-1</sub> =>
+  <BR>f(&lt;a<sub>1</sub>, ..., a<sub>n-1</sub>) &sube; f(&lt;a<sub>1</sub>',... a'<sub>n-1</sub>>)
+</UL>
+Now we must show the same thing for k=n
+<UL>
+  <LI> f( &lt;a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub> >) = a<sub>1</sub> meet a<sub>2</sub> meet ... meet a<sub>n</sub> =
+       f( &lt;a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n-1</sub> >) meet a<sub>n</sub>
+
+  <LI> let x = f(&lt;a<sub>1</sub>,. .... a<sub>n-1</sub>>)
+
+  <LI> let x'= f(&lt;a<sub>1</sub>',. .... a<sub>n-1</sub>'>)
+
+  <LI> the induction hypothesis says: x &sube; x'
+       <BR> we need to show: x meet a<sub>n</sub> &sube; x' meet a<sub>n</sub>'
+
+  <LI> this is true by the base case k=2!
+</UL>
+
+<P>
+Given that all the mini-functions are monotonic, it is easy to show that
+f (the function that works on the tuples that represent the nodes'
+before and after sets) is monotonic;
+i.e., given two tuples:
+<OL> t1 =  &lt;e<sub>1</sub>, e<sub>2</sub>, ..., e<sub>n</sub>>, and <BR>
+     t2 = &lt;e<sub>1</sub>', e<sub>2</sub>', ..., e<sub>n</sub>'>
+</OL>
+such that: t1 &sube; t2, we must show f(t1)  &sube; f(t2).
+Recall that, for a cross-product lattice, the ordering is element-wise;
+thus, t1 &sube; t2 means: e<sub>k</sub> &sube; e<sub>k</sub>', for all k.
+We know that all of the mini-functions g are monotonic, so for all k,
+g<sub>k</sub>(e<sub>k</sub>) &sube; g<sub>k</sub>(e<sub>k</sub>').
+But since the ordering is element-wise, this is exactly what it means for
+f to be monotonic!
+<P>
+We now know:
+<UL>
+  <LI>f is a monotonic function of type L&rarr;L
+  <LI>L is a complete lattice with no infinite descending chains
+</UL>
+<P>
+Therefore:
+<UL>
+  <LI>f has a greatest fixed point
+  <LI>It can be computed using f(T), f(f(T)), ...
+</UL>
+This is not quite what the iterative algorithm does,
+but it is not hard to see that it is equivalent to one that does
+just this: initialize
+all n.before and n.after to top, then on each iteration,
+compute <em>all</em> of the "mini-functions" (i.e., recompute
+n.before and n.after for <em>all</em> nodes) simultaneously,
+terminating when there is no change.
+The actual iterative algorithm presented here is an optimization
+in that it only recomputes n.before and n.after for a node n
+when the "after" value of some predecessor has changed.
+
+
+<a name="summary">
+<H1>SUMMARY</H1>
+Given:
+   <UL>
+     <LI>A CFG,
+     <LI>a domain of "dataflow facts" (a complete lattice L),
+     <LI>a monotonic dataflow function for each CFG node, and
+     <LI>an initial dataflow fact (an element of L)
+   </UL>
+the goal of dataflow analysis is to compute a "dataflow fact"
+(an element of L) for each CFG node.
+Ideally, we want the MOP (meet over all paths) solution, in which
+the fact at node n is the combination of the facts induced by all paths to n.
+However, for CFGs with cycles, it is not possible to compute this solution
+directly.
+<P>
+Another approach to solving a dataflow problem is to solve a system
+of equations that relates the dataflow facts that hold before each
+node to the facts that hold after the node.
+<P>
+Kildall showed that if the dataflow functions are distributive,
+then the (original version of the)
+iterative algorithm always terminates,
+and always finds the MOP solution.
+Kam and Ullman later showed that if the dataflow functions are
+monotonic then the iterative algorithm always finds the
+greatest solution to the set of equations.
+They also showed that if the functions are monotonic but not
+distributive, then that solution is not always the same as
+the MOP solution.
+It is also true that the
+greatest solution to the system of equations is always
+an approximation to the MOP solution (i.e.,
+may be lower in the lattice of solutions).
+
