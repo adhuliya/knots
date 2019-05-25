@@ -7,6 +7,22 @@ Important Files
 
 FAQs
 ---------------------
+### How to download a ditto local copy of a webpage?
+
+    wget -E -H -k -K -p <web-page-addr>
+
+I have created a python script that does this easily. Just do,
+
+    mywget page <web-page-addr>
+
+### How to download a ditto local copy of a website?
+
+    wget -r -E -k -K -p --level=7 <web-site-addr>
+
+I have created a python script that does this easily. Just do,
+
+    mywget website <web-page-addr>
+
 ### How to send get request?
 
     wget -S --header="Accept-Encoding: gzip, deflate" \

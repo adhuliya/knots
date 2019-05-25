@@ -1,5 +1,6 @@
 Knotes
 ====================
+(Pronounced: *knots*)
 
 [`Tasks`](tasks.html)
 
