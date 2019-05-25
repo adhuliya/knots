@@ -18,9 +18,10 @@ ToDo
 * Look at backward type analysis to help points-to analysis
 * Plan course work for June 2 lecture
 * Dynamically load a C/C++ module. (try [tldp.org](http://www.tldp.org/HOWTO/html_single/C++-dlopen/))
-* Download a ditto copy of a website/webpage
 * Make notes on managing python virtual environment (create, use, [duplicate](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv))
 * Look at <https://moz.com/robots.txt>. Use similar concept to manage your git repos automatically.
+* note useful operations in git
+* make `knotes` a git repo
 
 
 
@@ -28,6 +29,7 @@ Completed
 ------------
 <a name="completed"></a>
 
+* [Download a ditto copy of a website/webpage](webdev/wget.html)
 * Correct link hover behavior in the [`Knote`](/knote.html) system
 * Install system monitor [`conky`](https://wiki.archlinux.org/index.php/conky#Config_file_syntax_changed).
 * Write and uderstand Prof. Raghavan's proof template.
