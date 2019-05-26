@@ -8,6 +8,7 @@ Important Files
 FAQs
 ---------------------
 ### How to download a ditto local copy of a webpage?
+<a name="ditto"></a>
 
     wget -E -H -k -K -p <web-page-addr>
 

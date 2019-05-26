@@ -12,7 +12,6 @@ ToDo
 * Sparc Instructions -- add notes in five phases 1/5
 * Sparc Register set -- add notes in three phases 1/3
 * Write distinct claims for SPAN.
-* Write liveness example where it improves precision
 * Look at backward type analysis to help points-to analysis
 * Plan course work for June 2 lecture
 * Dynamically load a C/C++ module. (try [tldp.org](http://www.tldp.org/HOWTO/html_single/C++-dlopen/))

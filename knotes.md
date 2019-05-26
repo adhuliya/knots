@@ -3,12 +3,13 @@ Knotes
 (Pronounced: *knots*)
 
 [`Tasks`](tasks.html)
+[`markdown syntax`](webdev/markdown.html)
 
 Index
 --------
 1. [Health](#health)
 2. [Compilers/Research](#compilers)
-2. [WebDev](#webdev)
+3. [WebDev](#webdev)
 4. [Projects](#projects)
 5. [Money](#money)
 6. [Extra Curricular](#extra)
@@ -21,8 +22,11 @@ Health <a name="health"></a>
 
 Compilers/Research <a name="compilers"></a>
 ------------------------
-[`Program Analysis`](program-analysis/index.html)
+[`Math Notes`](math/math.html)
+[`Program Analysis`](program-analysis/pa.html)
 [`Compiler Construction`](compilers/index.html)
+
+[`latex notes`](latex/latex.html)
 
 WebDev <a name="webdev"></a>
 -------------------------
