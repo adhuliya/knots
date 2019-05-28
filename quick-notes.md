@@ -3798,3 +3798,22 @@ sanjose issue <a name="20190506-234626"></a>
 ------------------------------------------------
 
 
+
+
+
+------------------------------------------------
+SERI Abstarct <a name="20190527-104137"></a>
+================================================
+* Keywords: seri 2019 abstract
+* Timestamp: 20190527-104137
+
+------------------------------------------------
+------------------------------------------------
+
+Many analyses are known to mutually benefit from each other. The classical work on conditional constant propagation was one of the first attemts to exploit this property, followed by many other that combined pointer analysis with various other analyses.  The most common way to exploit this interaction has been to manually design a super analysis over a combined lattice, formed by taking the cross-product of domains of each participating analysis.
+
+Synergistic Program ANalyzer (SPAN) is a framework that generates analyses from their specification and automates their mutually beneficial interactions by using a notion called *blocking expressions*. It has mechanisms to automatically select analyses, combine forward/backward flow problems, and provide more precise results than available through other similar contemporary frameworks.
+
+------------------------------------------------
+
+

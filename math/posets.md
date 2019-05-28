@@ -19,7 +19,7 @@ A *partial ordering* is a relation: $\sqsubseteq: L \times L \rightarrow \\{true
 * it is *anti-symmetric*, i.e. $\forall{}l_1,l_2: l_1 \sqsubseteq l_2 \wedge l_2 \sqsubseteq l_1 \Rightarrow l_1 = l_2$.
 * it is *transitive*, i.e. $\forall{}l_1,l_2,l_3: l_1 \sqsubseteq l_2 \wedge l_2 \sqsubseteq l_3 \Rightarrow l_1 \sqsubseteq l_3$.
 
-Note: It is a *relation* and not a *function* since it doesn't apply to all the values int he domain.
+Note: It is a *relation* and not a *function* since it may not apply to all the values in the domain (every pre-image may not have an image).
 
 ### Partially Ordered Set (poset)
 

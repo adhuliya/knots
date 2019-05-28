@@ -7,6 +7,8 @@ ToDo
 ---------
 <a name="todo"></a>
 
+* Setup clang/llvm 8 and xdot on machine VMAA.
+* Setup SPAN on the virtual machine VMAA.
 * Write and understand the Reaching Def proof in Nielson's book.
 * Write down tricky IR statements w.r.t. points-to and field sensitivity.
 * Sparc Instructions -- add notes in five phases 1/5
@@ -25,6 +27,10 @@ Completed
 ------------
 <a name="completed"></a>
 
+* Test SLANG on clang/llvm 8. [changelog](misc/span-clang6-to-8-changes.html)
+* Build clang/llvm 8.
+* Document the buiding process of clang/llvm 8.
+* make knotes accessible over web (<adhuliya.pythonanywhere.com>).
 * make `knotes` a git repo
 * [Download a ditto copy of a website/webpage](webdev/wget.html)
 * [wget send get/post request](webdev/wget.html)

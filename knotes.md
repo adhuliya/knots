@@ -13,6 +13,7 @@ Index
 4. [Projects](#projects)
 5. [Money](#money)
 6. [Extra Curricular](#extra)
+7. [Events](#events)
 
 Health <a name="health"></a>
 ---------------
@@ -22,11 +23,18 @@ Health <a name="health"></a>
 
 Compilers/Research <a name="compilers"></a>
 ------------------------
+
+### Research
+
 [`Math Notes`](math/math.html)
 [`Program Analysis`](program-analysis/pa.html)
 [`Compiler Construction`](compilers/index.html)
 
 [`latex notes`](latex/latex.html)
+
+### Compilers
+
+[`Get started with llvm/clang`](compilers/llvm/get_started.html)
 
 WebDev <a name="webdev"></a>
 -------------------------
@@ -40,6 +48,15 @@ Projects <a name="projects"></a>
 
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
+
+Extra Curricular <a name="extra"></a>
+---------------------------
+[`morse code`](extra-curricular/international-morse-code.png)
+[`morse code tree`](extra-curricular/morse-code-tree.jpg)
+
+Events <a name="events"></a>
+----------------
+[`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
    
 <div class="footer">
 <br/>
