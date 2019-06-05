@@ -66,6 +66,8 @@ Steps
 
         ninja      # thats all
 
+If there are build/configure errors they would most certainly be due to the missing depenedecies. The only solution here is to read the error messages and figure out what precisely went wrong.
+
 The generated binaries will be sitting in the directory `llvm-clang8/build/bin/`, which can be added to the `PATH` evironment variable.
 
 

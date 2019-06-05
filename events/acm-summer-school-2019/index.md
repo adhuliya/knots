@@ -1,61 +1,115 @@
-ACM Summer School - 2019 (June 2-3)
+ACM Summer School - 2019 (June 3, 4)
 ====================
-Abstract Syntax Tree and its implementation in Clang
+Abstract Syntax Tree and its implementation in Clang 8.0.0
 
 Index
 ------------
 1. [Installing Clang/LLVM 8](../../compilers/llvm/get_started.html)
 1. [Creating the virtual machine](build-vm.html).
-1. [Important Commands](#commands)
+1. [Useful Commands](#commands)
+1. [Notes](#notes)
 
 
-Commands <a name="commands"></a>
+Useful Commands <a name="commands"></a>
 ----------------
 ### View the AST
 
-    $ clang -Xclang -ast-dump -fsyntax-only test.c
+   * With color,
 
-### Run scan-build
+        clang -Xclang -ast-dump -fsyntax-only test.c | less -r
 
-    $ scan-build -V clang test.c
+   * Without the color,
 
-### Edit-compile-run your checker
+        clang -Xclang -ast-dump -fsyntax-only -fno-color-diagnostics test.c | less
 
-    # STEP 1: goto the checkers dir
-    $ acm-goto-checkers-dir
-
-    # STEP 2: edit the appropriate checker
-    $ vi ACMCheckers01.cpp    # edit the appropriate file
-     
-    # STEP 3: goto the build dir and rebuild the project
-    $ acm-goto-build-dir
-    $ ninja
-
-    # REPEAT STEP 1-3 until the compilation is correct.
-
-    # STEP 4: goto the workdir and run the checker
-    $ acm-goto-workdir
-    $ clang -c --analyze -Xanalyzer -analyzer-checker=debug.checker01 test.c
-
-### View existing checkers
+### View all the checkers in the system
 
     clang -cc1 -analyzer-checker-help
 
 ### View Control Flow Graph
 
-    $ clang -c --analyze -Xanalyzer -analyzer-checker=debug.ViewCFG test.c
+    clang -c --analyze -Xanalyzer -analyzer-checker=debug.ViewCFG test.c
     
+### View Call Graph
+
+    clang -c --analyze -Xanalyzer -analyzer-checker=debug.ViewCallGraph test.c
+    
+### View Exploded Graph
+
+    clang -c --analyze -Xanalyzer -analyzer-checker=debug.ViewExplodedGraph test.c
+    
+### Run scan-build
+
+   * Use this command to get a bug/warning report of your program
+
+        scan-build -V clang test.c
+
+   * To invoke a specific checker,
+
+        scan-build -V -enable-checker debug.checker01 clang -c test.c
+
+### View existing checkers
+
+    clang -cc1 -analyzer-checker-help
+
+### Writing a checker from scratch,
+
+   1. Goto the checker directory,
+    
+        cd $LLVM/llvm/tools/clang/lib/StaticAnalyzer/Checkers
+
+   2. Create a cpp file,
+
+        vi ACMChecker20.cpp
+
+   3. Add the file name in the CMakeLists.txt (in the same dir)
+
+        vi CMakeLists.txt
+
+      For reference, you can search the file name `DeadStoresChecker.cpp` and add your file just below it.
+
+   4. Edit the `Checkers.td` file,
+
+        vi $LLVM/llvm/tools/clang/include/clang/StaticAnalyzer/Checkers/Checkers.td
+
+   5. Goto the build directory,
+
+        cd \$LLVM/build
+
+   6. Build the project,
+
+        ninja
+
+### Edit-compile-run your checker
+Assuming $LLVM refers the to directory housing the build/llvm folders,
+
+   1. Goto the checker directory,
+    
+        cd $LLVM/llvm/tools/clang/lib/StaticAnalyzer/Checkers
+
+   2. Edit a cpp file,
+
+        vi ACMChecker20.cpp
+
+   3. Goto the build directory,
+
+        cd \$LLVM/build
+
+   4. Build the project,
+
+        ninja
+
+   5. Now run the checker,
+
+        clang -c --analyze -Xanalyzer -analyzer-checker=debug.checker20 test.c
 
 
-Side Notes
+Notes <a name="notes"></a>
 -------------------
-* Copying `llvm-clang8/` folder (contains llvm's source and build directories) using `scp ...` replaced all the symbolic links with copies of the files/directories! Instead use `rsync -avz -e ssh /src/dir user@remote.host:dst/dir`.
-* Had to create a symbolic link `student@acm-summer-school-2019:/usr/lib/x86_64-linux-gnu$ sudo ln -s libxml2.so.2 libxml2.so`
-* packages installed explicitly: `libxml2-dev`, `libedit-dev`, `valgrind`, `python-pygments`
+* These notes will be updated periodically with more details.
 
 
 
-   
 <div class="footer">
 <br/>
 &copy; Anshuman Dhuliya, Uday Kehdker
