@@ -56,6 +56,7 @@ Notes
 
 * Had to create a symbolic link `student@acm-summer-school-2019:/usr/lib/x86_64-linux-gnu$ sudo ln -s libxml2.so.2 libxml2.so`
 
+* For most of these commands/packages, one will find useful help on the web. We will try to add more help material with time.
 
 Resources
 ---------------

@@ -58,8 +58,6 @@ Events <a name="events"></a>
 ----------------
 [`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
 
-[`ACM Summer School 2019 Lecture Plan`](events/acm-summer-school-2019/plan.html)
-   
 <div class="footer">
 <br/>
 &copy; Anshuman Dhuliya

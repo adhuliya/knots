@@ -1,9 +1,10 @@
 ACM Summer School - 2019 (June 3, 4)
 ====================
-Abstract Syntax Tree and its implementation in Clang 8.0.0
+Abstract Syntax Tree and the Clang 8.0.0 AST
 
 Index
 ------------
+1. [Session Plan](plan.html)
 1. [Installing Clang/LLVM 8](../../compilers/llvm/get_started.html)
 1. [Creating the virtual machine](build-vm.html).
 1. [Useful Commands](#commands)
