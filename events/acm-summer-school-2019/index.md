@@ -127,7 +127,7 @@ Resources <a name="resources"></a>
 
 <div class="footer">
 <br/>
-&copy; Anshuman Dhuliya, Uday Kehdker
+&copy; Anshuman Dhuliya, Uday Khedker
 <br/>
 </div>
 
