@@ -1,6 +1,16 @@
 ACM Summer School - 2019 (June 3, 4)
 ====================
-Abstract Syntax Tree and the Clang 8.0.0 AST
+**Abstract Syntax Tree and the Clang 8.0.0 AST**
+
+This webpage is a part of subjects taught at,
+*Summer School on Compiler Design and Construction*,
+hosted by VIT Pune
+
+co-sponsored by NVIDIA Graphics Pvt Ltd Pune, Dates: 3 to 21 June
+
+[`ACM Summer School 3-21 June, 2019 Official Homepage`](http://india.acm.org/compiler-construction.html)
+
+[`ACM Summer School 3-21 June, 2019 Official Homepage (Course)`](https://sites.google.com/site/acmsummerschoolcc/)
 
 Index
 ------------
@@ -9,6 +19,7 @@ Index
 1. [Creating the virtual machine](build-vm.html).
 1. [Useful Commands](#commands)
 1. [Notes](#notes)
+1. [Resources](#resources)
 
 
 Useful Commands <a name="commands"></a>
@@ -109,6 +120,9 @@ Notes <a name="notes"></a>
 -------------------
 * These notes will be updated periodically with more details.
 
+Resources <a name="resources"></a>
+---------------------------------
+* [Great Blog on Clang](https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-i-introduction/)
 
 
 <div class="footer">

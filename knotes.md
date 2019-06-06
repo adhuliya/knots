@@ -4,6 +4,7 @@ Knotes
 
 [`Tasks`](tasks.html)
 [`markdown syntax`](webdev/markdown.html)
+[`knotes web`](http://adhuliya.pythonanywhere.com/knotes.html)
 
 Index
 --------
@@ -14,6 +15,7 @@ Index
 5. [Money](#money)
 6. [Extra Curricular](#extra)
 7. [Events](#events)
+8. [Misc](#misc)
 
 Health <a name="health"></a>
 ---------------
@@ -57,6 +59,10 @@ Extra Curricular <a name="extra"></a>
 Events <a name="events"></a>
 ----------------
 [`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
+
+Misc <a name="misc"></a>
+---------------------------------
+[`Huawei Research Proposal`](misc/huawei-research-proposal.html)
 
 <div class="footer">
 <br/>
