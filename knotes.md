@@ -28,6 +28,8 @@ Compilers/Research <a name="compilers"></a>
 
 ### Research
 
+[`meetings`](compilers/meetings/meetings.html)
+
 [`Math Notes`](math/math.html)
 [`Program Analysis`](program-analysis/pa.html)
 [`Compiler Construction`](compilers/index.html)
@@ -37,6 +39,7 @@ Compilers/Research <a name="compilers"></a>
 ### Compilers
 
 [`Get started with llvm/clang`](compilers/llvm/get_started.html)
+[`languages`](compilers/languages.html)
 
 WebDev <a name="webdev"></a>
 -------------------------
@@ -47,6 +50,7 @@ Projects <a name="projects"></a>
 1. [SPAN](span/span.html)
 2. [Sparc v8](#sparc)
 3. [Sample Website](http://localhost:5055)
+4. [Design Patterns](misc/designpatterns.html)
 
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)

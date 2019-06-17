@@ -1,7 +1,7 @@
 Paritally Ordered Sets
 ====================
 
-Source: *Principals of Program Analysis* -- Nielson and Nielson
+Source: *Principles of Program Analysis* -- Nielson and Nielson
 
 Index
 ----------------

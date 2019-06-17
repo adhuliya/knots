@@ -2,7 +2,7 @@ Health
 ====================
 *Health is maintained and improved not only through the advancement and application of health science, but also through the efforts and intelligent lifestyle choices of the individual and society.* -- [myenglishpages.com](https://www.myenglishpages.com/site_php_files/reading-health-tips.php)
 
-Its pays back many folds to develop healthy habits. Here are some,
+It pays back many folds to develop healthy habits. Here are some,
 
 * Read an article on health tips daily*. (See Firefox Health bookmarks)
 * Drink at least 2L water in a day.
