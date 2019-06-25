@@ -27,19 +27,19 @@ Compilers/Research <a name="compilers"></a>
 ------------------------
 
 ### Research
+[`Program Analysis`](program-analysis/pa.html)
 
 [`meetings`](compilers/meetings/meetings.html)
 
 [`Math Notes`](math/math.html)
-[`Program Analysis`](program-analysis/pa.html)
-[`Compiler Construction`](compilers/index.html)
 
 [`latex notes`](latex/latex.html)
 
 ### Compilers
+[`languages`](compilers/languages.html)
 
 [`Get started with llvm/clang`](compilers/llvm/get_started.html)
-[`languages`](compilers/languages.html)
+[`Compiler Construction`](compilers/index.html)
 
 WebDev <a name="webdev"></a>
 -------------------------

@@ -14,6 +14,11 @@ C++
 --------
 [`C++ Reference`](https://en.cppreference.com/w/cpp/language)
 [`cplusplus.com`](http://www.cplusplus.com/)
+[`CodingStyle`](http://www.yolinux.com/TUTORIALS/LinuxTutorialC++CodingStyle.html)
+[`C++ Prog. Language Book`](../../mydata/remote/learning-resources/languages-formal/cpp/Straustrup4th.pdf)
+
+[`Initialization List`](http://forums.codeguru.com/showthread.php?464084-C-General-What-is-the-initialization-list-and-why-should-I-use-it)
+[`Opaque Pointer`](https://en.wikipedia.org/wiki/Opaque_pointer#C++)
 
 Python
 -------------------

@@ -4,12 +4,17 @@ Research Meetings
 Index
 ---------------
 * [`Current Outline`](#current-outline)
+* [`Meeting Mon 2019-06-24`](#20190624)
 * [`Meeting Wed 2019-06-19`](#20190619)
 * [`Meeting Mon 2019-06-17`](#20190617)
 * [`Meeting Fri 2019-06-14`](#20190614)
 * [`Meeting Tue 2019-06-11`](#20190611)
 * [`Meeting Thu 2019-06-06`](#20190606)
 * [`Other Meetings`](#othermeetings)
+
+Meeting Mon 2019-06-24 <a name="20190624"></a>
+-----------------------
+![Board Image](pics/P_20190624_171902.jpg)
 
 Meeting Wed 2019-06-19 <a name="20190619"></a>
 -----------------------
