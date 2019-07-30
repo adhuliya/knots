@@ -1,19 +1,21 @@
-Research Meetings
+Research Meetings/Discussions
 ===========================
 
 Index
 ---------------
 * [`Current Outline`](#current-outline)
-* [`Meeting Mon 2019-06-26`](#20190626)
-* [`Meeting Mon 2019-06-24`](#20190624)
-* [`Meeting Wed 2019-06-19`](#20190619)
-* [`Meeting Mon 2019-06-17`](#20190617)
-* [`Meeting Fri 2019-06-14`](#20190614)
-* [`Meeting Tue 2019-06-11`](#20190611)
-* [`Meeting Thu 2019-06-06`](#20190606)
+* [`Raghavan-Sir-Example-01`](docs/raghavan-example-01.pdf)
+  [`Raghavan-Sir-Example-02`](docs/raghavan-example-02.pdf)
+* [`Meeting Wed 2019-06-26`](#20190626)
+  [`Meeting Mon 2019-06-24`](#20190624)
+  [`Meeting Wed 2019-06-19`](#20190619)
+  [`Meeting Mon 2019-06-17`](#20190617)
+  [`Meeting Fri 2019-06-14`](#20190614)
+  [`Meeting Tue 2019-06-11`](#20190611)
+  [`Meeting Thu 2019-06-06`](#20190606)
 * [`Other Meetings`](#othermeetings)
 
-Meeting Mon 2019-06-26 <a name="20190626"></a>
+Meeting Wed 2019-06-26 <a name="20190626"></a>
 -----------------------
 ![Board Image](pics/P_20190626_202106.jpg)
 

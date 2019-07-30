@@ -4,7 +4,7 @@ Knotes
 
 [`Tasks`](tasks.html)
 [`markdown syntax`](webdev/markdown.html)
-[`knotes web`](http://adhuliya.pythonanywhere.com/knotes.html)
+[`knotes web`](http://adhuliya.pythonanywhere.com/_knotes_.html)
 
 Index
 --------
@@ -27,19 +27,20 @@ Compilers/Research <a name="compilers"></a>
 ------------------------
 
 ### Research
-[`Program Analysis`](program-analysis/pa.html)
-
+[`SPAN`](span/span.html)
+[`Program Analysis`](program-analysis/pa.html) 
 [`meetings`](compilers/meetings/meetings.html)
-
+[`papers`](program-analysis/papers/papers.html)
 [`Math Notes`](math/math.html)
-
 [`latex notes`](latex/latex.html)
 
 ### Compilers
-[`languages`](compilers/languages.html)
-
-[`Get started with llvm/clang`](compilers/llvm/get_started.html)
+[`clang/llvm`](compilers/llvm/index.html)
+[`languages`](compilers/languages/languages.html)
 [`Compiler Construction`](compilers/index.html)
+
+### Others
+[`etag`](etag/etag.html)
 
 WebDev <a name="webdev"></a>
 -------------------------
@@ -55,6 +56,12 @@ Projects <a name="projects"></a>
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
 
+<a name="money"></a>
+Money
+------------------
+[`Income Tax`](money/incometax.html)
+
+
 Extra Curricular <a name="extra"></a>
 ---------------------------
 [`morse code`](extra-curricular/international-morse-code.png)
@@ -68,9 +75,5 @@ Misc <a name="misc"></a>
 ---------------------------------
 [`Huawei Research Proposal`](misc/huawei-research-proposal.html)
 
-<div class="footer">
-<br/>
-&copy; Anshuman Dhuliya
-<br/>
-</div>
+<div class="footer"> <br/> &copy; Anshuman Dhuliya <br/> </div>
 
