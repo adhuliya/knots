@@ -14,10 +14,13 @@ Depending on the kind of pass one is writing, one should inherit from the,
 * BasicBlockPass
 * MachineFunctionPass
 
+NOTE: The inheritance based PassManager is legacy now. But is the default
+in LLVM 8.0.1.
+
 Important Files
 ----------------------
 * [`PassRegistry.def`](https://github.com/llvm-mirror/llvm/blob/master/lib/Passes/PassRegistry.def):
-  Registers (and thus has list of) all the core passes that come with LLVM.
+  Registers (and thus has list of) all the core passes that come with LLVM. (for the new PM only)
 * [`PassBuilder.h`](https://llvm.org/doxygen/classllvm_1_1PassBuilder.html#details)
 * [`PassManager.h`](https://github.com/llvm-mirror/llvm/blob/master/include/llvm/IR/PassManager.h)
 
@@ -60,11 +63,34 @@ and registers it in the PassRegistry database. It can be found in the file
       }
     };
 
+### How `domtree` pass works with the new pass manager?
+
+* There is a registry file `llvm/lib/Passes/PassRegistry.def` for the
+  new pass manager,
+
+        ...
+        FUNCTION_ANALYSIS("domtree", DominatorTreeAnalysis())
+        ...
+
+  There is also a (legacy) registry, in file `llvm/lib/IR/Dominators.cpp`,
+
+        ...
+        INITIALIZE_PASS(DominatorTreeWrapperPass, "domtree",
+                "Dominator Tree Construction", true, true)
+        ...
+
+  The "wrapper" pass is created to make the pass written for the new
+  pass manager work for the old one as well.
+
 
 References
 ----------------
 1. [Pass Manager][1]
 2. [LLVM Passes (list)][2]
+3. [Switching to the new pass manager by default][3]
 
 [1]: http://llvm.org/docs/WritingAnLLVMPass.html#introduction-what-is-a-pass
 [2]: https://llvm.org/docs/Passes.html
+[3]: http://lists.llvm.org/pipermail/llvm-dev/2017-October/118280.html
+
+
