@@ -83,6 +83,32 @@ and registers it in the PassRegistry database. It can be found in the file
   pass manager work for the old one as well.
 
 
+Notes
+-------------
+
+    include/llvm/Pass.h
+      enum PassManagerType
+      enum PassKind
+
+    lib/IR/LegacyPassManager.cpp:
+      1069: PMDataManager::add(Pass *P, bool ProcessAnalysis) {...
+
+    lib/LTO/LTOBackend.cpp
+      runNewPM...()
+      runOldPM...()
+
+    A function used in LoopPass.cpp, CallGraphSCCPass.cpp, RegionPass.cpp and
+    LegacyPassManager.cpp:
+      assignPassManager(PMStack &PMS, PassManagerType PreferredType)
+
+Running the new pass manager using `opt`:
+
+    opt -passes "licm" < hello.bc > /dev/null  
+
+Specifiying `-passes "licm"` argument enables the new pass manager and
+throws away all other arguments (which were for the old pass manager).
+
+
 References
 ----------------
 1. [Pass Manager][1]
