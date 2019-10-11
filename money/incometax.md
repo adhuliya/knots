@@ -15,5 +15,6 @@ I downloaded the officially provided ITR1 java based application on windows 10 (
 
 Notes
 -------------
+* For salaried individuals ITR1 form is applicable for salaried individuals with total income up to Rs 50 lakh from salary, one house property, and other sources such as interest income, etc. 
 * Tax calculated through the ITR form, should tally with the Form 26AS. This is a form that shows how much tax you have paid for the Financial Year till date. If it doesn't, then after filling the form, make the payment ASAP.
 * Form 16

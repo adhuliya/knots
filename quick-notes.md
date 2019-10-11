@@ -3817,3 +3817,24 @@ Synergistic Program ANalyzer (SPAN) is a framework that generates analyses from 
 ------------------------------------------------
 
 
+
+
+
+------------------------------------------------
+old linked in "About" <a name="20191001-114329"></a>
+================================================
+* Keywords: linkedin about
+* Timestamp: 20191001-114329
+
+------------------------------------------------
+------------------------------------------------
+I like programming. I have worked on C, C++, .NET and Java. I have experience in J2EE bank loan application maintenance. Currently I train others on Java Technology, and use it for most of the programming tasks. I wish to add PHP in my arsenal. 
+
+My research interest is in Cognitive Learning Architectures that one day will challenge human intelligence straight on. I believe these architectures are possible and can surpass human intelligence one day. I am working on a self developed semantic network called Receptive Interconnections through Micro-fuzzy Interactions Network (RIMINET). This network has been used in creating a novel classifier based on the concept of analogy and contextual knowledge. I, under the guidance of Prof. U.S. Tiwary (one of the renowned professors in India and abroad), am planning to expand this network into a complete intelligent system.
+
+Specialties: Certified Java Programmer and experience in Java as a J2EE application modification and bug fixing.
+
+
+------------------------------------------------
+
+

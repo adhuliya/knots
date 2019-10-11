@@ -37,18 +37,19 @@ Steps
         tar -xJf source-zips/llvm-8.0.0.src.tar.xz
         mv llvm-8.0.0.src llvm
         cd llvm/tools
-        tar -xJf lld-8.0.0.src.tar.xz
+        tar -xJf ../../source-zips/lld-8.0.0.src.tar.xz
         mv lld-8.0.0.src lld
-        tar -xJf cfe-8.0.0.src.tar.xz
+        tar -xJf ../../source-zips/cfe-8.0.0.src.tar.xz
         mv cfg-8.0.0.src clang
         cd clang/tools
-        tar -xJf clang-tools-extra-8.0.0.src.tar.xz
+        tar -xJf ../../../../source-zips/clang-tools-extra-8.0.0.src.tar.xz
         mv clang-tools-extra-8.0.0.src extra
 
 4. Now create a build directory and run cmake to configure,
 
         cd ../../../.. # now in folder `llvm-clang8/`
         mkdir build
+        cd build
 
         CC=gcc CXX=g++ \
         cmake -G Ninja \

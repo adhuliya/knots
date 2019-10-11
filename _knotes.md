@@ -49,9 +49,10 @@ WebDev <a name="webdev"></a>
 Projects <a name="projects"></a>
 ----------------
 1. [SPAN](span/span.html)
-2. [Sparc v8](#sparc)
-3. [Sample Website](http://localhost:5055)
-4. [Design Patterns](misc/designpatterns.html)
+2. [WebNotes](#) : you are viewing webnotes
+3. [C Compiler](compiler/ccompiler.html)
+4. [Sparc v8](#sparc)
+5. [Design Patterns](misc/designpatterns.html)
 
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
