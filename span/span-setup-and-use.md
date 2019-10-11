@@ -82,3 +82,5 @@ pictorial details of the system.
 [2]: https://github.com/adhuliya/SLANG
 [3]: https://github.com/adhuliya/SLANG/blob/master/README.md
 
+<div class="footer"> <br/> &copy; Anshuman Dhuliya <br/> </div>
+
