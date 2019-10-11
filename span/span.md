@@ -3,8 +3,8 @@ SPAN
 Synergistic Program Analysis
 
 
-1. [`Useful Examples`](#examples)
-
+1. [`Getting Started`](span-setup-and-use.html)
+2. [`Useful Examples`](#examples)
 
 <a name="examples"></a>
 
