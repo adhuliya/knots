@@ -5,6 +5,7 @@ Synergistic Program Analysis
 
 1. [`Getting Started`](span-setup-and-use.html)
 2. [`Useful Examples`](#examples)
+3. [`Research Dir`](http://localhost:5051/mydata/git/research/)
 
 <a name="examples"></a>
 

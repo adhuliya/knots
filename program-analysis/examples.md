@@ -121,3 +121,19 @@ Here `p` spuriously points to `y` and `x` due to `c = &y` and `b = &x` respectiv
     // > $ ./a.out
     // 20
     // 21
+
+### Points-to vs Alias Analyses
+
+In the example below, when the information from both the paths are merged,
+the points-to information would compute (as shown below) that
+p and q might point to a or b. The points-to information suggests that
+p and q can be aliases. But can a dedicated alias analysis do any better?
+
+    p = &a       p = &b
+    q = &b       q = &a
+        \        /
+         \      /
+          \    /
+       p -> a <- q
+        \-> b <-/
+

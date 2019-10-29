@@ -2,15 +2,14 @@ Knotes
 ====================
 (Pronounced: *knots*)
 
-[`Tasks`](tasks.html)
-[`markdown syntax`](webdev/markdown.html)
+[`markdown syntax`](technology/webdev/markdown.html)
 [`knotes web`](http://adhuliya.pythonanywhere.com/_knotes_.html)
 
 Index
 --------
 1. [Health](#health)
-2. [Compilers/Research](#compilers)
-3. [WebDev](#webdev)
+1. [Compilers/Research](#compilers)
+3. [Technology Notes](#technology)
 4. [Projects](#projects)
 5. [Money](#money)
 6. [Extra Curricular](#extra)
@@ -42,39 +41,48 @@ Compilers/Research <a name="compilers"></a>
 ### Others
 [`etag`](etag/etag.html)
 
-WebDev <a name="webdev"></a>
+Technology Notes <a name="technology"></a>
 -------------------------
-[`wget`](webdev/wget.html)
+[`wget`](technology/webdev/wget.html)
+[`git`](technology/git.html)
 
 Projects <a name="projects"></a>
 ----------------
-1. [SPAN](span/span.html)
-2. [WebNotes](#) : you are viewing webnotes
+1. [SPAN](span/__span.html)
+2. [Sparc v8](#sparc)
 3. [C Compiler](compiler/ccompiler.html)
-4. [Sparc v8](#sparc)
+4. [WebNotes](#) : you are viewing webnotes
 5. [Design Patterns](misc/designpatterns.html)
+6. [RIMINET](riminet/__riminet_.html)
 
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
 
 <a name="money"></a>
+
 Money
 ------------------
 [`Income Tax`](money/incometax.html)
 
+<a name="extra"></a>
 
-Extra Curricular <a name="extra"></a>
+Extra Curricular
 ---------------------------
 [`morse code`](extra-curricular/international-morse-code.png)
 [`morse code tree`](extra-curricular/morse-code-tree.jpg)
 
-Events <a name="events"></a>
+<a name="events"></a>
+
+Events
 ----------------
 [`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
 
-Misc <a name="misc"></a>
+<a name="misc"></a>
+
+Misc
 ---------------------------------
 [`Huawei Research Proposal`](misc/huawei-research-proposal.html)
+[`mywife`](misc/mywife.html)
 
 <div class="footer"> <br/> &copy; Anshuman Dhuliya <br/> </div>
 
