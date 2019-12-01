@@ -2,6 +2,7 @@ Knotes
 ====================
 (Pronounced: *knots*)
 
+[`Quick Notes`](quick_notes.html)
 [`markdown syntax`](technology/webdev/markdown.html)
 [`knotes web`](http://adhuliya.pythonanywhere.com/_knotes_.html)
 
@@ -15,6 +16,7 @@ Index
 6. [Extra Curricular](#extra)
 7. [Events](#events)
 8. [Misc](#misc)
+9. [Quick Notes](quick_notes.html)
 
 Health <a name="health"></a>
 ---------------
@@ -43,26 +45,47 @@ Compilers/Research <a name="compilers"></a>
 
 Technology Notes <a name="technology"></a>
 -------------------------
+[`Dev Corner`](dev/dev.html)
 [`wget`](technology/webdev/wget.html)
 [`git`](technology/git.html)
+
+[`Package Management`](#)
+[`User Management`](#)
+[`Env Variables`](#)
+[`systemctl`](#)
+[`grub2`](#)
+[`VFS and Ext4`](#)
+[`hardware management`](#)
+[`bash/zsh`](#)
+[`postgresql`](#)
+[`nginx`](#)
+
+[`firefox`](#)
+[`lxde/lxqt`](#)
+[`pcmanfm`](#)
+[`vim`](#)
+[`recoll`](technology/recoll.html)
+[`samba`](#)
+
 
 Projects <a name="projects"></a>
 ----------------
 1. [SPAN](span/__span.html)
 2. [Sparc v8](#sparc)
 3. [C Compiler](compiler/ccompiler.html)
-4. [WebNotes](#) : you are viewing webnotes
-5. [Design Patterns](misc/designpatterns.html)
+4. [WebNotes](misc/webnotes.html) : you are viewing webnotes
 6. [RIMINET](riminet/__riminet_.html)
 
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
+[`llvm backend`](compilers/llvm/backend.html)
 
 <a name="money"></a>
 
 Money
 ------------------
 [`Income Tax`](money/incometax.html)
+[`Investment`](money/__investment.html)
 
 <a name="extra"></a>
 
@@ -78,11 +101,12 @@ Events
 [`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
 
 <a name="misc"></a>
-
-Misc
----------------------------------
+## Misc
 [`Huawei Research Proposal`](misc/huawei-research-proposal.html)
 [`mywife`](misc/mywife.html)
+[`General Info`](misc/general_info.html)
+
+[`Things`](things/index.html)
 
 <div class="footer"> <br/> &copy; Anshuman Dhuliya <br/> </div>
 

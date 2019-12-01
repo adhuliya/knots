@@ -34,6 +34,12 @@ The Rules
 8. The internal state of the brain and the body is also an input to the
    brain. That enables the brain to perceive itself, and to think
    and reason about itself.
+9. A rogue fact should wither away.
+10. Present has the same weightage as the past. (parameterize)
+11. A good guess by a fact cell should be rewarded. A bad guess
+    should be penalized.
+12. Every cell has an activation decay that roughly tells when
+    was it last active.
 
 
 <a name="unknowns"></a>
