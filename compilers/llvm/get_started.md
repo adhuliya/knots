@@ -40,7 +40,7 @@ Steps
         tar -xJf ../../source-zips/lld-8.0.1.src.tar.xz
         mv lld-8.0.1.src lld
         tar -xJf ../../source-zips/cfe-8.0.1.src.tar.xz
-        mv cfg-8.0.1.src clang
+        mv cfe-8.0.1.src clang
         cd clang/tools
         tar -xJf ../../../../source-zips/clang-tools-extra-8.0.1.src.tar.xz
         mv clang-tools-extra-8.0.1.src extra
@@ -52,20 +52,20 @@ Steps
         cd build
 
         CC=gcc CXX=g++ \
-        cmake -G Ninja \
-          -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
-          -DBUILD_SHARED_LIBS=On \
-          -DLLVM_ENABLE_ASSERTIONS=On \
-          -DLLVM_TARGETS_TO_BUILD="X86" \
-          -DLLVM_ENABLE_SPHINX=Off \
-          -DLLVM_ENABLE_THREADS=On \
-          -DLLVM_INSTALL_UTILS=On \
-          -DCMAKE_BUILD_TYPE=Debug \
-          ../llvm
+          cmake -G Ninja \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
+            -DBUILD_SHARED_LIBS=On \
+            -DLLVM_ENABLE_ASSERTIONS=On \
+            -DLLVM_TARGETS_TO_BUILD="X86" \
+            -DLLVM_ENABLE_SPHINX=Off \
+            -DLLVM_ENABLE_THREADS=On \
+            -DLLVM_INSTALL_UTILS=On \
+            -DCMAKE_BUILD_TYPE=Debug \
+            ../llvm
 
 5. Now build llvm,
 
-        ninja      # thats all
+        ninja      # thats all (it might take few hours!!)
 
 If there are build/configure errors they would most certainly be due to the missing depenedecies. The only solution here is to read the error messages and figure out what precisely went wrong.
 

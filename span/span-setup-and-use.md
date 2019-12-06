@@ -12,7 +12,7 @@ To use SPAN entirely, there are broadly the following requirements,
 1. [The build of SPAN (its tarball)](#span-build)
 2. [Linux (preferably Ubuntu)](#linux)
 3. [Python 3.6.7](#python) (the only version tested, it may work with >=3.6 as well) 
-4. [Local build of Clang/LLVM 8.0.1](#clangsetup) (the current official release)
+4. [Local build of Clang/LLVM 8.0.1](#clangsetup) (the recent official release)
 5. [SLANG Checkers for Clang/LLVM 8.0.1](#slang)
 6. [The `xdot` program to view CFG and other information](#xdot)
 
@@ -48,7 +48,7 @@ The whole development of SPAN has taken place on
 `Ubuntu 18.04.2 x86_64-linux-gnu`.
 Although we don't use any exclusive features of the system,
 if SPAN crashes on your system, this information could be a good clue.
-That said, the system should run on any descent Linux distribution
+That said, the system should run on any decent Linux distribution
 with target triple `x86_64-linux-gnu`.
 
 <a name="python"></a>
