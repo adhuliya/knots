@@ -19,9 +19,7 @@ there are broadly the following five requirements/steps,
 In addition to the above steps, you can add SPAN support
 to Clang/LLVM.
 (This is an optional exercise, but this will give you the flexibility to
-experiment more.)
-
-To add the support follow the following two steps,
+experiment more.) To add the support follow the following two steps,
 
 1. [Build your own Clang/LLVM](../compilers/llvm/get_started.html)
 2. Add SLANG checkers to the Clang/LLVM build.
