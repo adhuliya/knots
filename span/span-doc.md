@@ -8,13 +8,28 @@ to enable mutually beneficial interactions.
 It is currently targeted at C language (specifically C99).
 
 To use SPAN's Python implementation,
-there are broadly the following requirements,
+there are broadly the following five requirements/steps,
 
 1. [The `xdot` program to view CFG and other information](#xdot)
 2. [Linux (preferably Ubuntu)](#linux)
-3. [Python 3.6.7](#python) (the only version tested)
+3. [Python 3.6](#python) (the only version tested)
 4. [The build of SPAN (its tarball)](#span-build)
 5. [Test and use SPAN](#testspan)
+
+In addition to the above steps, you can add SPAN support
+to Clang/LLVM.
+(This is an optional exercise, but this will give you the flexibility to
+experiment more.)
+
+To add the support follow the following two steps,
+
+1. [Build your own Clang/LLVM](../compilers/llvm/get_started.html)
+2. Add SLANG checkers to the Clang/LLVM build.
+   Slang Checkers convert Clang AST to SPAN IR and
+   Span bug reports to Clang bug reports.
+   [Slang github repo](https://github.com/adhuliya/SLANG) contains the checker sources and
+   has a [README.md](https://github.com/adhuliya/SLANG/blob/master/README.md)
+   that details how to add SLANG to LLVM/Clang build.
 
 <a name="xdot"></a>
 ## The `xdot` program to view CFG and other information
@@ -33,13 +48,15 @@ That said, the system should run on any decent Linux distribution
 with target triple `x86_64-linux-gnu`.
 
 <a name="python"></a>
-## Python 3.6.7
+## Python 3.6
 The current version has been developed in Python 3.6.7 and it
 definitely cannot run on version 3.5 or lower.
 In the SPAN distribution tarball we compile some
 modules specifically `span.sys.*` to their respective `.so`
 files using `Cython 0.29.13` on a `x86_64-linux-gnu` machine.
-**We recommend using Python 3.6 only.**
+
+**Therefore we recommend using Python 3.6 only.**
+The sub-versions 3.6.7, 3.6.9 have been tested.
 
 <a name="span-build"></a>
 ## The build of SPAN (its tarball)

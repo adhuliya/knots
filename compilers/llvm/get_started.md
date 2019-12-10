@@ -51,6 +51,7 @@ Steps
         mkdir build
         cd build
 
+        # Copy all the 11 lines of the following command.
         CC=gcc CXX=g++ \
           cmake -G Ninja \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
@@ -60,7 +61,7 @@ Steps
             -DLLVM_ENABLE_SPHINX=Off \
             -DLLVM_ENABLE_THREADS=On \
             -DLLVM_INSTALL_UTILS=On \
-            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_BUILD_TYPE=Release \
             ../llvm
 
 5. Now build llvm,
