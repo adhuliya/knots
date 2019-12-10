@@ -12,13 +12,9 @@ there are broadly the following requirements,
 
 1. [The `xdot` program to view CFG and other information](#xdot)
 2. [Linux (preferably Ubuntu)](#linux)
-3. [Python 3.6.7](#python) (the only version tested, it may work with >=3.6 as well) 
+3. [Python 3.6.7](#python) (the only version tested)
 4. [The build of SPAN (its tarball)](#span-build)
 5. [Test and use SPAN](#testspan)
-
-To use SPAN's Clang/LLVM component as well, follow the following steps
-1. [Local build of Clang/LLVM 8.0.1](#clangsetup) (the recent official release)
-2. [SLANG Checkers for Clang/LLVM 8.0.1](#slang)
 
 <a name="xdot"></a>
 ## The `xdot` program to view CFG and other information
@@ -43,12 +39,14 @@ definitely cannot run on version 3.5 or lower.
 In the SPAN distribution tarball we compile some
 modules specifically `span.sys.*` to their respective `.so`
 files using `Cython 0.29.13` on a `x86_64-linux-gnu` machine.
+**We recommend using Python 3.6 only.**
 
 <a name="span-build"></a>
 ## The build of SPAN (its tarball)
 Currently we are sharing the implementation selectively as the project
 is under active development and not ready for a release.
-Usually the file shared will be named `span-tool.tgz`.
+Usually the file shared will be named `span-tool.tgz` or similar.
+[Download here](https://drive.google.com/open?id=1i8E6CTwTccDk8sYhIEzlz9bHhsax3d7l)
 
 <a name="testspan"></a>
 ## Test and use SPAN
@@ -67,11 +65,11 @@ proceeding with the use.
 
 2. Run a test. View the CFG of a program,
        
-        ./main.py view dot tests/automated/spanTest001.c.spanir
+        python3.6 ./main.py view dot tests/automated/spanTest001.c.spanir
 
 3. Run another test. Run an analysis,
        
-        ./main.py analyze /+PointsToA/ tests/automated/spanTest001.c.spanir
+        python3.6 ./main.py analyze /+PointsToA/ tests/automated/spanTest001.c.spanir
 
 4. If the requirements have been met the tests should run okay.
    You can use `span-tool/main.py` driver script
@@ -80,22 +78,6 @@ proceeding with the use.
 
 If you have successfully followed the instructions till this point,
 you should be able to use SPAN's Python implementation.
-
-However, to add the ability to generate SPAN IR from C source files,
-follow the steps ahead.
-
-
-<a name="clangsetup"></a>
-## Local build of Clang/LLVM 8.0.1
-This [step-by-step guide][1] shows how to build Clang/LLVM.
-
-<a name="slang"></a>
-## SLANG Checkers for Clang/LLVM 8.0.1
-Slang Checkers convert Clang AST to SPAN IR and
-Span bug reports to Clang bug reports.
-[Slang github repo][2] contains the checker sources and
-has a [README.md][3] that details how to add SLANG to
-LLVM/Clang build.
 
 [1]: http://adhuliya.pythonanywhere.com/compilers/llvm/get_started.html
 [2]: https://github.com/adhuliya/SLANG
