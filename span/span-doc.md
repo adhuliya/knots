@@ -61,7 +61,7 @@ The sub-versions 3.6.7, 3.6.9 have been tested.
 Currently we are sharing the implementation selectively as the project
 is under active development and not ready for a release.
 Usually the file shared will be named `span-tool.tgz` or similar.
-[Download here](https://drive.google.com/open?id=11EYDQnjP0bTsUSs4aip6wEh75yEnwScm)
+[Download here (Updated: 2019-12-12)](https://drive.google.com/open?id=1O3evYTzAr-AoxAkT010pvcpEPVYuYDeK)
 
 <a name="testspan"></a>
 ## Test and use SPAN
