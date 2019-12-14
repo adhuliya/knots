@@ -2,6 +2,9 @@ SPAN
 ====================
 Synergistic Program Analyzer setup and use.
 
+[Report Bugs/Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSes6Rf_bWnRLmbJBjBcDMWOM7UYtI-5UoonAK56eu8dGYW5pg/viewform?usp=sf_link)
+<br/>
+
 SPAN is a program analysis framework.
 It combines different analyses synergistically
 to enable mutually beneficial interactions.
@@ -61,7 +64,7 @@ The sub-versions 3.6.7, 3.6.9 have been tested.
 Currently we are sharing the implementation selectively as the project
 is under active development and not ready for a release.
 Usually the file shared will be named `span-tool.tgz` or similar.
-[Download here (Updated: 2019-12-14)](https://drive.google.com/open?id=1O2qcjQwRlx1DoNLuaiyTxsOWxqaFJsnQ)
+[Download here (Updated: 2019-12-15)](https://drive.google.com/open?id=1b4IxuKDjsM0FTHGoEAyEalpfYTcRJrwC)
 
 <a name="testspan"></a>
 ## Test and use SPAN
@@ -97,6 +100,10 @@ you should be able to use SPAN's Python implementation.
 [1]: http://adhuliya.pythonanywhere.com/compilers/llvm/get_started.html
 [2]: https://github.com/adhuliya/SLANG
 [3]: https://github.com/adhuliya/SLANG/blob/master/README.md
+
+<br/> <br/>
+
+[Report Bugs/Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSes6Rf_bWnRLmbJBjBcDMWOM7UYtI-5UoonAK56eu8dGYW5pg/viewform?usp=sf_link)
 
 <div class="footer"> <br/> &copy; Anshuman Dhuliya <br/> </div>
 
