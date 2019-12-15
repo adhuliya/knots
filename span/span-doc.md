@@ -18,6 +18,7 @@ there are broadly the following five requirements/steps,
 3. [Python 3.6](#python) (the only version tested)
 4. [The build of SPAN (its tarball)](#span-build)
 5. [Test and use SPAN](#testspan)
+6. [Special Note for Ubuntu 14 and 16](#ubuntu1416)
 
 In addition to the above steps, you can add SPAN support
 to Clang/LLVM.
@@ -37,7 +38,13 @@ experiment more.) To add the support follow the following two steps,
 The `xdot` program is used to render graphviz dot files.
 It is used to show CFG of functions
 with statements as SPAN IR. It is also used for other
-pictorial details of the system.
+pictorial details of the system. The following command
+is sufficient to install the program on recent
+Ubuntu systems.
+
+    sudo apt-get install graphviz xdot
+
+For other linux distros there may be something similar.
 
 <a name="linux"></a>
 ## Linux (preferably Ubuntu)
@@ -58,6 +65,9 @@ files using `Cython 0.29.13` on a `x86_64-linux-gnu` machine.
 
 **Therefore we recommend using Python 3.6 only.**
 The sub-versions 3.6.7, 3.6.9 have been tested.
+
+Take a look at the section [Special Note for Ubuntu 14 and 16](#ubuntu1416)
+if you are using Unbuntu 14/16.
 
 <a name="span-build"></a>
 ## The build of SPAN (its tarball)
@@ -96,6 +106,16 @@ proceeding with the use.
 
 If you have successfully followed the instructions till this point,
 you should be able to use SPAN's Python implementation.
+
+<a name="ubuntu1416"></a>
+## Special Note for Ubuntu 14 and 16
+To install python3.6 on Ubuntu 14/Ubuntu 16
+the following sequence of commands might be helpful:
+
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt-get update
+    sudo apt-get install python3.6
+    
 
 [1]: http://adhuliya.pythonanywhere.com/compilers/llvm/get_started.html
 [2]: https://github.com/adhuliya/SLANG
