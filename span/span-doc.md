@@ -66,8 +66,7 @@ files using `Cython 0.29.13` on a `x86_64-linux-gnu` machine.
 **Therefore we recommend using Python 3.6 only.**
 The sub-versions 3.6.7, 3.6.9 have been tested.
 
-Take a look at the section [Special Note for Ubuntu 14 and 16](#ubuntu1416)
-if you are using Unbuntu 14/16.
+Take a look at the section [Special Note for Ubuntu 14 and 16](#ubuntu1416).
 
 <a name="span-build"></a>
 ## The build of SPAN (its tarball)
