@@ -5,6 +5,7 @@ Health
 ## Index
 1. [Guildelines](#guidelines)
 2. [Gilbert Syndrome](gilbert_syndrome/index.html)
+3. [Taking Good Breaks](https://zapier.com/blog/better-breaks/)
 
 <a name="guidelines"></a>
 ## Guidelines

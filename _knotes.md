@@ -56,7 +56,8 @@ Technology Notes <a name="technology"></a>
 [`grub2`](#)
 [`VFS and Ext4`](#)
 [`hardware management`](#)
-[`bash/zsh`](#)
+[`zsh`](technology/sysadmin/zsh.html)
+[`bash`](technology/sysadmin/bash.html)
 [`postgresql`](#)
 [`nginx`](#)
 

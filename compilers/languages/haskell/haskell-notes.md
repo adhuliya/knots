@@ -6,6 +6,9 @@ Index
 * [Function/Library Reference](#functions)
 * [GHC Interpreter](#ghci)
 
+## TODO
+* How to use all the numeric/logical/bit/comparison operators?
+
 Misc
 =======
 
@@ -52,7 +55,8 @@ Function application has the highest precedence. A function name always starts w
 
 * list comprehension (TODO)
 
-* Function order doesn't matter ([it matters](#funcPattern))
+* Function order doesn't matter 
+  ([it matters in case of a function's pattern matching cousins](#funcPattern))
 
         -- doubleMe is defined after doubleUs
         doubleUs x y = doubleMe x + doubleMe y
@@ -109,10 +113,14 @@ predefined constants
 general operators 
 -----------------
 * `*, +, - :: (Num a) => a -> a -> a` arithmetic operators 
+* `(-1) :: Num a => a` negate a number, paranthesis are necessary
 * `/ :: Fractional a => a -> a -> a` arithmetic division
-* `(-1) :: Num a => a` a negative number, paranthesis are necessary
+* `div :: Integral a => a -> a -> a` integer division
+* `mod :: Integral a => a -> a -> a` modulous operator
+* `divMod :: Integral a => a -> a -> (a, a)` div and mod function in one
 * `^ :: (Num a, Integral b) => a -> b -> a` exponent/power
 * `** :: Floating a => a -> a -> a` exponent/power
+* `True :: Bool, False :: Bool` boolean values
 * `shiftL :: Bits a => a -> Int -> a` in `Data.Bits`, logical shift left
 * `shiftR :: Bits a => a -> Int -> a` in `Data.Bits`, logical shift right
 * `&& :: Bool -> Bool -> Bool` logical and

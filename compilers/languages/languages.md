@@ -4,6 +4,7 @@ Computer Languages
 1. [C](#clanguage)
 2. [C++](#cpp)
 3. [Python](#python)
+4. [Haskell](haskell/index.html)
 
 
 C Language
@@ -11,6 +12,8 @@ C Language
 [`C Reference`](https://en.cppreference.com/w/c/language)
 [`C Book`](files/knr-c-programming.pdf)
 [`C Operator Precedence`](files/c-operator-precedence.png)
+
+* <https://stackoverflow.com/questions/4250624/ld-library-path-vs-library-path>
 
 C++
 --------
