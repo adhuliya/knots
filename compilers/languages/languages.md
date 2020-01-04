@@ -7,12 +7,13 @@ Computer Languages
 4. [Haskell](haskell/index.html)
 
 
-C Language
----------------------
+## C Language References
 [`C Reference`](https://en.cppreference.com/w/c/language)
 [`C Book`](files/knr-c-programming.pdf)
 [`C Operator Precedence`](files/c-operator-precedence.png)
+[`C99 Standard Doc`](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)
 
+## C Language Notes
 * <https://stackoverflow.com/questions/4250624/ld-library-path-vs-library-path>
 
 C++

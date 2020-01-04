@@ -19,6 +19,8 @@ Index
 
 * [`petrinets`](https://www.site.uottawa.ca/~bochmann/ELG7187C/CourseNotes/BehaviorModeling/Petri-nets/index.html) [`petrinet examples`](http://www.informatik.uni-hamburg.de/TGI/PetriNets/introductions/aalst/)
 * [`bipartite graphs`](https://en.wikipedia.org/wiki/Bipartite_graph)
+* [`tree`](https://en.wikipedia.org/wiki/Tree_(graph_theory))
+* [`forest`](https://en.wikipedia.org/wiki/Tree_(graph_theory)#Forest)
 
 
 <a name="symbols"></a>
