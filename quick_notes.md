@@ -3951,3 +3951,53 @@ Resource:
 ------------------------------------------------
 
 
+
+
+
+------------------------------------------------
+discussion with akshat <a name="20200105-155902"></a>
+================================================
+* Keywords: discussion with akshat
+* Timestamp: 20200105-155902
+
+------------------------------------------------
+------------------------------------------------
+
+ssh -X akshat@10.130.170.78
+password: isrdc12345
+
+program:
+
+    int main()
+    {
+      int a, b;
+      if(b)
+        a = 10;
+      else
+        a = 20;
+      return a;
+    }
+
+span log:
+
+    80 GetNextNodeFrom_Worklist (EvenOddA): NodeWorkList[1, 2, 3, 4, 5]
+    81 Before InOutMerge (Node 1): NodeDfv: IN: Bot, OUT: Top.
+    82 After  InOutMerge (Node 1): Change: (IN=NoChange, OUT=NoChange), NodeDfv: IN: Bot, OUT: Top.
+    83 Curr_Node_Dfv (Before) (Node 1): IN: Bot, OUT: Top.
+    84 RevNodeLevelDep (PointsToA's dfv_at_node 1) may_affect EvenOddA.
+    85 RevNodeLevelDep (ConstA's dfv_at_node 1) may_affect EvenOddA.
+    86 AddedAnalysisToWl: ConstA, (neededBy: None)
+    87 Curr_Node_Dfv (AnalysisResult) (Node 1): IN: Bot, OUT: Bot, TRUE: Bot, FALSE: {a: Bot, b: Even}
+    88 AddingNodeToWl (succ): Node 3
+    89 AddingNodeToWl (succ): Node 2
+    90 Curr_Node_Dfv (AfterUpdate) (Node 1): IN: Bot, OUT: Bot, TRUE: Bot, FALSE: {a: Bot, b: Even}, change: (IN=N     oChange, OUT=Changed).
+    91 Adding_analyses_dependent_on EvenOddA to worklist.
+    92 Old Analyses_Worlist (EvenOddA) : [(ConstA,2), (PointsToA,3)]
+    93 Re_Adding ConstA to worklist. EvenOddA's info changed for node Node 1: (if (b) BB1 BB2, pred=[], succ=[3, 2     ]).
+    94 Old Worklist (ConstA) : NodeWorkList[2, 3, 4, 5]
+    95 Added_Wl_Node Node 1: (if (b) BB1 BB2, pred=[], succ=[3, 2]) to worklist_Of ConstA.
+    96 New Worklist (ConstA) : NodeWorkList[1, 2, 3, 4, 5].
+                                                                    
+------------------------------------------------
+
+

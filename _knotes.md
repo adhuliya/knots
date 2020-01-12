@@ -45,6 +45,8 @@ Compilers/Research <a name="compilers"></a>
 
 Technology Notes <a name="technology"></a>
 -------------------------
+[`Revision Sequence`](technology/revision.html)
+
 [`Dev Corner`](dev/dev.html)
 [`wget`](technology/webdev/wget.html)
 [`git`](technology/git.html)
@@ -94,6 +96,7 @@ Extra Curricular
 ---------------------------
 [`morse code`](extra-curricular/international-morse-code.png)
 [`morse code tree`](extra-curricular/morse-code-tree.jpg)
+[`7 basic knots`](https://youtu.be/H1a2vrhhkIU)
 
 <a name="events"></a>
 
