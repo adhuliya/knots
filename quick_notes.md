@@ -4035,3 +4035,41 @@ http://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 ------------------------------------------------
 
 
+
+
+
+------------------------------------------------
+very useful commands <a name="20200115-110656"></a>
+================================================
+* Keywords: very useful command
+* Timestamp: 20200115-110656
+
+------------------------------------------------
+------------------------------------------------
+
+### continuously monitoring files opened by a process for `lxhotkey`
+
+    strace -f -t -e trace=file <program-name>
+
+### all files (currently) opened by a process
+
+    lsof -p <pid>
+
+### how to make the terminal autocomplete new commands
+
+    hash -rf
+
+### How to lock the computer?
+
+    xdg-screensaver lock
+
+### How to get the size of a file in bytes?
+
+    stat --printf='%s' <filename>
+    #or
+    cat <filename> | wc -c          # slow (reads the whole file)
+
+
+------------------------------------------------
+
+
