@@ -19,7 +19,7 @@ Steps
         mkdir source-zips
         cd source-zips
 
-2. Download a stable LLVM Release (here we use [LLVM 8.0.1][5]).
+3. Download a stable LLVM Release (here we use [LLVM 8.0.1][5]).
 
         # working directory is `llvm-clang8.0.1/source-zips`
         # get llvm source
@@ -31,7 +31,7 @@ Steps
         # get clang-tools-extra
         wget https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/clang-tools-extra-8.0.1.src.tar.xz
 
-3. Extract the source in a proper hirarchy,
+4. Extract the source in a proper hirarchy,
 
         cd .. # now in `llvm-clang8.0.1/` folder
         tar -xJf source-zips/llvm-8.0.1.src.tar.xz
@@ -45,7 +45,7 @@ Steps
         tar -xJf ../../../../source-zips/clang-tools-extra-8.0.1.src.tar.xz
         mv clang-tools-extra-8.0.1.src extra
 
-4. Now create a build directory and run cmake to configure,
+5. Now create a build directory and run cmake to configure,
 
         cd ../../../.. # now in folder `llvm-clang8.0.1/`
         mkdir build
@@ -64,7 +64,15 @@ Steps
             -DCMAKE_BUILD_TYPE=Release \
             ../llvm
 
-5. Now build llvm,
+   Note: To add all targets ommit `-DLLVM_TARGETS_TO_BUILD="X86"` line.
+   LLVM adds all targets by default.
+   To add specific targets, e.g. X86 and Sparc use
+   the semicolon separated string "X86;Sparc" (targets are case sensitive).
+   To see all the targets supported see the folder names in the dir,
+   `<llvm-src-root>/lib/Target/`.
+
+
+6. Now build llvm,
 
         ninja      # thats all (it might take few hours!!)
 
