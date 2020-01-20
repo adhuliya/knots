@@ -4090,3 +4090,32 @@ https://likegeeks.com/bash-scripting-step-step-part2/
 ------------------------------------------------
 
 
+
+
+
+------------------------------------------------
+<a name="20200120-103030"></a>
+record my desktop
+================================================
+* Keywords: record my desktop, screen recorder
+* Timestamp: 20200120-103030
+
+------------------------------------------------
+------------------------------------------------
+
+1. Installing: `sudo apt install gtk-recordmydesktop`
+
+2. Home Page: <http://recordmydesktop.sourceforge.net/about.php>J
+
+3. Good Comparison:
+<https://www.computerworld.com/article/3209982/5-free-screen-recording-apps-for-linux.html>
+
+4. Tutorial: <https://www.linux.com/tutorials/howto-create-video-linux-and-publish-it-youtube/>
+
+5. Command line: <https://www.linuxquestions.org/questions/linux-newbie-8/best-linux-app-for-video-recording-the-desktop-719089/>
+
+6. Keyboard shortcuts: <http://recordmydesktop.sourceforge.net/rug/app_a.php>
+
+------------------------------------------------
+
+
