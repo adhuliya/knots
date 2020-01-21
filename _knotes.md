@@ -2,6 +2,7 @@ Knotes
 ====================
 (Pronounced: *knots*)
 
+[`clipboard`](clipboard.txt)
 [`Quick Notes`](quick_notes.html)
 [`Tasks`](tasks.html)
 [`markdown syntax`](technology/webdev/markdown.html)
