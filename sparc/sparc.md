@@ -59,6 +59,10 @@ REF: <https://llvm.org/docs/CodeGenerator.html#selectiondag-instruction-selectio
     clang -emit-llvm -S -c sum.c -o sum.ll
     llc -fast-isel=false -view-dag-combine1-dags sum.ll
 
+### How to generate sparc assembly code?
+
+    clang -target sparc-unknown-linux-gnu -S test.c
+
 Resources
 -------------------
 

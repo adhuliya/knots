@@ -1,4 +1,0 @@
-
-Unlike Java or Pascal, Haskell has type inference. 
-
-A type is a kind of label that every expression has. It tells us in which category of things that expression fits. The expression True is a boolean, "hello" is a string, etc.
