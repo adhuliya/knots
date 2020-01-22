@@ -2,7 +2,10 @@ SPARC V8 and (related) LLVM Notes
 ====================
 Scalable Processor ARChitecture Version 8
 
+* [`isa.txt`](isa.txt)
 * [`llvm related notes`](#llvm)
+* [SparcV8 Manual](../../mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf)
+* [My Reference Material](../../mydata/git/ws/sparcv8-ajit-git/misc/references/)
 
 Processor Overview
 ------------------
