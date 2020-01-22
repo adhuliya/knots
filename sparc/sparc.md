@@ -63,6 +63,13 @@ REF: <https://llvm.org/docs/CodeGenerator.html#selectiondag-instruction-selectio
 
     clang -target sparc-unknown-linux-gnu -S test.c
 
+### How to build a backend?
+
+View IR generated at each step:
+
+    clang -emit-llvm -S -c hello.c -o hello.ll
+    llc hello.ll -print-after-all 2>&1 &> hello.log   
+
 Resources
 -------------------
 
