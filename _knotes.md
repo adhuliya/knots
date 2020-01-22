@@ -100,6 +100,8 @@ Extra Curricular
 [`morse code tree`](extra-curricular/morse-code-tree.jpg)
 [`7 basic knots`](https://youtu.be/H1a2vrhhkIU)
 
+[`gamedev game`](games/gamedev-js/index.html)
+
 <a name="events"></a>
 
 Events
