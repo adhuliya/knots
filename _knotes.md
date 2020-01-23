@@ -5,6 +5,8 @@ Knotes
 [`clipboard`](clipboard.txt)
 [`Quick Notes`](quick_notes.html)
 [`Tasks`](tasks.html)
+[`mymp`](mymp.html)
+
 [`markdown syntax`](technology/webdev/markdown.html)
 [`knotes web`](http://adhuliya.pythonanywhere.com/_knotes_.html)
 
