@@ -11,44 +11,23 @@ Important Commands
 * `psql` : the command line postgres client
 * `sudo systemctl reload postgresql.service`
 
-Installing on Ubuntu
+Installing on Ubuntu (bionic)
 -------------------------
 
-    sudo apt-get update         # update the package database
-    sudo apt-get install postgresql postgresql-contrib
+Ref: <https://www.postgresql.org/download/linux/ubuntu/>
 
-The `-contrib` package has some useful utilities (don't know details yet).
+1. Create the file `/etc/apt/sources.list.d/pgdg.list` and add a line for the repository
 
-The user `postgres` is automatically created on installation, this user has no password by default and has **superuser** priviledges on the postgres install. See below on how to get into the database.
+        deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
 
-PostgreSQL for Debian and Ubuntu Apt Repository
----------------------------------------------------
+2. Import the repository signing key, and update the package lists
 
-Contents of README.md file in the official postgres repository for Ubuntu.
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        sudo apt-get update
 
->  This repository hosts PostgreSQL server and extension module packages, as well
->  as some client applications.
->  
->  To use the repository, do the following:
->  
->  Create /etc/apt/sources.list.d/pgdg.list. The distributions are called
->  codename-pgdg. In the example, replace "jessie" with the actual distribution
->  you are using:
->  
->    deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main
->  
->  (You may determine the codename of your distribution by running lsb_release -c.)
->  
->  Import the repository key from https://www.postgresql.org/media/keys/ACCC4CF8.asc,
->  update the package lists, and start installing packages:
->  
->        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
->        sudo apt-get update
->        sudo apt-get install postgresql-9.5 pgadmin3
->  
->  More information:
->  * <https://wiki.postgresql.org/wiki/Apt>
->  * <https://wiki.postgresql.org/wiki/Apt/FAQ>
+3. Now install postgresql and pgadmin
+
+        apt-get install postgresql-11 pgadmin4
 
 
 Starting `psql` client

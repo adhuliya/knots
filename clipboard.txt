@@ -2,3 +2,38 @@
 https://www.musictheory.net/exercises
 
 https://www.fullstackpython.com/bottle.html
+
+$ django-admin startproject mysite
+
+$ python manage.py runserver 0:8000
+
+Let’s look at what startproject created:
+
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+
+
+
+$ python manage.py runserver
+
+$ python manage.py startapp polls
+
+That’ll create a directory polls, which is laid out like this:
+
+polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+
+
