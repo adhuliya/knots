@@ -37,3 +37,11 @@ polls/
     views.py
 
 
+
+$ python manage.py makemigrations polls
+
+$ python manage.py sqlmigrate polls 0001
+
+If you’re interested, you can also run python manage.py check; this checks for any problems in your project without making migrations or touching the database.
+
+$ python manage.py migrate
