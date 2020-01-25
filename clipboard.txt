@@ -45,3 +45,7 @@ $ python manage.py sqlmigrate polls 0001
 If you’re interested, you can also run python manage.py check; this checks for any problems in your project without making migrations or touching the database.
 
 $ python manage.py migrate
+
+We can examine the machine instructions emitted in this step by calling llc with the -print-machineinstrs flag and looking at the first output that says "After instruction selection":
+
+By passing -show-mc-inst and -show-mc-encoding to llc, we can see the MC-level instructions it creates with their encoding, alongside the actual assembly code:
