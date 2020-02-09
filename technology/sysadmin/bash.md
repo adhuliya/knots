@@ -18,6 +18,7 @@ Use its `[[ expr ]]` format with `if`, `for` and `while` constructs.
 
 Resources
 -------------------
+* [GNU Bash Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
 * [Master your Z Shell][1]
 * [Z Shell Arch Wiki][2]
 * <https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs>
