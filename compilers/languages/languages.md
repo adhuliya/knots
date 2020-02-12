@@ -20,6 +20,7 @@ Computer Languages
 
 C++
 --------
+[`C++ Tour`](files/TourOfCpp_Stroustrup_2013.pdf)
 [`C++ Book`](files/Straustrup4th.pdf)
 [`C++ Reference`](https://en.cppreference.com/w/cpp/language)
 [`cplusplus.com`](http://www.cplusplus.com/)
