@@ -1,12 +1,12 @@
 Network Setup
 =================
 
-* See the IP address and names of all the interfaces:
+* See the IP address and names of all the active interfaces:
 
         ip addr        # method 1
         ifconfig       # method 2
 
-* See all the network interfaces:
+* See all the interfaces:
 
         ip link show   # method 1
         ifconfig -a    # method 2 - `-a` displays interfaces even if its down
