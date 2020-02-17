@@ -7,7 +7,7 @@ Index
 1. [`Models`](#models)
 2. [`Math Symbols`](#symbols)
 3. [`Partially Ordered Sets`](posets.html)
-4. [`Lemma, Theorem, Corollary`](https://divisbyzero.com/2008/09/22/what-is-the-difference-between-a-theorem-a-lemma-and-a-corollary/)
+4. [`Lemma, Theorem, Corollary`](https://divisbyzero.com/2008/09/22/what-is-the-difference-between-a-theorem-a-lemma-and-a-corollary/) [`Lemma, Theorem, Corollary (pdf)`](thcorlem.pdf)
 
 <a name="books"></a>
 ## Books

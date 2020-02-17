@@ -46,6 +46,7 @@ Compilers/Research <a name="compilers"></a>
 
 ### Others
 [`etag`](etag/etag.html)
+[`data-and-algo`](data-and-algo/index.html)
 
 Technology Notes <a name="technology"></a>
 -------------------------
