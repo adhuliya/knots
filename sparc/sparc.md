@@ -73,6 +73,19 @@ View IR generated at each step:
     clang -emit-llvm -S -c hello.c -o hello.ll
     llc hello.ll -print-after-all 2>&1 &> hello.log   
 
+### How to view the list of instructions and registers?
+
+    # cd to the lib/Target/Sparc directory containing Sparc.td file
+    llvm-tblgen -I ../../../include Sparc.td -print-enums -class=Instruction  # for instructions
+    llvm-tblgen -I ../../../include Sparc.td -print-enums -class=Register     # for registers
+
+### How to see if the instruction matches a valid node is the DAG?
+
+    # cd to the lib/Target/Sparc directory containing Sparc.td file
+    llvm-tblgen -I ../../../include Sparc.td -gen-dag-isel -instrument-coverage | less
+    # now search for any instruction and see SelectionDAG -> Instruction mapping.
+
+
 Resources
 -------------------
 
