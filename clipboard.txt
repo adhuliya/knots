@@ -49,3 +49,10 @@ $ python manage.py migrate
 We can examine the machine instructions emitted in this step by calling llc with the -print-machineinstrs flag and looking at the first output that says "After instruction selection":
 
 By passing -show-mc-inst and -show-mc-encoding to llc, we can see the MC-level instructions it creates with their encoding, alongside the actual assembly code:
+
+/// This is the main entry point for the type legalizer. This does a top-down
+/// traversal of the dag, legalizing types as it goes. Returns "true" if it made
+/// any changes.
+bool DAGTypeLegalizer::run() {
+  bool Changed = false;
+
