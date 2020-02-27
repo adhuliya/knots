@@ -56,3 +56,9 @@ By passing -show-mc-inst and -show-mc-encoding to llc, we can see the MC-level i
 bool DAGTypeLegalizer::run() {
   bool Changed = false;
 
+
+ The various operation node types are described at the top of the include/llvm/CodeGen/ISDOpcodes.h file.
+
+ Because nodes may define multiple values, edges are represented by instances of the SDValue class, which is a <SDNode, unsigned> pair, indicating the node and result value being used, respectively. Each value produced by an SDNode has an associated MVT (Machine Value Type) indicating what the type of the value is.
+
+https://llvm.org/docs/CodeGenerator.html#introduction-to-selectiondags
