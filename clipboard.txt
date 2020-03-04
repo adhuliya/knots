@@ -62,3 +62,5 @@ bool DAGTypeLegalizer::run() {
  Because nodes may define multiple values, edges are represented by instances of the SDValue class, which is a <SDNode, unsigned> pair, indicating the node and result value being used, respectively. Each value produced by an SDNode has an associated MVT (Machine Value Type) indicating what the type of the value is.
 
 https://llvm.org/docs/CodeGenerator.html#introduction-to-selectiondags
+
+QQ thinkpad self diagnostic beeps how to manage?
