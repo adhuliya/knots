@@ -3,6 +3,7 @@ Dev Corner
 
 1. [Development Acronyms][1]
 2. [Design Patterns](../misc/designpatterns.html)
+3. [My Django Notes](django-notes.html)
 
 
 
