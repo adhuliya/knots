@@ -53,6 +53,11 @@ Look for the "Registered Targets" in the output of `llc --version`.
         x86     - 32-bit X86: Pentium-Pro and above
         x86-64  - 64-bit X86: EM64T and AMD64
 
+### How to compile a c file to sparc assembly?
+
+    clang -emit-llvm -S -c sum.c -o sum.ll;
+    llc sum.ll --march=sparc;
+
 ### How to view the DAG graphs?
 
 REF: <https://llvm.org/docs/CodeGenerator.html#selectiondag-instruction-selection-process>
