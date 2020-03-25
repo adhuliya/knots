@@ -69,3 +69,5 @@ QQ thinkpad self diagnostic beeps how to manage?
 QQ How to detect which process just started/stopped?
 
 QQ How to see a history of processes that exited in order?
+
+http://localhost:5050/knotes-git/sparc/sparc.html#llvm
