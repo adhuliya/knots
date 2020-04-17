@@ -40,6 +40,7 @@ Compilers/Research <a name="compilers"></a>
 [`latex notes`](latex/latex.html)
 
 ### Compilers
+[`Compilers Homepage`](compilers/index.html)
 [`clang/llvm`](compilers/llvm/index.html)
 [`languages`](compilers/languages/languages.html)
 [`Compiler Construction`](compilers/index.html)
