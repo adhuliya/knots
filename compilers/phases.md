@@ -1,25 +1,30 @@
 Phases of Clang/LLVM Compiler
 ====================
-(Using LLVM version 9.0.0)
+(Clang/LLVM version 9.0.0)
 
 The phases of compilers and how to view them using Clang/LLVM.
 We assume C++ source files are being compiled (hence the `.cc` extension).
 
-A typical compiler has the following phases,
+This page give a broad outline of the phases.
+More details are covered in separate pages which are linked here
+as soon as they are created.
+
+The Clang/LLVM compiler has the following phases,
 0. Lexical Analysis
 1. Pre-processing
 2. Lexical Analysis
 3. Parsing & AST Generation
 4. AST Analysis and Transformation (A&T)
-5. Intermediate Representation (IR) Generation
-6. IR A&T (Multiple Steps)
-7. IR Lowering & A&T
-8. Machine Code Representation & A&T
+5. Intermediate Representation (IR) Generation (LLVM IR)
+6. IR A&T
+7. IR Lowering & A&T      (SelectionDAG,...)
+8. Machine Code Representation & A&T (MLIR)
 9. Assembly/Object code generation
 
 A&T may involve hundreds of phases of analysis followed by transformation.
 
-## Practically looking at phases
+## Practically look at the phase outputs
+Input program `test.cc`,
 
     // test.cc
     #define VAL 10
@@ -114,7 +119,7 @@ Output:
 
 ### View the generated IR (LLVM IR)
 
-    clang++ -S -emit-llvm test.c -o test.ll
+    clang++ -emit-llvm -S test.c -o test.ll
 
 `test.ll` is:
 
@@ -149,13 +154,13 @@ Output:
     !1 = !{!"clang version 9.0.0 (tags/RELEASE_900/final)"}
 
 
-Without option `-S` LLVM bitcode file is generated.
+Without option `-S` LLVM bitcode file (`.bc`) is generated.
 Conventionally its file extension is `.bc`.
 
 #### Converting between `.bc` and `.ll` files
 
-1. Use `llvm-as`  for `.ll` to `.bc` conversion.
-1. Use `llvm-dis` for `.bc` to `.ll` conversion.
+1. `llvm-as  test.ll`  generates `test.bc` file.
+1. `llvm-dis test.bc`  generates `test.ll` file.
 
 ### Run an optimizer on the LLVM IR
 
