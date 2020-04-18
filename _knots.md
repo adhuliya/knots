@@ -1,6 +1,5 @@
-Knotes
+Knots
 ====================
-(Pronounced: *knots*)
 
 [`clipboard`](clipboard.txt)
 [`Quick Notes`](quick_notes.html)
