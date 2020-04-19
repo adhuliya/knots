@@ -80,3 +80,7 @@ Common European Framework of Reference for Languages (CEFR)
 word: ruddy, euphemism of bloody
 word: ruddy is the euphemism of 'bloody'
 word: 'ruddy' is the euphemism of 'bloody'
+
+Task: Repace text in many files
+
+    for x in ./**/*.py; do sed -i "s/Copyright (c) 2019/Copyright (c) 2020/" $x; echo $x; done
