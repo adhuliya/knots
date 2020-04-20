@@ -60,17 +60,29 @@ Output:
     # 1 "<command line>" 1
     # 1 "<built-in>" 2
     # 1 "test.cc" 2
-    
-    
+
+
     int main(int argc, char** argv) {
       int a = 10;
       return a+argc;
     }
 
+Lines of the form,
+
+    # linenum filename flags`
+
+Are called *linemarkers*. *linenum* is the line number the following line is
+in the *filename*. *flags* can be one or more of,
+1. `1' This indicates the start of a new file.
+2. `2' This indicates returning to a file (after having included another file).
+3. `3' This indicates that the following text comes from a system header file, so certain warnings should be suppressed.
+4. `4' This indicates that the following text should be treated as being wrapped in an implicit extern "C" block. 
+
+Reference: <https://gcc.gnu.org/onlinedocs/gcc-3.4.6/cpp/Preprocessor-Output.html>
 
 ### View the Abstract Syntax Tree (AST)
 
-    clang++ -Xclang -ast-dump -fsyntax-only test.cc
+    clang++ -fsyntax-only -Xclang -ast-dump test.cc
 
 Output:
 
@@ -209,7 +221,9 @@ It generates the following `test.s` file,
 
 ### Object file output
 
-    clang++ -c test.cc
+From different input types,
+1. `clang++ -c test.cc`
+1. `clang++ -c test.s`
 
 This generates `test.o` file which is not linked, and hence not ready
 for execution.
