@@ -104,6 +104,7 @@ Extra Curricular
 [`7 basic knots`](https://youtu.be/H1a2vrhhkIU)
 
 [`gamedev game`](games/gamedev-js/index.html)
+[`pianoforall`](pianoforall/pianoforall.html)
 
 <a name="events"></a>
 
