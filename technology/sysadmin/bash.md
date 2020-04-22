@@ -1,4 +1,4 @@
-Bash Shell
+Bash Shell & Scripting
 ===============
 
 Important Files
@@ -10,7 +10,8 @@ Important Files
 
 ### Q. How to get the size of a file?
 
-    cat filename | wc -c
+    stat --printf='%s' filename   # see: man stat (recommended way)
+    cat filename | wc -c          # not recommended
 
 ### Q. How to do basic condition tests in bash?
 Use the `test` command. See `man test`.
@@ -18,6 +19,7 @@ Use its `[[ expr ]]` format with `if`, `for` and `while` constructs.
 
 Resources
 -------------------
+* [Bash Cheatsheet](https://devhints.io/bash)
 * [GNU Bash Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
 * [Master your Z Shell][1]
 * [Z Shell Arch Wiki][2]

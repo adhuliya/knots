@@ -7,7 +7,7 @@ Knots
 [`mymp`](mymp.html)
 
 [`markdown syntax`](technology/webdev/markdown.html)
-[`knotes web`](http://adhuliya.pythonanywhere.com/_knotes_.html)
+[`knots web`](http://adhuliya.pythonanywhere.com/_knots_.html)
 
 Index
 --------
@@ -56,17 +56,16 @@ Technology Notes <a name="technology"></a>
 [`wget`](technology/webdev/wget.html)
 [`git`](technology/git.html)
 
+[`Env Variables`](#)
+[`bash`](technology/sysadmin/bash.html)
+[`zsh`](technology/sysadmin/zsh.html)
+
 [`Package Management`](#)
 [`User Management`](#)
-[`Env Variables`](#)
 [`systemctl`](#)
 [`grub2`](#)
 [`VFS and Ext4`](#)
 [`hardware management`](#)
-[`zsh`](technology/sysadmin/zsh.html)
-[`bash`](technology/sysadmin/bash.html)
-[`postgresql`](#)
-[`nginx`](#)
 
 [`firefox`](#)
 [`lxde/lxqt`](#)
@@ -74,6 +73,8 @@ Technology Notes <a name="technology"></a>
 [`vim`](#)
 [`recoll`](technology/recoll.html)
 [`samba`](#)
+[`postgresql`](#)
+[`nginx`](#)
 
 
 Projects <a name="projects"></a>
@@ -101,7 +102,7 @@ Extra Curricular
 ---------------------------
 [`morse code`](extra-curricular/international-morse-code.png)
 [`morse code tree`](extra-curricular/morse-code-tree.jpg)
-[`7 basic knots`](https://youtu.be/H1a2vrhhkIU)
+[`knots & hitches`](extra-curricular/knots_n_hitches.html)
 
 [`gamedev game`](games/gamedev-js/index.html)
 [`pianoforall`](pianoforall/pianoforall.html)
