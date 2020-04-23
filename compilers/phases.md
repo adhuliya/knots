@@ -5,7 +5,7 @@ Phases of Clang/LLVM Compiler
 The phases of compilers and how to view them using Clang/LLVM.
 We assume C++ source files are being compiled (hence the `.cc` extension).
 
-This page give a broad outline of the phases.
+This page gives a broad outline of the phases.
 More details are covered in separate pages which are linked here
 as soon as they are created.
 

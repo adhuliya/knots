@@ -1,4 +1,4 @@
-Building and Running Clang
+Get Started: Building and Running Clang
 ================================
 
 Requirements <a name="requirements"></a>
@@ -11,7 +11,7 @@ Requirements <a name="requirements"></a>
 Steps
 --------------
 
-1. Make sure the [dependencies](#requirements) are met.
+1. Make sure the [requirements](#requirements) above are met.
 2. Create a directory called `llvm-clang8.0.1`. We will be working within this directory now.
 
         mkdir llvm-clang8.0.1
