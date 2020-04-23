@@ -105,3 +105,6 @@ some more clang options regarding pre-processing:
   -H                      Show header includes and nesting depth
   -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
 
+
+QQ Is Intraprocedural and Context Insensitive the same?
+
