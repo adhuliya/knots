@@ -105,7 +105,7 @@ Extra Curricular
 [`knots & hitches`](extra-curricular/knots_n_hitches.html)
 
 [`gamedev game`](games/gamedev-js/index.html)
-[`pianoforall`](pianoforall/pianoforall.html)
+[`pianoforall`](extra-curricular/pianoforall/pianoforall.html)
 
 <a name="events"></a>
 
