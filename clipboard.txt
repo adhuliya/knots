@@ -112,3 +112,4 @@ PP. ((x - K_2) \union G_2) \intersect ((x - K_1) \union G_1)
     (x - (K_1 \union K_2)) \union (G_1 \intersect G_2)
 
 
+Happening now video meeting 
