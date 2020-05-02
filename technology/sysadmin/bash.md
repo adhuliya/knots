@@ -17,6 +17,11 @@ Important Files
 Use the `test` command. See `man test`.
 Use its `[[ expr ]]` format with `if`, `for` and `while` constructs.
 
+### Q. What are Basic and Extended regular expressions?
+
+See [`REGULAR EXPRESSION`](http://man7.org/linux/man-pages/man1/grep.1.html#REGULAR_EXPRESSIONS)
+section in `man grep`.
+
 Resources
 -------------------
 * [Bash Cheatsheet](https://devhints.io/bash)
