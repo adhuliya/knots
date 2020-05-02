@@ -23,7 +23,7 @@ The Clang/LLVM compiler has the following phases,
 
 A&T may involve hundreds of phases of analysis followed by transformation.
 
-## Practically look at the phase outputs
+## A practical look at the phase outputs
 Input program `test.cc`,
 
     // test.cc
@@ -45,7 +45,18 @@ This generates an `a.out` file which can be executed as `./a.out`.
 This generates the executable `test` instead of `a.out`.
 
 
-### Pre-Processing
+### Lexing (1)
+
+Compiling a C/C++ file with a non-standard extension,
+
+    clang++ -x c++ -E test.txt        # treats test.txt as test.cc file
+    # or
+    clang   -x c   -E test.txt        # treats test.txt as test.c  file
+
+`-E` has been included above to only go till the pre-processor stage.
+
+
+### Pre-Processing ([more](pre_processing.html))
 Generate the pre-processed output by executing the macro 'instructions'.
 Use `-E` as follows,
 
@@ -79,6 +90,15 @@ in the *filename*. *flags* can be one or more of,
 4. `4' This indicates that the following text should be treated as being wrapped in an implicit extern "C" block. 
 
 Reference: <https://gcc.gnu.org/onlinedocs/gcc-3.4.6/cpp/Preprocessor-Output.html>
+
+
+### Lexer ([more](lexer.html))
+Dump lexical tokens of the program,
+
+    clang -fsyntax-only -Xclang -dump-tokens test.cc
+
+See [lexer.html](lexer.html) for details.
+
 
 ### View the Abstract Syntax Tree (AST)
 
@@ -241,6 +261,10 @@ and generates the `a.out` executable file.
 
 
 
+## References
+1. [Clang command line reference][1]
+
+[1]: https://clang.llvm.org/docs/ClangCommandLineReference.html
 
 
 
