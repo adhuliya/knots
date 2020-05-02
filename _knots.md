@@ -23,8 +23,7 @@ Index
 
 Health <a name="health"></a>
 ---------------
-[`home`](health/index.html)
-
+[`home`](health/index.html) 
 `squats` `push-ups` `hand-grip`
 
 Compilers/Research <a name="compilers"></a>
@@ -48,33 +47,14 @@ Compilers/Research <a name="compilers"></a>
 [`etag`](etag/etag.html)
 [`data-and-algo`](data-and-algo/index.html)
 
+
 Technology Notes <a name="technology"></a>
 -------------------------
 [`Revision Sequence`](technology/revision.html)
 
 [`Dev Corner`](dev/dev.html)
-[`wget`](technology/webdev/wget.html)
-[`git`](technology/git.html)
 
-[`Env Variables`](#)
-[`bash`](technology/sysadmin/bash.html)
-[`zsh`](technology/sysadmin/zsh.html)
-
-[`Package Management`](#)
-[`User Management`](#)
-[`systemctl`](#)
-[`grub2`](#)
-[`VFS and Ext4`](#)
-[`hardware management`](#)
-
-[`firefox`](#)
-[`lxde/lxqt`](#)
-[`pcmanfm`](#)
-[`vim`](#)
-[`recoll`](technology/recoll.html)
-[`samba`](#)
-[`postgresql`](#)
-[`nginx`](#)
+[`Lubuntu System Management`](technology/sysadmin/index.html)
 
 
 Projects <a name="projects"></a>

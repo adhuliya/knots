@@ -113,3 +113,7 @@ PP. ((x - K_2) \union G_2) \intersect ((x - K_1) \union G_1)
 
 
 Happening now video meeting 
+QQ How to disable internet on ubuntu?
+QQ How to disable copy paste on ubuntu?
+sudo ip link set wlp5s0 down
+https://unix.stackexchange.com/questions/213840/how-to-toggle-or-turn-off-text-selection-being-sent-to-the-clipboard

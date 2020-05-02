@@ -1,6 +1,16 @@
 Useful Ubuntu commands
 =============================
 
+### How to change text in multiple files?
+
+Changing copyright notice year in all python files,
+
+    for x in ./**/*.py; do sed -i "s/Copyright (c) 2019/Copyright (c) 2020/" $x; echo $x; done
+
+Note: `./**/*.py` is a zsh pattern that lists all `*.py` files in the current directory,
+and in all the possible sub directory depths.
+
+
 ### Working with paths
 
 For Posix special characters like `% # ...` see [this resource](http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_06_02).
