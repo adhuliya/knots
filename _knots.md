@@ -32,6 +32,7 @@ Compilers/Research <a name="compilers"></a>
 ### Research
 [`SPAN`](span/__span.html)
 [`Program Analysis`](program-analysis/pa.html) 
+[`writing`](writing/index.html)
 [`meetings`](compilers/meetings/meetings.html)
 [`papers`](program-analysis/papers/papers.html)
 [`Math Notes`](math/math.html)
