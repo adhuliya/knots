@@ -120,3 +120,4 @@ https://unix.stackexchange.com/questions/213840/how-to-toggle-or-turn-off-text-s
 spelling: broccoli, bouquet, mnemonic
 spelling: insist
 spelling: imitate
+spelling: omitted
