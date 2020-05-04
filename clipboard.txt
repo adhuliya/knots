@@ -77,34 +77,11 @@ http://localhost:5050/knotes-git/sparc/sparc.html#llvm
 Cambridge Assessment English
 https://www.cambridgeenglish.org/exams-and-tests/cefr/
 Common European Framework of Reference for Languages (CEFR)
-word: ruddy, euphemism of bloody
-word: ruddy is the euphemism of 'bloody'
+
 word: 'ruddy' is the euphemism of 'bloody'
-
-Task: Repace text in many files
-
-    for x in ./**/*.py; do sed -i "s/Copyright (c) 2019/Copyright (c) 2020/" $x; echo $x; done
-
-
-Clang preprocessor:
-  -dM                     Print macro definitions in -E mode instead of normal output
-  -D <macro>=<value>      Define <macro> to <value> (or 1 if <value> omitted)
-  -emit-ast               Emit Clang AST files for source inputs
 
 gcc -E -nostdinc will bypass standard #include files
 You might also need to specify -x c if the file you are processing has not a standard c extension
-
-Source file name and line number information is conveyed by lines of the form
-
-     # linenum filename flags
-
-These are called linemarkers.
-https://gcc.gnu.org/onlinedocs/gcc-3.4.6/cpp/Preprocessor-Output.html
-
-some more clang options regarding pre-processing:
-  -H                      Show header includes and nesting depth
-  -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
-
 
 QQ Is Intraprocedural and Context Insensitive the same?
 
@@ -121,3 +98,4 @@ spelling: broccoli, bouquet, mnemonic
 spelling: insist
 spelling: imitate
 spelling: omitted
+spelling: capillary
