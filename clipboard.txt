@@ -99,3 +99,4 @@ spelling: insist
 spelling: imitate
 spelling: omitted
 spelling: capillary
+spelling: remuneration
