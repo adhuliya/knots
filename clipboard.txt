@@ -106,3 +106,4 @@ ROHAN NAIR & HIMANSHU SHAH emails
   himanshu.ss@somaiya.edu
 
 spelling: immediately
+TODO: Optimize images for website?
