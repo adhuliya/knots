@@ -93,6 +93,7 @@ Extra Curricular
 Events
 ----------------
 [`ACM Summer School 2019`](events/acm-summer-school-2019/index.html)
+[`Python Spoken Tutorial 2020`](events/spoken-tutorial/index.html)
 
 <a name="misc"></a>
 ## Misc
