@@ -123,6 +123,8 @@ Objectives,
     %pylab
 
     x = linspace(-3*pi, 3*pi, 100)
+    plot(x, sin(x))
+
     savefig("sine.png")             # saves the figure in png format
     savefig("sine.pdf")             # saves the figure in pdf format
     savefig("sine.ps")              # saves the figure in ps  format
@@ -910,10 +912,10 @@ Objectives,
             [4, 5, 6],
             [7, 8, 9]])
     
-    In [4]: a.flatten()
+    In [4]: a.flatten()   # flattens a matrix to a single dimension
     Out[4]: matrix([[1, 2, 3, 4, 5, 6, 7, 8, 9]])
     
-    In [5]: # Forbenius norm
+    In [5]: # Frobenius norm
     
     In [6]: m = asmatrix(arange(1,17).reshape(4,4))
     
@@ -932,14 +934,14 @@ Objectives,
     
     In [11]: im = inv(m)
     
-    In [12]: norm(im)
+    In [12]: norm(im)   # frobenious norm
     Out[12]: 3.7059917700933944
     
     In [13]: # Infinity norm of a matrix -- max value of the sum of the abs value in each row
     
     In [14]: from numpy import inf
     
-    In [15]: norm(im, ord=inf)
+    In [15]: norm(im, ord=inf)    # calcuales infinity norm
     Out[15]: 4.624999999999995
     
     In [16]: # norm?
@@ -952,14 +954,14 @@ Objectives,
     
     In [20]: m1 = matrix([[3,2,2],[2,3,-2]])
     
-    In [21]: U, sigma, V_conjugate = svd(m1)
+    In [21]: U, sigma, V_conjugate = svd(m1)  # singular value decomposition
     
     In [22]: U
     Out[22]: 
     matrix([[-0.70710678, -0.70710678],
             [-0.70710678,  0.70710678]])
     
-    In [23]: sigma
+    In [23]: sigma    # the diagonal elements of the matrix
     Out[23]: array([5., 3.])
     
     In [24]: V_conjugate
