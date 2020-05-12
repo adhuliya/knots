@@ -141,4 +141,35 @@ and the deers survived,
 and the deers survived.
 
 
+# Related Work notes:
+From Lerner's paper:
+A number of analysis frameworks have been developed for
+making intra- and inter-procedural analyses easier to write
+and reason about, includeing Sharlit[27], SPARE [28],
+FIAT [17], McCAT [19], System-Z [34], PAG[2], the k-tuple
+dataflow analysis framework [23], and Dwyer and Clarke's
+system [15]. However, none of these systems address integrating
+transformations with analyses, nor automatically
+combining analyses profitably.
+
+Manual methods:
+
+Nelson and Oppen [24] - describe how under certain conditions
+  satisfiability programs for several theories can be combined into
+  a satisfiability program for the combined theory.
+Click and Cooper [9] - defines formally the circumstances in which two
+  dataflow analyses should be integrated to reach better fixed points than
+  repeated sequences of the two analyses run separately.
+Cousot and Cousot[11] - also point out that such interactions can arise.
+
+Whitfield and Soffa [32, 33] - examins interactions between different optimizations.
+
+Assmann [3,4]
+
+
+Bronevetsky and Anantkrishnan:
+Abstract Transitioning System
+Loose composition - e.g. LLVM
+Tight composition - e.g. Wegman.., Click.., Lerner.., Nelson..
+
 
