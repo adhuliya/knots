@@ -173,3 +173,16 @@ Loose composition - e.g. LLVM
 Tight composition - e.g. Wegman.., Click.., Lerner.., Nelson..
 
 
+#python3
+from inspect import currentframe, getframeinfo
+
+frameinfo = getframeinfo(currentframe())
+
+print(frameinfo.filename, frameinfo.lineno)
+
+
+Count: 643, Func: f:LBM_initializeSpecialCellsForLDC
+Count: 533, Func: f:LBM_initializeSpecialCellsForLDC
+
+Count: 20, Func: f:loadValue
+Count: 17, Func: f:loadValue
