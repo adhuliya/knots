@@ -187,3 +187,9 @@ Count: 533, Func: f:LBM_initializeSpecialCellsForLDC
 Count: 20, Func: f:loadValue
 Count: 17, Func: f:loadValue
 http://isola-conference.org/isola2020/
+If you know the commit you want to return to is the head of some branch, or is tagged, then you can just
+
+git checkout branchname
+
+You can also use git reflog to see what other commits your HEAD (or any other ref) has pointed to in the past.
+git log --all (or more usefully, git log --oneline --graph --all). 
