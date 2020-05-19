@@ -193,3 +193,7 @@ git checkout branchname
 
 You can also use git reflog to see what other commits your HEAD (or any other ref) has pointed to in the past.
 git log --all (or more usefully, git log --oneline --graph --all). 
+
+brighness setting in /etc/X11/xorg.conf see link below it worked for me
+https://askubuntu.com/a/1060843/777713
+
