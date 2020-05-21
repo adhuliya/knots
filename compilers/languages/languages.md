@@ -20,19 +20,7 @@ Computer Languages
 
 C++
 --------
-[`C++ Tour`](files/TourOfCpp_Stroustrup_2013.pdf)
-[`C++ Book`](files/Straustrup4th.pdf)
-[`C++ Reference`](https://en.cppreference.com/w/cpp/language)
-[`cplusplus.com`](http://www.cplusplus.com/)
-[`CodingStyle`](http://www.yolinux.com/TUTORIALS/LinuxTutorialC++CodingStyle.html)
-
-[`Initialization List`](http://forums.codeguru.com/showthread.php?464084-C-General-What-is-the-initialization-list-and-why-should-I-use-it)
-[`Opaque Pointer`](https://en.wikipedia.org/wiki/Opaque_pointer#C++)
-
-Note:
-    // Not actually a good approximation.  :)
-    constexpr long double operator"" _degrees (long double d) { return d * 0.0175; }
-    long double pi = 180.0_degrees;
+[`Homepage`](cpp/index.html)
 
 <a name="python"></a>
 ## Python
