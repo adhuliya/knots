@@ -5,6 +5,7 @@ CPP Notes
 ## Index
 1. [Profiling: Memory Usage](profiling.html)
 2. [STL Source](#stlsource)
+3. [Using cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
 
 [`C++ Tour`](files/TourOfCpp_Stroustrup_2013.pdf)
