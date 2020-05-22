@@ -32,7 +32,10 @@ Note:
 See: 
 <https://stackoverflow.com/questions/7510182/how-does-stdmove-transfer-values-into-rvalues>
 
-## Q. Why use staic\_cast()?
+## Q. What is static\_cast()?
+<https://docs.microsoft.com/en-us/cpp/cpp/static-cast-operator?view=vs-2019>
+
+## Q. Why use static\_cast()?
 See:
 <https://stackoverflow.com/questions/103512/why-use-static-castintx-instead-of-intx>
 
