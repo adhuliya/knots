@@ -5,11 +5,13 @@ Important Files
 ---------------------
 * `/usr/share/postgressql/9.5/pg_hba.conf` : db local/remote access configurations
 * `postgresql.service` : systemd service file (use `locate postgresql.service` to find)
+* `psycopg2` python database bindings package  [see this](#psycopg2)-- `pip3 install psycopg2`
 
 Important Commands
 --------------------------
 * `psql` : the command line postgres client
 * `sudo systemctl reload postgresql.service`
+* `psql -U hop -W -d hop -h 127.0.0.1 -p 5432` : login via cli to postgres server
 
 Installing on Ubuntu (bionic)
 -------------------------
@@ -220,6 +222,13 @@ FAQ's
     # ERROR:  must be owner of extension plpgsql
     # will be shown, which can be safely ignored.
 
+<a id="psycopg2"></a>
+## `psycopg2`
+[`psycopg2`](https://www.psycopg.org/)
+python database bindings package. It can be installed as,
+
+    sudo apt-get update libpq-dev
+    pip3 install psycopg2
 
 
 References

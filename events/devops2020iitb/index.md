@@ -3,6 +3,8 @@ DevOps Webinar 2020 IITB
 
 Instructor: Vishal Ruparel
 
+Note: I didn't attend the next day of the webinar. Didn't see much value.
+
 1. [Webinar Details](#webinar)
 
 

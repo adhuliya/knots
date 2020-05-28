@@ -200,3 +200,18 @@ https://askubuntu.com/a/1060843/777713
 https://docs.docker.com/config/containers/runmetrics/
 
 
+// Define prefix increment operator.
+Point& Point::operator++()
+{
+   _x++;
+   _y++;
+   return *this;
+}
+
+// Define postfix increment operator.
+Point Point::operator++(int)
+{
+   Point temp = *this;
+   ++*this;
+   return temp;
+}
