@@ -6,6 +6,7 @@ CPP Notes
 1. [Profiling: Memory Usage](profiling.html)
 2. [STL Source](#stlsource)
 3. [Using cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
+4. [Microsoft Cpp Docs](https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference?view=vs-2019)
 
 
 [`C++ Tour`](files/TourOfCpp_Stroustrup_2013.pdf)
