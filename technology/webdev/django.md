@@ -1,6 +1,8 @@
 Django Notes
 ===============
 
+[`Production Deployment`](django_deployment.html)
+
 ## How to get help on Django?
 Post a message to [djanog-users][2]
 or drop by [#django on irc.freenode.net][3]
