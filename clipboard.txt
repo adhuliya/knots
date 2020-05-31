@@ -215,3 +215,7 @@ Point Point::operator++(int)
    ++*this;
    return temp;
 }
+pypy manage.py test
+ Not all libraries are compatible with PyPy.
+I use pypy+ gunicorn + django + nginx and it works like a charm.
+https://stackoverflow.com/questions/16333306/drawbacks-to-running-django-under-pypy
