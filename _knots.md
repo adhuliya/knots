@@ -66,6 +66,8 @@ Projects <a name="projects"></a>
 4. [WebNotes](misc/webnotes.html) : you are viewing webnotes
 6. [RIMINET](riminet/__riminet_.html)
 
+[`Udemy HtmlCss`](courses/udemy_htmlcss/index.html)
+
 ### Sparc v8 <a name="sparc"></a>
 [`sparc notes`](sparc/sparc.html)
 [`llvm backend`](compilers/llvm/backend.html)
