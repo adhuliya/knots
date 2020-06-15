@@ -219,3 +219,6 @@ pypy manage.py test
  Not all libraries are compatible with PyPy.
 I use pypy+ gunicorn + django + nginx and it works like a charm.
 https://stackoverflow.com/questions/16333306/drawbacks-to-running-django-under-pypy
+Gyorgy Orban and Gabor Horvath
+https://github.com/Ericsson/codechecker/tree/master/tools/report-converter
+https://github.com/Ericsson/codechecker/blob/cbb18d904a510d1d6457fa5355ea5543e33f537f/web/server/tests/unit/plist_test_files/clang-5.0-trunk.plist
