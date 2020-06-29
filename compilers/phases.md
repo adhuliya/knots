@@ -238,6 +238,12 @@ It generates the following `test.s` file,
     	.section	".note.GNU-stack","",@progbits
     	.addrsig
 
+To get more detailed output of which LLVM's machine instruction
+resulted in the assembly instructions (`--asm-show-inst`)
+with minor comments here and there, use the following two step process,
+
+    clang++ -S -emit-llvm test.cc -o test.ll;
+    llc --asm-verbose --asm-show-inst test.ll -o test.s; # VERBOSE ASM (not very useful)
 
 ### Object file output
 

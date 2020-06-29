@@ -222,3 +222,10 @@ https://stackoverflow.com/questions/16333306/drawbacks-to-running-django-under-p
 Gyorgy Orban and Gabor Horvath
 https://github.com/Ericsson/codechecker/tree/master/tools/report-converter
 https://github.com/Ericsson/codechecker/blob/cbb18d904a510d1d6457fa5355ea5543e33f537f/web/server/tests/unit/plist_test_files/clang-5.0-trunk.plist
+3
+
+Additional arguments can be passed to LLVM's option parser with -mllvm. For your scenario this would look something like this:
+
+clang [...] -mllvm -print-after-all
+
+
