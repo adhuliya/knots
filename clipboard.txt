@@ -229,3 +229,4 @@ Additional arguments can be passed to LLVM's option parser with -mllvm. For your
 clang [...] -mllvm -print-after-all
 
 
+QQ. How does the diff algo work?
