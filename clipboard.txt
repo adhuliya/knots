@@ -250,3 +250,14 @@ A monotone analysis with or without (A) will always yield an MFP solution.
 A non-monotone analysis without (A) may never terminate,
 so my guess is a "different" result would be a non-terminating computation.
 Is my understanding correct?
+Resource
+
+‘resource’ module for finding the current (Resident) memory consumption of your program
+
+[Resident memory is the actual RAM your program is using]
+
+>>> import resource
+
+>>> resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+4332
