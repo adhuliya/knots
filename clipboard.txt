@@ -261,3 +261,5 @@ Resource
 >>> resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 
 4332
+https://dart.dev/samples
+https://dart.dev/guides/language/language-tour
