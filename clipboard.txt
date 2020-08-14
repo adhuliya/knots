@@ -263,3 +263,10 @@ Resource
 4332
 https://dart.dev/samples
 https://dart.dev/guides/language/language-tour
+dict = 'something awful'  # Bad Idea... pylint: disable=redefined-builtin
+pylint3 --disable=R,C,W span |& tee pylint3.out 
+ pylint3 --disable=C0330 span |& tee pylint3.out                                         [±master ●●]
+
+
+LTO pass in LLVM
+http://lists.llvm.org/pipermail/llvm-dev/2017-August/116172.html
