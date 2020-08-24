@@ -285,3 +285,9 @@ C files with all the preprocessing done.
 
 The last command above generates a `a.out_comb.c` file with whole
 of C source combined.
+
+Using `find` command:
+find -name "testing.*" -print0 | xargs -0 wc -l
+see the examples in `man find`.
+
+
