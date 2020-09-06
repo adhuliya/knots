@@ -291,3 +291,38 @@ find -name "testing.*" -print0 | xargs -0 wc -l
 see the examples in `man find`.
 
 
+Docker Commands:
+cat init_setup.sql| docker exec -i postgres psql -U postgres
+docker exec -it postgres /bin/bas
+docker logs postgres 
+docker container ls --all
+docker ps --all
+docker container rm $(docker ps -aq)
+docker ps -aq
+docker image ls   
+docker logs mysite 
+docker image rm prostgres:13.0
+docker container rm --force `cat tmp.del`
+docker container ls --all > tmp.del 
+docker container rm *
+docker build --tag prostgres:13.0 . 
+sudo service docker restart    
+docker exec -it mysite /bin/bash 
+docker volume ls 
+docker inspect postgres  
+docker network create itsoflife
+docker network ls
+docker build --tag mysite:1.0        
+ docker rm --force mysite  
+
+https://dart.dev/codelabs/dart-cheatsheet
+https://dart.dev/samples
+
+​
+https://conf.researchr.org/home/pldi-2021
+
+The log for this run is in /home/codeman/.itsoflife/mydata/local/tmp/SPEC-CPU2006/cpu2006_install/result/CPU2006.002.log
+
+runspec --config=span-linux-ia64-cilly --size=ref --noreportable --tune=base --iterations=1 bzip2  
+runspec --config=span-linux-ia64-cilly --size=ref --noreportable --tune=base --iterations=1 bzip2 
+runspec --config=span-linux-ia64-cilly --action=build --tune=base bzip2
