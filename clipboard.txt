@@ -326,3 +326,127 @@ The log for this run is in /home/codeman/.itsoflife/mydata/local/tmp/SPEC-CPU200
 runspec --config=span-linux-ia64-cilly --size=ref --noreportable --tune=base --iterations=1 bzip2  
 runspec --config=span-linux-ia64-cilly --size=ref --noreportable --tune=base --iterations=1 bzip2 
 runspec --config=span-linux-ia64-cilly --action=build --tune=base bzip2
+
+
+https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+
+systemd
+=================
+In systemd, the target of most actions are “units”, which are resources that systemd knows how to manage. Units are categorized by the type of resource they represent and they are defined with files known as unit files. The type of each unit can be inferred from the suffix on the end of the file.
+sudo systemctl start application.service
+sudo systemctl stop application.service
+sudo systemctl restart application.service
+sudo systemctl reload application.service
+sudo systemctl reload-or-restart application.service
+sudo systemctl enable application.service
+sudo systemctl disable application.service
+systemctl status application.service
+systemctl is-active application.service
+systemctl is-enabled application.service
+systemctl is-failed application.service
+systemctl list-units # lists all active units
+systemctl list-units --all
+systemctl list-units --all --state=inactive
+systemctl list-units --type=service
+systemctl list-unit-files
+Displaying a Unit File
+systemctl cat atd.service
+Displaying Dependencies
+systemctl list-dependencies sshd.service
+Checking Unit Properties
+systemctl show sshd.service
+
+https://askubuntu.com/questions/801404/bluetooth-connection-failed-blueman-bluez-errors-dbusfailederror-protocol-no
+sudo apt-get install pulseaudio-module-bluetooth
+pactl load-module module-bluetooth-discover
+
+https://developer.ibm.com/technologies/linux/series/learn-linux-101/
+
+Deploying container to google cloud run:
+REF: https://cloud.google.com/run/docs/quickstarts/build-and-deploy
+Connecting to postgre sql instance:
+https://cloud.google.com/sql/docs/postgres/connect-run
+Testing the Container Image Locally:
+https://cloud.google.com/run/docs/testing/local
+Cloud Storage Client Libraries:
+https://cloud.google.com/storage/docs/reference/libraries
+
+Create a bucket for static files:
+
+    gsutil mb gs://<your-bucket-name>
+    gsutil defacl set public-read gs://<your-bucket-name>
+    gsutil -m rsync -r ./static gs://<your-bucket-name>/static
+
+URL: https://storage.googleapis.com/<your-bucket-name>/static/...
+
+https://cloud.google.com/storage/docs/hosting-static-website#gcloud
++ GIT_OPTIONAL_LOCKS=0 command timeout 1s git "$@"
+https://stackoverflow.com/questions/21889053/what-is-the-runtime-performance-cost-of-a-docker-container
+The exception to this is Docker’s NAT — if you use port mapping (e.g., docker run -p 8080:8080), then you can expect a minor hit in latency, as shown below. However, you can now use the host network stack (e.g., docker run --net=host) when launching a Docker container, which will perform identically to the Native column (as shown in the Redis latency results lower down). 
+from itertools import chain
+slots = chain.from_iterable(getattr(cls, '__slots__', []) for cls in B.__mro__)
+
+
+CREATE DATABASE database_name
+WITH
+   [OWNER =  role_name]
+   [TEMPLATE = template]
+   [ENCODING = encoding] 'UTF8'
+   [LC_COLLATE = collate]
+   [LC_CTYPE = ctype]
+   [TABLESPACE = tablespace_name]
+   [ALLOW_CONNECTIONS = true | false] true
+   [CONNECTION LIMIT = max_concurrent_connection]
+   [IS_TEMPLATE = true | false ] false
+
+SELECT
+    pg_size_pretty (pg_relation_size('actor'));
+SELECT
+    pg_size_pretty (
+        pg_total_relation_size ('actor')
+    );
+SELECT
+    pg_size_pretty (
+        pg_database_size ('dvdrental')
+    );
+SELECT
+    pg_size_pretty (pg_indexes_size('actor'));
+SELECT
+    pg_size_pretty (
+        pg_tablespace_size ('pg_default')
+    );
+select pg_column_size(5::smallint);
+select pg_column_size(5::int);
+select pg_column_size(5::bigint);
+
+Python encript a string/byte array:
+
+>>> from cryptography.fernet import Fernet
+>>> key = Fernet.generate_key() # save this key for future use
+>>> f = Fernet(key)
+>>> token = f.encrypt(b"my deep dark secret")
+>>> token
+b'...'
+>>> f.decrypt(token)
+b'my deep dark secret'
+
+
+See this too:
+https://stackoverflow.com/a/59835994/2369985
+
+    import secrets
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    
+    # Generate a random secret key (AES256 needs 32 bytes)
+    key = secrets.token_bytes(32)
+    
+    # Encrypt a message
+    nonce = secrets.token_bytes(12)  # GCM mode needs 12 fresh bytes every time
+    ciphertext = nonce + AESGCM(key).encrypt(nonce, b"Message", b"")
+    
+    # Decrypt (raises InvalidTag if using wrong key or corrupted ciphertext)
+    msg = AESGCM(key).decrypt(ciphertext[:12], ciphertext[12:], b"")
+
+Even with the same key and the same message, the ciphertext will always be completely different (because of a different nonce). Do note that ciphertext is always exactly 28 bytes longer than the message, so if the message length needs to be hidden, you could pad all messages to same length before encryption.
+
+

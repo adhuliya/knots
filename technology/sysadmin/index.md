@@ -62,3 +62,6 @@ of light weight packages.
 <p style="text-align=center;">&copy; Anshuman Dhuliya</p>
 <br />
 <br />
+
+## Resources
+* <https://developer.ibm.com/technologies/linux/series/learn-linux-101/>

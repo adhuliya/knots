@@ -7,6 +7,16 @@ Important Ubuntu files/dirs
 
    Vim uses its own binary file as dict which can be generated from `.aff` and `.dic` files in the `/usr/share/hunspell/` directory.
 
+## Special Device Files
+
+* `/dev/random` - generates random bytes (truly random)
+* `/dev/urandom` - generates random bytes (pseudo/ true random)
+* `/dev/shm` -- file system on the ram
+* `/dev/null`, `/dev/zero` -- all zeros
+* `/dev/full` -- a full partition filled with '\0'
+* `/dev/ttyX` -- terminal file
+* `$XDG_RUNTIME_DIR` -- location of the file system on RAM (tmpfs) (generally `/run/user/1000`)
+
 Resources
 ----------------
 
