@@ -35,6 +35,7 @@ Compilers/Research <a name="compilers"></a>
 [`writing`](writing/index.html)
 [`meetings`](compilers/meetings/meetings.html)
 [`papers`](program-analysis/papers/papers.html)
+[`conferences`](program-analysis/conferences/index.html)
 [`Math Notes`](math/math.html)
 [`latex notes`](latex/latex.html)
 

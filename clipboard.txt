@@ -450,3 +450,20 @@ https://stackoverflow.com/a/59835994/2369985
 Even with the same key and the same message, the ciphertext will always be completely different (because of a different nonce). Do note that ciphertext is always exactly 28 bytes longer than the message, so if the message length needs to be hidden, you could pad all messages to same length before encryption.
 
 
+I see that the docker image doesn't contain any AJIT related stuff. To test it we need to build the buildroot inside the docker container to be sure that we are building the correct docker image (hopefully with some tests added)
+git ls-files -i --exclude-from=.gitignore | xargs git rm --cached  
+
+https://lebkowski.name/docker-volumes/
+git rm --cached `git ls-files -i --exclude-from=.gitignore`
+We will provide two types of key lengths: 128 and 256, selected at initdb time, e.g. --encrypt-aes128. 
+Build successes: 433.milc(base)
+
+Build successes: 445.gobmk(base)
+
+Build successes: 429.mcf(base)
+
+Build successes: 458.sjeng(base)
+
+Build successes: 470.lbm(base)
+Build successes: 470.lbm(base)
+

@@ -2,6 +2,8 @@ SPARC V8 and (related) LLVM Notes
 ====================
 Scalable Processor ARChitecture Version 8
 
+[See Google drive Notes also](https://docs.google.com/document/d/1lHfk9pZC7kZkcnas8e03Ie3ssdEg2YH8_wcYaTIFWsw/edit?usp=sharing)
+
 * [`isa.txt`](isa.txt)
 * [`llvm related notes`](../compilers/llvm/useful_commands.html)
 * [SparcV8 Manual](../../mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf)
@@ -17,11 +19,50 @@ Processor Overview
 * **Memory Model**: Total Store Order (TSO) with optional Partial Store Order (PSO). Machines that implement Strong Consistency (also called Strong Ordering) automatically support both TSO and PSO. See [Memory Consitency](https://homes.cs.washington.edu/~bornholt/post/memory-models.html).
 * **Trap and Interrupt**: A trap is a vectored transfer of control to the operating system through a special trap table that contains the first 4 instruction of each trap handler (the base of the table is stored in Integer Unit's, trap base register (TBR)). 256 entries can fit into a trap table. A trap may be cause by an interrupt request.
 
+Notes
+------------
+* Note that a "SPARC Architecture Test Suite" and
+  a "SPARC ArchitecturalSimulator" (SPARCsim) are available.
+* A SPARC processor logically comprises an integer unit (IU),
+  a floating-pointunit (FPU), and an optional coprocessor (CP),
+  each with its own registers
+
+
+## Tutorial
+
+### Hello World
+
+See the [hello world](</mydata/git/ws/sparcv8-ajit-git/misc/references/Hello World in SPARC Assembler.pdf>).
+
+Reference for system calls for Sparc 32 bit.
+
+* <https://github.com/torvalds/linux/blob/v4.17/arch/sparc/kernel/systbls_32.S>
+
+For x86\_64 refer,
+
+* <https://github.com/torvalds/linux/blob/v4.17/arch/x86/entry/syscalls/syscall_64.tbl#L11>
+* <https://filippo.io/linux-syscall-table/>
+
+### Short introduction to SPARC Instructions
+
+Read [SPARC Instructions](</mydata/git/ws/sparcv8-ajit-git/misc/references/SPARC%20Instructions.pdf>).
+
+For detailed information of instructions refer:
+
+1. SparcV8 Manual [Chapter 5: Instructions](</mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf#page=66>)
+2. Sparc V8 Manual [Appendix B: Instruction Definitions](</mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf#page=109>).
+3. Sparc V8 Manual [Appendix A: Suggested Assembly Language Syntax](/mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf#page=103)
+
 
 Resources
 -------------------
 
 * [SparcV8 Manual](../../mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf)
 * [My Reference Material](../../mydata/git/ws/sparcv8-ajit-git/misc/references/)
+* [Custom LLVM Backend](TheDesignOfACustom32bitRiscCpuAndLlvmCompilerBackend.pdf)
+* [Sparc V9](sparcv9.pdf)
+
+
+<br/> <br/> <br/>
 
 

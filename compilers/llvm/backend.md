@@ -7,6 +7,16 @@ Important Files
 * <https://llvm.org/devmtg/2014-04/PDFs/Talks/Building%20an%20LLVM%20backend.pdf>:
 Good tutorial on creating a basic custom backend.
 
+## Backend big picture
+Pipeline structure of the backend:
+
+    IR --> SelectionDAG --> MachineDAG --> MachineInstr --> MCInst
+
+Transforms your program many times-Same program,
+few different representations-Different instruction namespaces
+Check it out (IR and MI only):
+
+    llc foo.ll  -print-after-all 2>&1 > foo.log
 
 References
 -------------------
