@@ -54,7 +54,8 @@ of light weight packages.
 
 [`ssh`](#)
 [`scp`](#)
-[`rsync`](#)
+[`rsync`](https://rsync.samba.org/how-rsync-works.html)
+
 
 
 <br />

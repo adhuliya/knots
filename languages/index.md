@@ -26,6 +26,8 @@ C++
 ## Python
 [`Python Home`](python/index.html)
 
+[`Cheatsheet`](python/mementopython3-english.pdf)
+
 [`Python 3.3.7 Docs`](https://docs.python.org/3.3/)
 [`Python Tutorial`](https://docs.python.org/3/tutorial/)
 [`30 Tips & Tricks`](https://www.techbeamers.com/essential-python-tips-tricks-programmers/)

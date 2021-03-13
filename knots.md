@@ -1,37 +1,45 @@
 Knots
 ====================
 
-[`clipboard`](clipboard.txt)
-[`Quick Notes`](quick_notes.html)
-[`Tasks`](tasks.html)
-[`mymp`](mymp.html)
+Do _just_ what is needed.
 
+[`clipboard`](clipboard.txt)
+[`mymp`](mymp.html)
 [`markdown syntax`](technology/webdev/markdown.html)
 [`knots web`](http://adhuliya.pythonanywhere.com/_knots_.html)
 
 Index
 --------
-1. [Health](#health)
-1. [Compilers/Research](#compilers)
-3. [Technology Notes](#technology)
-4. [Projects](#projects)
-5. [Money](#money)
-6. [Extra Curricular](#extra)
-7. [Events](#events)
-8. [Misc](#misc)
-9. [Quick Notes](quick_notes.html)
+* Meditation
+* [Physical Health](health/index.html)
+* [General Awareness](awareness/index.html)
+* [Program Analysis](#programanalysis)
+* [LLVM & Compilers](compilers/index.html)
+* [Self Organization](organize/index.html)
+* [ItsOfLife/Moio](itsoflife/index.html)
+* [Finance & Investment](#money)
+* Music/Art/Travel
+* [Riminet/RL](riminet/index.html)
+* Networking/Family Time
+* Problem Solving Fun
 
-Health <a name="health"></a>
----------------
-[`home`](health/index.html) 
-`squats` `push-ups` `hand-grip`
 
-Compilers/Research <a name="compilers"></a>
+Information,
+
+* [Technology Notes](#technology)
+* [Languages](languages/index.html)
+* [Projects](#projects)
+* [Extra Curricular](#extra)
+* [Events](#events)
+* [Misc](#misc)
+* [`Old quick notes`](quick_notes.html)
+
+
+Program Analysis <a name="programanalysis"></a>
 ------------------------
 
-### Research
 [`SPAN`](span/__span.html)
-[`Program Analysis`](program-analysis/pa.html) 
+[`Theory`](program-analysis/pa.html) 
 [`writing`](writing/index.html)
 [`meetings`](compilers/meetings/meetings.html)
 [`papers`](program-analysis/papers/papers.html)
@@ -39,11 +47,6 @@ Compilers/Research <a name="compilers"></a>
 [`Math Notes`](math/math.html)
 [`latex notes`](latex/latex.html)
 
-### Compilers
-[`Compilers Homepage`](compilers/index.html)
-[`clang/llvm`](compilers/llvm/index.html)
-[`languages`](compilers/languages/languages.html)
-[`Compiler Construction`](compilers/index.html)
 
 ### Others
 [`etag`](etag/etag.html)
@@ -53,9 +56,7 @@ Compilers/Research <a name="compilers"></a>
 Technology Notes <a name="technology"></a>
 -------------------------
 [`Revision Sequence`](technology/revision.html)
-
 [`Dev Corner`](dev/dev.html)
-
 [`Lubuntu System Management`](technology/sysadmin/index.html)
 
 
@@ -75,7 +76,7 @@ Projects <a name="projects"></a>
 
 <a name="money"></a>
 
-Money
+Finance & Investment
 ------------------
 [`Income Tax`](money/incometax.html)
 [`Investment`](money/__investment.html)

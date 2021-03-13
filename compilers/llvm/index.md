@@ -3,7 +3,15 @@ Clang/LLVM Notes
 
 Index
 -------
-* [`Get started with llvm/clang`](get_started.html)
-* [`Pass Manager`](pass-manager.html)
-* [`Useful Commands`](useful_commands.html)
-* [`llvm and Ajit/Sparc notes`](../../sparc/sparc.html#llvm)
+* [`Useful Clang/LLVM Commands`](useful_commands.html)
+* [`Build Clang/LLVM`](get_started.html)
+* [`LLVM and Ajit/Sparc notes`](../../sparc/sparc.html#llvm)
+* [`Clang/LLVM Internals`](internals.html)
+
+
+Resources
+-------------------
+
+* <https://www.llvm.org/>
+* [`LLVM IR`](https://www.llvm.org/docs/LangRef.html)
+* <https://releases.llvm.org/> -- can also download documentation.

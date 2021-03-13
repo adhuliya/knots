@@ -467,3 +467,140 @@ Build successes: 458.sjeng(base)
 Build successes: 470.lbm(base)
 Build successes: 470.lbm(base)
 
+Dear Sir/Mam,
+
+My acknowledgement number 423219160270720 for ITR-1 filing
+is shown to be e-verified but it shows that the filing type
+is "Revised" and the filing section is "139(5)". For all
+my previous filings the filing type is "Original" and 
+the filing section is "139(1)".
+
+Consequently I am still awaiting for the reimbursement of
+the excess tax I have paid during the period.
+
+Please let me know how can I help to rectify the problem.
+
+Regards,
+Priyanka
+
+Tue: 2020-12-29
+https://gymkhana.iitb.ac.in/forms/m/5fe9dd2a156647fd31376833/0
+5feadb598c662beb8d132104
+
+https://www.virtualbox.org/ticket/18572?cversion=0&cnum_hist=2
+
+
+
+to list only commits details for specific file changes,
+
+    git log --follow file_1.rb
+
+to list difference among various commits for same file,
+
+    git log -p file_1.rb
+
+to list only commit and its message,
+
+    git log --follow --oneline file_1.rb
+
+
+ITR related grievance application:
+
+    Dear Sir/Mam,
+    
+    The application (Ack No. 423219160270720) has been
+    filed for the AY 2019-20 when it is actually for
+    AY 2020-21. Hence, I believe, it is showing as a
+    revised application.
+    
+    I am genuinely sorry for the mistake and the inconvenience
+    that this may have caused.
+    
+    I request you to do the needful to correct the mistake.
+    Please let me know if something is needed from my end.
+    
+    Thanks & Regards,
+    Priyanka
+
+
+Using coreutils
+---------------------------
+
+    git clone https://git.savannah.gnu.org/git/coreutils.git
+    cd coreutils;
+    vi .git/config; # correct git path for gnulib repo as given:
+                    # git clone https://git.savannah.gnu.org/git/gnulib.git;
+
+    ./bootstrap;
+    ./configure; 
+
+    ~/Downloads/tmp-dir-keep-it-emtpy/coreutils/src                 [10:52:10] 
+    > $ gcc -c -I ../lib ls.c 
+    
+https://github.com/okuvshynov/b63
+
+Guidelines to review a paper:
+https://www.journals.elsevier.com/applied-soft-computing/news/tips-and-advice-when-you-review-a-scientific-paper
+
+
+Is function a tail function? i.e. it may only call library functions. Then,
+use DDM in the tail function.
+
+Let deref of bot be bot in points-to analysis. (33. 14t = *13t.)
+
+f:read_min: The following statements are not being proccessed.
+#line 80
+//AD  tmp___0 = calloc((size_t )(net___0->n + 1L), sizeof(node_t ));
+#line 80
+//AD  net___0->nodes = (node_t *)tmp___0;
+      net___0->nodes = (node_t *)calloc((size_t )(net___0->n + 1L), sizeof(node_t )); //AD
+#line 81
+//AD  tmp___1 = calloc((size_t )net___0->n, sizeof(arc_t ));
+#line 81
+//AD  net___0->dummy_arcs = (arc_t *)tmp___1;
+      net___0->dummy_arcs = (arc_t *)calloc((size_t )net___0->n, sizeof(arc_t )); //AD
+
+
+points-to information how to:
+  node->basic_arc = (arc_t *)((size_t )node->basic_arc + off);
+
+
+SLANG_INFO("CurrentFunction(Variadic)(SkippingBody): "\
+          << stu.currFunc->name << " " << (uint64_t)FD->getCanonicalDecl())
+
+==========================================
+Variadic Functions in gobmk benchmark
+==========================================
+clang --analyze -Xanalyzer -analyzer-checker=core.span.SlangGenAst gobmk_comb.c |& tee out.log | grep "CurrentFunction(Variadic)"
+CurrentFunction(Variadic)(SkippingBody): gfprintf 94667825546184
+CurrentFunction(Variadic)(SkippingBody): gprintf 94667823814848
+CurrentFunction(Variadic)(SkippingBody): mprintf 94667826424952
+CurrentFunction(Variadic)(SkippingBody): somewhere 94667832230464
+CurrentFunction(Variadic)(SkippingBody): play_break_through_n 94667832228720
+CurrentFunction(Variadic)(SkippingBody): play_attack_defend_n 94667826099632
+CurrentFunction(Variadic)(SkippingBody): play_attack_defend2_n 94667832228160
+CurrentFunction(Variadic)(SkippingBody): play_connect_n 94667832063192
+CurrentFunction(Variadic)(SkippingBody): gtp_mprintf 94667833863536
+CurrentFunction(Variadic)(SkippingBody): gtp_printf 94667833863872
+CurrentFunction(Variadic)(SkippingBody): gtp_success 94667833864872
+CurrentFunction(Variadic)(SkippingBody): gtp_failure 94667833865216
+CurrentFunction(Variadic)(SkippingBody): gg_snprintf 94667823551384
+
+also "f:vgprintf"
+==========================================
+
+
+1. Meditation
+1. Physical Health
+1. General Awareness
+1. Program Analysis
+1. LLVM Backend/CPU/GPU
+1. Self Organization
+1. ItsOfLife/Moio
+1. Finance & Investment
+1. Music/Art/Travel
+1. Riminet/RL
+1. Networking/Family Time
+1. Problem Solving Fun
+
+
