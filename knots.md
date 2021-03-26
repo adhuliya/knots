@@ -6,7 +6,7 @@ Do _just_ what is needed.
 [`clipboard`](clipboard.txt)
 [`mymp`](mymp.html)
 [`markdown syntax`](technology/webdev/markdown.html)
-[`knots web`](http://adhuliya.pythonanywhere.com/_knots_.html)
+[`knots web`](https://www.itsof.life/knots-git/_knots_.html)
 
 Index
 --------
