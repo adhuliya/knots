@@ -5,6 +5,16 @@ Health
 
 `jog` `squat` `push-up` `hand-grip` `stretch`
 
+## Activities
+Most time taking to least (estimated time taken in a week)
+
+* Sleeping
+* Eating
+* Exercising
+* Bathing
+* Refresing
+* Grooming
+
 
 ## Index
 1. [Guildelines](#guidelines)
@@ -19,13 +29,13 @@ It pays back many folds to develop healthy habits. Here are some,
 * Eat _just_ what is needed..
 * Meditate. *Isha Kriya* or *Shambhavi*.
 * Be simple, organized and clean.
-* Read an article on health tips daily*. (See Firefox Health bookmarks)
+* Read an article on health tips daily\*. (See Firefox Health bookmarks)
 * Drink about 2L water in a day.
 * Occasionally take five deep and relaxing breaths.
 * Eat a dozen eggs a week.
-* Include daily* multivitamin tablets.
+* Include daily\* multivitamin tablets.
 * Rinse mouth with water, immediately after consuming food. (Specially sugary ones)
-* 20 mins daily* workout:
+* 20 mins daily\* workout:
    * Run 3 km once a week.
    * Do a cardio session 10 to 20 mins.
    * 20 Squats, 20 push ups
@@ -34,7 +44,7 @@ It pays back many folds to develop healthy habits. Here are some,
    * Farmer's walk
    * [Resistance band exercise routine](https://www.youtube.com/watch?v=FLNaG45ZiiA)
    * Hand grip exercise.
-* Sit/Walk straight.
+* Sit/Walk straight and relaxed.
 * Keep working to replace bad habits with good ones. Be conscious of what you do.
 * Complete body checkup every two years. Do it more frequently with age.
 * Exercise your mind.

@@ -14,14 +14,14 @@ Index
 * [Physical Health](health/index.html)
 * [General Awareness](awareness/index.html)
 * [Program Analysis](#programanalysis)
-* [LLVM & Compilers](compilers/index.html)
+* [LLVM & Systems](compilers/index.html)
 * [Self Organization](organize/index.html)
 * [ItsOfLife/Moio](itsoflife/index.html)
 * [Finance & Investment](#money)
 * Music/Art/Travel
 * [Riminet/RL](riminet/index.html)
 * Networking/Family Time
-* Problem Solving Fun
+* [Problem Solving Fun](probsolve/index.html)
 
 
 Information,
@@ -79,7 +79,8 @@ Projects <a name="projects"></a>
 Finance & Investment
 ------------------
 [`Income Tax`](money/incometax.html)
-[`Investment`](money/__investment.html)
+[`Investment`](money/investment.html)
+[`Insurance`](money/insurance.html)
 
 <a name="extra"></a>
 

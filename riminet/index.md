@@ -5,6 +5,7 @@ Notes on Riminet.
 
 1. [The Rules](#rules)
 2. [The Unknowns](#unknowns)
+4. [Sensing](sensing.html)
 3. [Misc Notes](#miscnotes)
 
 

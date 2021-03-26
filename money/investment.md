@@ -13,10 +13,10 @@ Investment
 
 ## Market watch links
 1. <https://economictimes.indiatimes.com/> -- economic dynamics.
+1. <https://www.screener.in/> -- shortlisting companies and **eqity details**
 1. <https://www.moneycontrol.com/> -- equity details, candle stick charts
-1. <https://www.moneycontrol.com/bestportfolio/wealth-management-tool/stock_watchlist>
-1. <https://www.screener.in/> -- shortlisting good companies
 1. <https://www.tijorifinance.com/> -- sector analysis, good company info
+1. <https://www.moneycontrol.com/bestportfolio/wealth-management-tool/stock_watchlist>
 
 
 ## Learning Resources

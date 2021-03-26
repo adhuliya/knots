@@ -589,18 +589,16 @@ CurrentFunction(Variadic)(SkippingBody): gg_snprintf 94667823551384
 also "f:vgprintf"
 ==========================================
 
+BLOCK START: website_available?
 
-1. Meditation
-1. Physical Health
-1. General Awareness
-1. Program Analysis
-1. LLVM Backend/CPU/GPU
-1. Self Organization
-1. ItsOfLife/Moio
-1. Finance & Investment
-1. Music/Art/Travel
-1. Riminet/RL
-1. Networking/Family Time
-1. Problem Solving Fun
+/usr/bin/wget "www.example.com" --timeout 30 -O - 2>/dev/null | grep "Normal operation string" || echo "The site is down" | /usr/bin/mail -v -s "Site is down" your@e-mail.address
 
+> $ /usr/bin/wget "www.example.com" --timeout 30 -O -                                                   
+--2021-03-26 13:46:30--  http://www.example.com/
+Resolving www.example.com (www.example.com)... failed: Temporary failure in name resolution.
+wget: unable to resolve host address ‘www.example.com’
+
+git ls-remote -h git@github.com:adhuliya/bin.git 
+
+BLOCK END  : website_available?
 
