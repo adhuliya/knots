@@ -13,7 +13,7 @@ Index
 * Meditation
 * [Physical Health](health/index.html)
 * [General Awareness](awareness/index.html)
-* [Program Analysis](#programanalysis)
+* [Program Analysis](program-analysis/index.html) 
 * [LLVM & Systems](compilers/index.html)
 * [Self Organization](organize/index.html)
 * [ItsOfLife/Moio](itsoflife/index.html)
@@ -32,25 +32,10 @@ Information,
 * [Extra Curricular](#extra)
 * [Events](#events)
 * [Misc](#misc)
-* [`Old quick notes`](quick_notes.html)
-
-
-Program Analysis <a name="programanalysis"></a>
-------------------------
-
-[`SPAN`](span/__span.html)
-[`Theory`](program-analysis/pa.html) 
-[`writing`](writing/index.html)
-[`meetings`](compilers/meetings/meetings.html)
-[`papers`](program-analysis/papers/papers.html)
-[`conferences`](program-analysis/conferences/index.html)
-[`Math Notes`](math/math.html)
-[`latex notes`](latex/latex.html)
-
-
-### Others
-[`etag`](etag/etag.html)
-[`data-and-algo`](data-and-algo/index.html)
+* [Math Notes](math/math.html)
+* [latex notes](latex/latex.html)
+* [writing](writing/index.html)
+* [Old quick notes](quick_notes.html)
 
 
 Technology Notes <a name="technology"></a>
@@ -62,11 +47,8 @@ Technology Notes <a name="technology"></a>
 
 Projects <a name="projects"></a>
 ----------------
-1. [SPAN](span/__span.html)
-2. [Sparc v8](#sparc)
-3. [C Compiler](compiler/ccompiler.html)
-4. [WebNotes](misc/webnotes.html) : you are viewing webnotes
-6. [RIMINET](riminet/__riminet_.html)
+1. [Sparc v8](#sparc)
+1. [C Compiler](compiler/ccompiler.html)
 
 [`Udemy HtmlCss`](courses/udemy_htmlcss/index.html)
 
@@ -106,6 +88,7 @@ Events
 [`Huawei Research Proposal`](misc/huawei-research-proposal.html)
 [`mywife`](misc/mywife.html)
 [`General Info`](misc/general_info.html)
+[`etag`](etag/etag.html)
 
 [`Things`](things/index.html)
 

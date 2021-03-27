@@ -1,4 +1,4 @@
-knotes.itsoflife
+knots.itsoflife
 ===============
 
 This page is intentionally left blank.

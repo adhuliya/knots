@@ -2896,7 +2896,7 @@
       <g class="Graphic">
        <g id="id50">
         <rect class="BoundingBox" stroke="none" fill="none" x="8203" y="677" width="1204" height="1004"/>
-        <a xlink:href="http://localhost:5050/knotes-git/_knotes_.html">
+        <a xlink:href="/knots-git/_knots_.html">
          <defs>
           <clipPath id="clip_path_55" clipPathUnits="userSpaceOnUse">
            <path d="M 8797,858 L 9189,967 C 9192,968 9195,971 9195,975 9195,975 9195,975 9195,975 9195,976 9194,977 9194,978 9194,984 9193,1450 9193,1450 9193,1454 9190,1457 9187,1458 L 8767,1592 C 8766,1592 8764,1592 8762,1592 L 8363,1485 C 8360,1484 8357,1481 8357,1478 L 8355,980 C 8355,976 8357,973 8361,972 L 8793,858 C 8795,858 8796,858 8797,858 L 8797,858 Z"/>

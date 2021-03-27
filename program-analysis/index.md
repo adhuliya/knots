@@ -4,8 +4,11 @@ Program Analysis
 Index
 ----------
 1. [Abstract Interpretation](#absint)
-2. [Data Flow Analysis](#dfa)
-3. [Interesting Examples](examples.html)
+1. [Data Flow Analysis](#dfa)
+1. [Interesting Examples](examples.html)
+1. [SPAN](span/index.html)
+1. [Papers](papers/papers.html)
+1. [Conferences](conferences/index.html)
 
 <a name="absint"></a>
 ## Abstract Interpretation

@@ -10,7 +10,7 @@ Checklist
 
 General Tools
 ------------------
-* This note structure.
+* [This note structure.](webnotes.html) : you are viewing webnotes
 * <https://calendar.google.com/>
 * <https://keep.google.com/>
 * <https://evernote.com/>

@@ -3,21 +3,22 @@ Health
 *Health is maintained and improved not only through the advancement and application of health science, but also through the efforts and <del>intelligent</del> _simple_  lifestyle choices of the individual and society.* -- [myenglishpages.com](https://www.myenglishpages.com/site_php_files/reading-health-tips.php)
 
 
-`jog` `squat` `push-up` `hand-grip` `stretch`
+`meditate` `jog` `squat` `push-up` `hand-grip` `yogasan`
 
 ## Activities
 Most time taking to least (estimated time taken in a week)
 
-* Sleeping
+* Exploration
+* Sleep
 * Eating
-* Exercising
-* Bathing
-* Refresing
-* Grooming
+* Exercise
+* Bathe
+* Poop-shoop ;)
+* Groom
 
 
 ## Index
-1. [Guildelines](#guidelines)
+1. [Guidelines](#guidelines)
 2. [Gilbert Syndrome](gilbert_syndrome/index.html)
 3. [Taking Good Breaks](https://zapier.com/blog/better-breaks/)
 
@@ -27,9 +28,9 @@ Most time taking to least (estimated time taken in a week)
 It pays back many folds to develop healthy habits. Here are some,
 
 * Eat _just_ what is needed..
-* Meditate. *Isha Kriya* or *Shambhavi*.
-* Be simple, organized and clean.
-* Read an article on health tips daily\*. (See Firefox Health bookmarks)
+* Meditate. *Isha Kriya* or *Shambhavi*. (Mental Health)
+* Be simple, organized and clean. (Do _just_ what is needed.)
+* Spend some time daily on the acpests of physical health.
 * Drink about 2L water in a day.
 * Occasionally take five deep and relaxing breaths.
 * Eat a dozen eggs a week.
@@ -39,23 +40,17 @@ It pays back many folds to develop healthy habits. Here are some,
    * Run 3 km once a week.
    * Do a cardio session 10 to 20 mins.
    * 20 Squats, 20 push ups
-   * Stretching
+   * Yogasan
    * [Lower back workout](https://8fit.com/fitness/best-exercises-for-lower-back-pain-relief/)
    * Farmer's walk
    * [Resistance band exercise routine](https://www.youtube.com/watch?v=FLNaG45ZiiA)
    * Hand grip exercise.
-* Sit/Walk straight and relaxed.
-* Keep working to replace bad habits with good ones. Be conscious of what you do.
+* Keep the geometry of the body perfect all the time.
+* Be _conscious_ (of whatever you do or don't do).
 * Complete body checkup every two years. Do it more frequently with age.
 * Exercise your mind.
-   * Read good books weekly.
+   * Pay attention to everything in and around you.
    * Read a random article that is not related to any of your field of interest.
-* Strive to be healthy to stay rich as long as you live and
-  to help recover quickly whenever the need arises.
-  Good health is the most expensive gift you can give yourself.
-  The more rich you are in this sense the more rich will be
-  the experience, the people and things around you.
-* Review the **current** health related habits (IMPORTANT).
 
 Note that 'daily' means about three times a week.
 
@@ -67,7 +62,7 @@ Indications of Good Health
 * Jogging capacity for at least 2 Km.
 * Flexible body.
 * Capacity for 20 Squats and 20 pushups at a time.
-* Mentally happy.
+* Mentally blissed.
 * Sleeping well with no worry.
 * Being aware and conscious of your body and mind.
 

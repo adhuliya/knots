@@ -8,6 +8,7 @@ Scalable Processor ARChitecture Version 8
 * [`llvm related notes`](../compilers/llvm/useful_commands.html)
 * [SparcV8 Manual](../../mydata/git/ws/sparcv8-ajit-git/misc/references/sparcv8.pdf)
 * [My Reference Material](../../mydata/git/ws/sparcv8-ajit-git/misc/references/)
+* [RTOS](rtos.html)
 
 Processor Overview
 ------------------
