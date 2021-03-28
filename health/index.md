@@ -30,7 +30,7 @@ It pays back many folds to develop healthy habits. Here are some,
 * Eat _just_ what is needed..
 * Meditate. *Isha Kriya* or *Shambhavi*. (Mental Health)
 * Be simple, organized and clean. (Do _just_ what is needed.)
-* Spend some time daily on the acpests of physical health.
+* Spend some time daily on the aspects of physical health.
 * Drink about 2L water in a day.
 * Occasionally take five deep and relaxing breaths.
 * Eat a dozen eggs a week.
