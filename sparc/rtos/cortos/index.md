@@ -1,8 +1,12 @@
 CoRTOS - "Simplest" RTOS
 ===========================
 
-[`Manual/Tutorial`](CoRTOS_Manual_V110.pdf)
+[`Manual/Tutorial v1.10 (Dec2018)`](CoRTOS_Manual_V110.pdf)
+[`Manual/Tutorial v1a (Mar2017)`](CoRTOS_Manual_v1a_old.pdf)
 
+Resources
+-------------------
+* <https://forum.43oh.com/topic/13151-cortos-an-open-source-minimalist-rtos/>
 
 Source
 ----------

@@ -7,6 +7,7 @@ Index
 * [`Build Clang/LLVM`](get_started.html)
 * [`LLVM and Ajit/Sparc notes`](../../sparc/sparc.html#llvm)
 * [`Clang/LLVM Internals`](internals.html)
+* [`LLVM Backend`](backend.html)
 
 
 Resources

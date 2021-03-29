@@ -17,3 +17,7 @@ facets of our lives.
 * Share any piece or a group of pieces.
 * Till death do us apart (accessible without software).
 
+
+Resources
+----------------------
+* [HTML/CSS Course](courses/udemy_htmlcss/index.html)

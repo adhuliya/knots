@@ -14,7 +14,7 @@ Index
 * [Physical Health](health/index.html)
 * [General Awareness](awareness/index.html)
 * [Program Analysis](program-analysis/index.html) 
-* [LLVM & Systems](compilers/index.html)
+* [LLVM, Compilers & Systems](compilers/index.html)
 * [Self Organization](organize/index.html)
 * [ItsOfLife/Moio](itsoflife/index.html)
 * [Finance & Investment](#money)
@@ -47,14 +47,8 @@ Technology Notes <a name="technology"></a>
 
 Projects <a name="projects"></a>
 ----------------
-1. [Sparc v8](#sparc)
-1. [C Compiler](compiler/ccompiler.html)
+All projects moved into topics.
 
-[`Udemy HtmlCss`](courses/udemy_htmlcss/index.html)
-
-### Sparc v8 <a name="sparc"></a>
-[`sparc notes`](sparc/sparc.html)
-[`llvm backend`](compilers/llvm/backend.html)
 
 <a name="money"></a>
 
