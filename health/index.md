@@ -27,6 +27,7 @@ Most time taking to least (estimated time taken in a week)
 
 It pays back many folds to develop healthy habits. Here are some,
 
+* Pay keen attention. Avoid thinking.
 * Eat _just_ what is needed..
 * Meditate. *Isha Kriya* or *Shambhavi*. (Mental Health)
 * Be simple, organized and clean. (Do _just_ what is needed.)
