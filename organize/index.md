@@ -8,6 +8,15 @@ Checklist
 * Keep things in an accessible state.
 * Periodically refresh the organization.
 
+Organization Categories
+----------------------------
+* All Documents
+* Important information (passwd, acc no. etc.)
+* Important Dates and Reminders
+* Photos and Videos
+* Clothing
+* Tools & Devices
+
 General Tools
 ------------------
 * [This note structure.](webnotes.html) : you are viewing webnotes

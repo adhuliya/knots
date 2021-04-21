@@ -5,3 +5,4 @@ LLVM, Compilers & Systems
 * [`Compiler Construction`](cc.html)
 * [`Sparc v8`](../sparc/sparc.html)
 
+* [`GPU Notes`](gpu.html)

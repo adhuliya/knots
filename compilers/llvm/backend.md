@@ -23,3 +23,4 @@ References
 1. [Writing an LLVM Backend](https://llvm.org/docs/WritingAnLLVMBackend.html)
 2. [The LLVM Target-Independent Code Generator](https://llvm.org/docs/CodeGenerator.html)
 3. [TableGen](https://llvm.org/docs/TableGen/index.html)
+4. [CPU0 Book](https://jonathan2251.github.io/lbd/)

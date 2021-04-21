@@ -17,7 +17,7 @@ Index
 * [LLVM, Compilers & Systems](compilers/index.html)
 * [Self Organization](organize/index.html)
 * [ItsOfLife/Moio](itsoflife/index.html)
-* [Finance & Investment](#money)
+* [Finance & Investment](money/index.html)
 * Music/Art/Travel
 * [Riminet/RL](riminet/index.html)
 * Networking/Family Time
@@ -49,14 +49,6 @@ Projects <a name="projects"></a>
 ----------------
 All projects moved into topics.
 
-
-<a name="money"></a>
-
-Finance & Investment
-------------------
-[`Income Tax`](money/incometax.html)
-[`Investment`](money/investment.html)
-[`Insurance`](money/insurance.html)
 
 <a name="extra"></a>
 

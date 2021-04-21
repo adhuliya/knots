@@ -10,6 +10,10 @@ Index
 * [`LLVM Backend`](backend.html)
 
 
+Contributions
+------------------
+* <https://llvm.org/docs/Contributing.html>
+
 Resources
 -------------------
 

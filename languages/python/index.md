@@ -2,6 +2,7 @@ Python Notes
 =================
 
 [`Cheatsheet`](mementopython3-english.pdf)
+[`Cython`](cython/cython.html)
 
 
 ## Index

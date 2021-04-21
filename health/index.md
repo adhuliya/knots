@@ -46,7 +46,7 @@ It pays back many folds to develop healthy habits. Here are some,
    * Farmer's walk
    * [Resistance band exercise routine](https://www.youtube.com/watch?v=FLNaG45ZiiA)
    * Hand grip exercise.
-* Keep the geometry of the body perfect all the time.
+* Keep the geometry of body, mind and energy perfect all the time.
 * Be _conscious_ (of whatever you do or don't do).
 * Complete body checkup every two years. Do it more frequently with age.
 * Exercise your mind.

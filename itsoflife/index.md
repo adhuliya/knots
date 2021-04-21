@@ -21,3 +21,9 @@ facets of our lives.
 Resources
 ----------------------
 * [HTML/CSS Course](courses/udemy_htmlcss/index.html)
+
+Technical Resources
+------------------------
+* <https://realpython.com/python-bindings-overview/>
+
+

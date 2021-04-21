@@ -602,3 +602,10 @@ git ls-remote -h git@github.com:adhuliya/bin.git
 
 BLOCK END  : website_available?
 
+Ajit synthesis:
+  electronic data interchange format (EDIF) (EDN files)
+  NGC files.
+
+Thread package: user space: gnu pth, gnu pthreads.
+OpenMP for AJIT.
+

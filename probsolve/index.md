@@ -8,4 +8,10 @@ Puzzels & Programming Challenges.
 * [data-and-algo](../data-and-algo/index.html)
 
 
+Preparing for Placement
+-----------------------
+* <https://www.linkedin.com/pulse/my-guide-preparing-google-technical-interview-anthony-mays/>
+* [Cracking the Coding Interview](CTCI.pdf)
+
+
 
