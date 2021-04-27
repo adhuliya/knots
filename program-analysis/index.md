@@ -18,6 +18,10 @@ Index
 <a name="dfa"></a>
 ## Data Flow Analysis (DFA)
 
+[CS618 Slides](cs618-iitb/index.html)
+
+[Kildall Slides - Prof. Raghavan, IISc Bangalore](profraghavan/kildall-iisc.pdf)
+
 [`DFA Issues Summary Picture`](helpful/dfa_issues.pdf)
 
 [`dataflow`](dataflow.html)

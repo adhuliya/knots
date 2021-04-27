@@ -19,8 +19,9 @@ Most time taking to least (estimated time taken in a week)
 
 ## Index
 1. [Guidelines](#guidelines)
-2. [Gilbert Syndrome](gilbert_syndrome/index.html)
-3. [Taking Good Breaks](https://zapier.com/blog/better-breaks/)
+1. [Indications of Good Health](#goodhealth)
+1. [Gilbert Syndrome](gilbert_syndrome/index.html)
+1. [Taking Good Breaks](https://zapier.com/blog/better-breaks/)
 
 <a name="guidelines"></a>
 ## Guidelines
@@ -54,6 +55,8 @@ It pays back many folds to develop healthy habits. Here are some,
    * Read a random article that is not related to any of your field of interest.
 
 Note that 'daily' means about three times a week.
+
+<a name="goodhealth"></a>
 
 Indications of Good Health
 ---------------------------

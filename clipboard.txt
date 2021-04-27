@@ -609,3 +609,7 @@ Ajit synthesis:
 Thread package: user space: gnu pth, gnu pthreads.
 OpenMP for AJIT.
 
+2600 - resume display + jobs alert 3 mths (4200 - 6 mths)
+3400 - recruiter connection 3mths (20 credits + resume display service) (4800 - 6 mths)
+3800 - 10 credits - 3800 - 6 mths.
+
