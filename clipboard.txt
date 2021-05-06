@@ -613,3 +613,22 @@ OpenMP for AJIT.
 3400 - recruiter connection 3mths (20 credits + resume display service) (4800 - 6 mths)
 3800 - 10 credits - 3800 - 6 mths.
 
+Writing tablet: https://www.youtube.com/watch?v=1FX_4JI0dc0 (Wacom CTL-672)
+Online teaching tools:
+https://www.youtube.com/watch?v=C7etwbRgqsg
+app.diagrams.net
+nearpod.com
+whiteboard.chat
+https://www.youtube.com/watch?v=UWoratHumks
+
+jsbin.com -- write JS code and test
+dartpad.dartlang.org -- write and run dart code
+dartlang.org -- docs/help and resources for dart
+pub.dartlang.org/flutter -- flutter package search
+freesound.org -- many free sounds files
+exercism.io/my/track/dart -- track your progress on dart programming
+dribble.com -- mobile designs samples -- good for inspiration.
+flutter.dev/docs/cookbook -- some ready to use code snippets
+colorzilla.com -- chrome/firefox plugin to get color value from any website
+
+

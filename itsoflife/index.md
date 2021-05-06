@@ -21,9 +21,19 @@ facets of our lives.
 Resources
 ----------------------
 * [HTML/CSS Course](courses/udemy_htmlcss/index.html)
+* [Django REST Framework API - Beginner Udemy](https://www.udemy.com/course/django-python/learn/lecture/6954788#overview)
+* [draw.io](https://draw.io) -- quickly draw flowcharts
+* [appicon.co](https://appicon.co) -- convert image to icons 
+* [icons8.com](https://icons8.com) -- free icons
+* [vecteezy.com](https://vecteezy.com) -- large list of icons
+* [canva.com](https://www.canva.com) -- create your own icon
+* [fonts](https://fonts.google.com) -- free fonts for use
+
 
 Technical Resources
 ------------------------
 * <https://realpython.com/python-bindings-overview/>
+
+
 
 

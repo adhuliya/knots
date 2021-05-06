@@ -14,6 +14,9 @@ Conference List
 Shortlisted Conference Pages
 ----------------------------
 * [ECOOP 2021](ecoop/index.html)
+* [POPL 2022](https://popl22.sigplan.org/) (or <https://conf.researchr.org/series/POPL>)
+   * [Paper format and page limit](https://popl21.sigplan.org/track/POPL-2021-research-papers#POPL-2021-Call-for-Papers)
+   * [List of asscepted Latex packages](https://www.acm.org/publications/taps/accepted-latex-packages)
 
 
 

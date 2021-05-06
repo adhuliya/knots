@@ -16,10 +16,12 @@ Index 2018
 * [dfa-motivation.pdf](2018/dfa-motivation.pdf)
    * Slide 38/64: Why `y.lptr.lptr = y.lptr.rptr = null` (on line 4) and then 
      `y.lptr = y.rptr = null` (on line 6)?
-     Doesn't the first one makes the other one (on line 6) redundant?
+     Doesn't the first one make the other one (on line 6) redundant?
    * Slide 41/64: Why multiple 'Heap Memory' blocks for single 'Program Execution' block
      in the diagram?
-   * Slide 32/64: "Cedar Mesa Folk Wisdom"
+   * Slide 32/64: "Cedar Mesa Folk Wisdom" -- What does this mean?
+   * Slide 53/57: Add test case for the interval analysis.
+     `int a;int f(int b){  int c;c = a%2;b = - abs(b);while (b < c)b = b+1;if (b > 0)b = 0;return b;}`
 * [bit-vector-frameworks.pdf](2018/bit-vector-frameworks.pdf)
 * [dfa-theory.pdf](2018/dfa-theory.pdf)
 * [general-frameworks.pdf](2018/general-frameworks.pdf)
