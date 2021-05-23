@@ -751,4 +751,6 @@ bitcoin.org/en/ -- satoshi nakamoto's website
   bitcoin.org/en/choose-your-wallet/
 bitaddress.org -- securely keep private key and encrypt it using a pass phrase
                   It helps store keys in a brain wallet.
-
+inter planetary file system
+  -- dtube
+  -- pinata.cloud -- 1GB free storage

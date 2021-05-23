@@ -31,6 +31,7 @@ Topics
 * [Kubernetes](kubernetes.html)
 * [Elasticsearch](elasticsearch.html)
 * [Database](database.html)
+* [Ansible](https://youtu.be/YI48bKykx7k)
 * Email Server
 * SSL Certificate
 
@@ -51,9 +52,9 @@ Topics
 * [Json](json.html)
 * [Markdown](markdown.html)
 * [git/github](git.html)
-* Jenkins
-* google cloud / aws cloud
+* [Jenkins](https://www.youtube.com/watch?v=FX322RVNGj4&t=9302s)
 * CI/CD Dev
+* google cloud / aws cloud
 * Python
 * Cython/C++
 * Dart
