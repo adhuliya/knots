@@ -630,5 +630,125 @@ exercism.io/my/track/dart -- track your progress on dart programming
 dribble.com -- mobile designs samples -- good for inspiration.
 flutter.dev/docs/cookbook -- some ready to use code snippets
 colorzilla.com -- chrome/firefox plugin to get color value from any website
+openweathermap.org/api -- apis to get the weather information
+JSON Viewser Awesome -- chrome plugin to view json data nicely
+99-bottles-of-beer.net -- one program in 1500 languages :)
+coinapi.io -- api for cryptocurrency price
 
+
+curl api.ipify.org -- gives the ip address of client machine on internet
+                      (strangely this returns 10.130.168.55 ip for my laptop) 
+
+headliner video maker
+loom video screen cast
+renderforest -- unlimited 5 min videos
+
+doodly -- win and mac app
+explaindeo -- win and mac app
+easysketchpro -- app
+powtoon -- web -- 250/month -- good option
+
+sbi.04225@sbi.co.in
+
+IITB-SSP: IITB Student Satellite Program (2021)
+----------------------------------------------
+Sanket -- Antenna Deployment System (ADS)
+          Burnwire Mechanism (Nylon Thread and Conducting wire)
+            -- very costly >2.5L, and difficult to aquire in India
+
+Star Tracker based Attitude Determination System (STADS)
+  -- take star pics and determines the orientation (attitude) of the satellite
+
+GLEE -- The Great Lunar Mission for Everyone (5x5 cm)
+     -- Scientific payload for one of these payloads (5x5cm payload)
+
+Rendezvous and Docking
+  -- approach and align with another cubesat.
+
+
+
+
+
+
+
+
+
+Some test applications for multi-core processor
+-----------------------------------------------------
+1. Take a common memory location and make each thread write to it
+   N times. If M are the number of threads, the final count should be N*M.
+2. Take an array of zeros let M/2 threads increment each location
+   by one from start till end, let the other M/2 threads increment each
+   location from end to start. If each thread sweeps the array N times,
+   the count in each index of the array should be N*M.
+   This can be done in two ways,
+     1. each thread takes a lock on the whole array.
+     2. each thread takes a lock on each index
+   Try with both the approaches.
+3. Attempt some atomic operations using an external device.
+   -- the state of each thread should be as expected
+   -- the state of the device should be as expected
+   SPI memory/Flash
+   Serial Device
+   Timer
+   GPIOs
+   Memory
+
+Queue based
+1. Single R/W per Queue:
+   Start with 1, each thread multiplies with 2, 3, 5, 7,... respectively
+     -- avoid overflow
+     -- can be verified very accurately
+     -- number of cycles of multiplication cannot be huge (overflow)
+2. Single R/W per Queue: Pass an array in the queue.
+   Use an array of the size of # of threads and let each thread increment
+   its respective index in the array. Go till a specific count and verify
+   that each index has a pre-determined count.
+3. Multi-end queue message -- multiple readers and writers to the queue.
+     -- one message received by more than one reader.
+     -- one message written by more than one writer.
+4. Queue based IO: Add to queue from one IO device, get the processed elements
+   from the queue from another IO device.
+     -- # of packets received == # of packets sent
+     -- packet received in the same order as sent
+     -- state of each packet is as expected
+   Packet can be as simple as a given prime number N multiplied by
+   a series of primes and then received on the other end.
+*. Star Tracker based Attitude Determination System (STADS)
+  -- takes star pic and determines the orientation (attitude) of the satellite
+
+Conditional swap.
+
+
+
+
+
+
+Part Processor -- Part FPGA (Co-processor)
+Linux source changes
+
+os/AJITLINUX/...
+
+Compiler explorer: https://godbolt.org/
+
+
+bitcoincash.org -- bitcoin cash home
+coinmarketcap.com -- cypto currency market cap
+blockdozer.com/insight/ -- latest blocks in bitcoin cash
+blockchair.com -- tracks bitcoin cash
+blockchain.com -- see the blocks in the bitcoin blockchain
+btc.com -- find the bitcoin blocks
+blockchaininformer.com -- real time bitcoin price
+blockchain.com/explorer -- list of blocks of popular cryptocurrencies
+bitcoin-vr.github.io -- visualize bitcoin transactions as baloons
+fiatleak.com -- graphically track the transactions at various exhanges
+realtimebitcoin.info -- exhange rate and power consumption of bitcoin
+                        coins in circulation, etc.
+blocks.wizb.it -- blocks an where is it created on a round earth
+billfodl.com/pages/bitbonkers -- another visualization
+bitlistem.com -- bitcoin bubbles showing the transactions size
+bitcoin.org/en/ -- satoshi nakamoto's website
+  bitcoin.org/en/choose-your-wallet/
+bitaddress.org -- securely keep private key and encrypt it using a pass phrase
+                  It helps store keys in a brain wallet.
 

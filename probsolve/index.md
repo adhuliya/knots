@@ -17,5 +17,13 @@ Preparing for Placement
 * [How to prepare for a Google Interview](https://www.youtube.com/watch?v=ko-KkSmp-Lk)
 * [An example Google Interview](https://www.youtube.com/watch?v=XKu_SEDAykw)
 
+How to format your CV?
+* [What is a Cover Letter?](https://www.reed.co.uk/career-advice/what-is-a-cover-letter/)
+* [Free cover letter template](https://www.reed.co.uk/career-advice/free-cover-letter-template/)
+
+
+Companies
+---------------------
+* [Intel](intel/index.html)
 
 

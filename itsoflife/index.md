@@ -18,6 +18,48 @@ facets of our lives.
 * Till death do us apart (accessible without software).
 
 
+Topics
+----------------
+* Django/Django REST Framework
+* [celery and django](celery.html)
+* [Async development](async.html)
+* cython dev
+* memcached
+* nginx and uwsgi
+* linux server management
+* [Docker](docker.html)
+* [Kubernetes](kubernetes.html)
+* [Elasticsearch](elasticsearch.html)
+* [Database](database.html)
+* Email Server
+* SSL Certificate
+
+
+* Flutter
+* HTML/CSS/JS
+* [Authentication/OAuth2](authentication.html)
+* curl and REST API testing
+* [Selenium](selenium.html)
+* [Figma](figma.html)
+* [Game Dev](gamedev.html)
+* Animations
+* [Push Notifications](pushnote.html)
+* Adding payments
+
+
+* [Yaml](yaml.html)
+* [Json](json.html)
+* [Markdown](markdown.html)
+* [git/github](git.html)
+* Jenkins
+* google cloud / aws cloud
+* CI/CD Dev
+* Python
+* Cython/C++
+* Dart
+
+
+
 Resources
 ----------------------
 * [HTML/CSS Course](courses/udemy_htmlcss/index.html)
@@ -35,5 +77,8 @@ Technical Resources
 * <https://realpython.com/python-bindings-overview/>
 
 
+Misc
+--------------
+* [Electronic Signature](https://www.youtube.com/watch?v=dwqg52dlbvc)
 
 
