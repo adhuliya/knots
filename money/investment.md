@@ -28,6 +28,7 @@ Investment
 1. Zerodha Varsity.
 1. In-depth study of three to five companies and their sectors.
 1. Reading Financial Statements (Warren B.).
+1. [Notes on Terms](terms.html)
 
 
 <a name="references"></a>

@@ -31,17 +31,21 @@ of light weight packages.
 [`troubleshooting & system logs`](troubleshooting_n_logs.html)
 
 ### Resource Management
+[`power management`](power.html)
+
 [`package management`](#)
 [`user management`](#)
 
 [`network management`](network.html)
 
 ### Lubuntu desktop management
-[`configuring lxde/lxqt`](#)
+`lxqt-config` to configure lxde/lxqt.
 
 
 ### Misc
 [`Fonts in Ubuntu`](fonts.html)
+
+`scrot` for screeshots. `scrot -s` for selective shots.
 
 
 ### Useful softwares

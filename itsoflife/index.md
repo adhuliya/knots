@@ -36,6 +36,12 @@ Topics
 * SSL Certificate
 
 
+* Blockchain setup
+* Blockchain wallet setup
+* Creating one's own cryptocurrency
+* VPN setup (a temporary private network between say 50 computers)
+
+
 * Flutter
 * HTML/CSS/JS
 * [Authentication/OAuth2](authentication.html)

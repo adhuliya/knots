@@ -754,3 +754,51 @@ bitaddress.org -- securely keep private key and encrypt it using a pass phrase
 inter planetary file system
   -- dtube
   -- pinata.cloud -- 1GB free storage
+
+clubhouse
+
+
+websockets
+-----------------
+REF: https://www.youtube.com/watch?v=i5OVcTdt_OU
+https://sockets.io/demos/chat/
+
+How docker works?
+https://www.youtube.com/watch?v=el7768BNUPw
+https://www.youtube.com/watch?v=-YnMr1lj4Z8
+
+Kubernetes intro series...
+<https://www.youtube.com/watch?v=DZ-Wv3XNoAk&list=PLqnWYrfCqvm4IG1SAj_6lqpwkKdHrRzRF&index=2>
+
+barefoot networks
+broadcom
+
+berkeley packet filter
+
+efficiency | energy | indian
+https://www.cisco.com/c/en/us/products/collateral/switches/nexus-3232c-switch/datasheet-c78-734883.html
+https://fd.io/docs/vpp/master/whatisvpp/scalar-vs-vector-packet-processing.html
+jim-Thompson.pdf - to see mpps/CPP requirements
+
+dhry_c
+
+abhishek dilipkumar mehetere flywheels mumbai
+
+Getting compilation database from the make command:
+------------------------------------------------------
+https://clang.llvm.org/docs/analyzer/user-docs/CrossTranslationUnit.html
+https://stackoverflow.com/questions/21134120/how-to-turn-makefile-into-json-compilation-database
+
+    make --always-make --dry-run \
+     | grep -wE 'gcc|g\+\+' \
+     | grep -w '\-c' \
+     | jq -nR '[inputs|{directory:".", command:., file: match(" [^ ]+$").string[1:]}]' \
+     > compile_commands.json
+
+
+https://texttoolkit.com/compilation-database-generator
+
+https://github.com/rizsotto/Bear
+One way to get a compilation database is to use cmake as the build tool. Passing -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to cmake generates the compile_commands.json file into the current directory.
+
+lxqt-config-globalkeyshortcuts

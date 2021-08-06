@@ -9,11 +9,12 @@ CPP Notes
 4. [Microsoft Cpp Docs](https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference?view=vs-2019)
 
 
-[`C++ Tour`](files/TourOfCpp_Stroustrup_2013.pdf)
-[`C++ Book`](files/Straustrup4th.pdf)
+[`C++ Tour`](../files/TourOfCpp_Stroustrup_2013.pdf)
+[`C++ Book`](../files/Straustrup4th.pdf)
 [`C++ Reference`](https://en.cppreference.com/w/cpp/language)
 [`cplusplus.com`](http://www.cplusplus.com/)
 [`CodingStyle`](http://www.yolinux.com/TUTORIALS/LinuxTutorialC++CodingStyle.html)
+[`STL Tutorial`](https://www.cprogramming.com/tutorial/stl/stlintro.html)
 
 [`Initialization List`](http://forums.codeguru.com/showthread.php?464084-C-General-What-is-the-initialization-list-and-why-should-I-use-it)
 [`Opaque Pointer`](https://en.wikipedia.org/wiki/Opaque_pointer#C++)

@@ -7,6 +7,7 @@ Notes on Riminet.
 2. [The Unknowns](#unknowns)
 4. [Sensing](sensing.html)
 3. [Misc Notes](#miscnotes)
+4. [OpenAIGym](https://gym.openai.com/)
 
 
 <a name="rules"></a>
