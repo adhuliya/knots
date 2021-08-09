@@ -801,4 +801,7 @@ https://texttoolkit.com/compilation-database-generator
 https://github.com/rizsotto/Bear
 One way to get a compilation database is to use cmake as the build tool. Passing -DCMAKE_EXPORT_COMPILE_COMMANDS=ON to cmake generates the compile_commands.json file into the current directory.
 
-lxqt-config-globalkeyshortcuts
+lxqt-config-globalkeyshortcutshttps://www.google.com/search?channel=fs&client=ubuntu&q=lubuntu+20.04+not+sourcing+.profile
+
+IRC Channel for lubuntu:
+https://kiwiirc.com/nextclient/irc.libera.chat/#lubuntu

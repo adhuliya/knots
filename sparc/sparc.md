@@ -62,6 +62,7 @@ Resources
 * [My Reference Material](../../mydata/git/ws/sparcv8-ajit-git/misc/references/)
 * [Custom LLVM Backend](TheDesignOfACustom32bitRiscCpuAndLlvmCompilerBackend.pdf)
 * [Sparc V9](sparcv9.pdf)
+* [Adding Assembly In C](https://www.cs.uaf.edu/courses/cs301/2014-fall/notes/inline-assembly/)
 
 
 <br/> <br/> <br/>

@@ -18,7 +18,7 @@ Index
 * [Self Organization](organize/index.html)
 * [ItsOfLife/Moio](itsoflife/index.html)
 * [Finance & Investment](money/index.html)
-* Music/Art/Travel
+* Music/Art/[Travel](extra-curricular/travel/index.html)
 * [Riminet/RL](riminet/index.html)
 * Networking/Family Time
 * [Problem Solving Fun](probsolve/index.html)
@@ -26,6 +26,7 @@ Index
 
 Information,
 
+* [Kanu](kanu/index.html)
 * [Technology Notes](#technology)
 * [Languages](languages/index.html)
 * [Projects](#projects)
@@ -60,6 +61,11 @@ Extra Curricular
 
 [`gamedev game`](games/gamedev-js/index.html)
 [`pianoforall`](extra-curricular/pianoforall/pianoforall.html)
+
+[`Flute Lesson 1`](https://www.youtube.com/watch?v=8ZqS3z7CKZo&list=PL2qvHwo3Zh_LKLiRXGZguyinPHqQViFOG)
+[`Flute Lesson 2`](https://www.youtube.com/watch?v=lGbCUeJmguM&list=PL2qvHwo3Zh_LKLiRXGZguyinPHqQViFOG&index=2)
+
+[`Travel Notes`](extra-curricular/travel/index.html)
 
 <a name="events"></a>
 
