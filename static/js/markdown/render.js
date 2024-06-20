@@ -26,6 +26,7 @@
   }
 
   xhr.open('GET', file);
+  xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
   xhr.send();
 })();
 
